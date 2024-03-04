@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Web application for calculating the holidays">
+    <meta name="keywords" content="application, holiday, calculate">
+    <meta name="author" content="Liubov Khomych">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/site.webmanifest">
+    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Holidays</title>
+</head>
+
+<body>
+    <header class="container-lg">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient mb-4 px-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_65_42)">
+                            <path d="M4.5 0H6V4.5H4.5V0ZM16.5 0H18V4.5H16.5V0Z" fill="#cccccc" />
+                            <path
+                                d="M9.9 21H1.5V9H21V9.9C21.6 10.2 22.05 10.5 22.5 10.95V1.5H19.5V6H15V1.5H7.5V6H3V1.5H0V22.5H10.95C10.5 22.05 10.2 21.6 9.9 21Z"
+                                fill="#cccccc" />
+                            <path d="M21 18H16.5V13.5H18V16.5H21V18Z" fill="#cccccc" />
+                            <path
+                                d="M17.25 12C20.1 12 22.5 14.4 22.5 17.25C22.5 20.1 20.1 22.5 17.25 22.5C14.4 22.5 12 20.1 12 17.25C12 14.4 14.4 12 17.25 12ZM17.25 10.5C13.5 10.5 10.5 13.5 10.5 17.25C10.5 21 13.5 24 17.25 24C21 24 24 21 24 17.25C24 13.5 21 10.5 17.25 10.5Z"
+                                fill="#cccccc" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_65_42">
+                                <rect width="24" height="24" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item">
+                            <button type="button" class="btn nav-link" data-bs-toggle="modal"
+                                data-bs-target="#aboutModal">
+                                About project
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn nav-link" data-bs-toggle="modal"
+                                data-bs-target="#contactsModal">
+                                Contacts
+                            </button>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                ENG
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">UA</a></li>
+                                <li><a class="dropdown-item" href="#">ENG</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="main container-lg px-md-5">
+        <h1 class="mb-3">Holidays</h1>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active text-uppercase fw-bold text-dark" id="get-time-tab" data-bs-toggle="tab"
+                    data-bs-target="#get-time" type="button" role="tab" aria-controls="get-time"
+                    aria-selected="true">Get the
+                    time</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link text-uppercase fw-bold text-dark" id="get-holidays-tab" data-bs-toggle="tab"
+                    data-bs-target="#get-holidays" type="button" role="tab" aria-controls="get-holidays"
+                    aria-selected="false">get
+                    holidays</button>
+            </li>
+        </ul>
+        <div class="tab-content mb-5" id="myTabContent">
+            <!-- Tab 1 -->
+            <div class="tab-pane fade show active border border-top-0 px-3 py-3" id="get-time" role="tabpanel"
+                aria-labelledby="get-time-tab">
+                <div class="container p-0 px-md-4">
+                    <h5 class="py-2">1. Enter dates and other options</h5>
+                    <fieldset class="py-2 position-relative">
+                        <legend class="fw-light lh-sm fs-6">Select of the period of time</legend>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row justify-content-between ">
+                                    <div class="col-sm-6 pb-2">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <label class="me-2" for="startDate">
+                                                <span>
+                                                    <svg width="18" height="24" viewBox="0 0 18 24" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <g clip-path="url(#clip0_74_28)">
+                                                            <path
+                                                                d="M1.5 0C0.670312 0 0 0.670312 0 1.5C0 2.32969 0.670312 3 1.5 3V3.51562C1.5 5.50313 2.29219 7.41094 3.69844 8.81719L6.87656 12L3.69844 15.1828C2.29219 16.5891 1.5 18.4969 1.5 20.4844V21C0.670312 21 0 21.6703 0 22.5C0 23.3297 0.670312 24 1.5 24H16.5C17.3297 24 18 23.3297 18 22.5C18 21.6703 17.3297 21 16.5 21V20.4844C16.5 18.4969 15.7078 16.5891 14.3016 15.1828L11.1234 12L14.3063 8.81719C15.7125 7.41094 16.5047 5.50313 16.5047 3.51562V3C17.3344 3 18.0047 2.32969 18.0047 1.5C18.0047 0.670312 17.3344 0 16.5047 0H3H1.5ZM13.5 20.4844V21H4.5V20.4844C4.5 19.2891 4.97344 18.1453 5.81719 17.3016L9 14.1234L12.1828 17.3063C13.0266 18.15 13.5 19.2938 13.5 20.4891V20.4844Z"
+                                                                fill="#212529" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_74_28">
+                                                                <rect width="18" height="24" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                </span>
+                                            </label>
+                                            <input id="startDate" class="form-control" type="date" />
+                                        </div>
+                                        <!-- <span id="startDateSelected"></span> -->
+                                    </div>
+                                    <div class="col-sm-6 pb-2">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <label class="me-2" for="endDate">
+                                                <span>
+                                                    <svg width="18" height="24" viewBox="0 0 18 24" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <g clip-path="url(#clip0_74_36)">
+                                                            <path
+                                                                d="M16.5 24C17.3297 24 18 23.3297 18 22.5C18 21.6703 17.3297 21 16.5 21V20.4844C16.5 18.4969 15.7078 16.5891 14.3016 15.1828L11.1234 12L14.3016 8.81719C15.7078 7.41094 16.5 5.50313 16.5 3.51562V3C17.3297 3 18 2.32969 18 1.5C18 0.670312 17.3297 0 16.5 0L1.5 0C0.670312 0 0 0.670312 0 1.5C0 2.32969 0.670312 3 1.5 3V3.51562C1.5 5.50313 2.29219 7.41094 3.69844 8.81719L6.87656 12L3.69375 15.1828C2.2875 16.5891 1.49531 18.4969 1.49531 20.4844V21C0.665625 21 -0.00468779 21.6703 -0.00468779 22.5C-0.00468779 23.3297 0.665625 24 1.49531 24L15 24H16.5ZM4.5 3.51562V3H13.5V3.51562C13.5 4.71094 13.0266 5.85469 12.1828 6.69844L9 9.87656L5.81719 6.69375C4.97344 5.85 4.5 4.70625 4.5 3.51094V3.51562Z"
+                                                                fill="#212529" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_74_36">
+                                                                <rect width="18" height="24" fill="white"
+                                                                    transform="matrix(-1 0 0 -1 18 24)" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+
+                                                </span>
+                                            </label>
+                                            <input id="endDate" class="form-control" type="date" />
+                                        </div>
+                                        <!-- <span id="endDateSelected"></span> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-sm-flex justify-content-start align-items-center pt-2 ps-4">
+                            <span>
+                                Сalculate from the start date:
+                            </span>
+                            <div class=" ms-sm-3">
+                                <div class="form-check ps-0 d-inline ms-sm-4">
+                                    <input class="btn-check" type="radio" name="radioMethod" id="radioPresetWeek">
+                                    <label class="btn btn-outline-primary btn-sm text-capitalize" for="radioPresetWeek">
+                                        Week
+                                    </label>
+                                </div>
+                                <div class="form-check d-inline">
+                                    <input class="btn-check" type="radio" name="radioMethod" id="radioPresetMonth">
+                                    <label class="btn btn-sm btn-outline-primary text-capitalize"
+                                        for="radioPresetMonth">
+                                        month
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="row py-1">
+                        <fieldset class="col-12 col-lg-5 rounded py-1 my-2">
+                            <legend class="fw-light lh-sm fs-6">Choose what days will count</legend>
+                            <div class="d-flex justify-content-start">
+                                <div class="form-check ps-0 d-inline">
+                                    <input class="btn-check" type="radio" name="radioCalc" id="radioCalcDays"
+                                        autocomplete="off" checked>
+                                    <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCalcDays">
+                                        Days
+                                    </label>
+                                </div>
+                                <div class="form-check  d-inline  ps-2 ps-md-4">
+                                    <input class="btn-check" type="radio" name="radioCalc" id="radioCalcWeekdays"
+                                        autocomplete="off">
+                                    <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCalcWeekdays">
+                                        weekdays
+                                    </label>
+                                </div>
+                                <div class="form-check  d-inline  ps-2 ps-md-4">
+                                    <input class="btn-check" type="radio" name="radioCalc" id="radioCalcWeekends"
+                                        autocomplete="off">
+                                    <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCalcWeekends">
+                                        weekends
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="col-12 col-lg-7 rounded py-1 my-2">
+                            <legend class="fw-light lh-sm fs-6">The dimension of time</legend>
+
+                            <div class="form-check ps-0 d-inline">
+                                <input class="btn-check" type="radio" name="radioCount" id="radioCountSeconds" checked>
+                                <label class="btn btn-sm btn-outline-dark text-capitalize" for="radioCountSeconds">
+                                    Seconds
+                                </label>
+                            </div>
+                            <div class="form-check d-inline ps-2 ps-md-4">
+                                <input class="btn-check" type="radio" name="radioCount" id="radioCountMinutes">
+                                <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCountMinutes">
+                                    Minutes
+                                </label>
+                            </div>
+                            <div class="form-check d-inline ps-2 ps-md-4">
+                                <input class="btn-check" type="radio" name="radioCount" id="radioCountHours">
+                                <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCountHours">
+                                    Hours
+                                </label>
+                            </div>
+                            <div class="form-check d-inline ps-2 ps-md-4">
+                                <input class="btn-check" type="radio" name="radioCount" id="radioCountDays">
+                                <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCountDays">
+                                    Days
+                                </label>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <div class="d-flex py-3 mt-2 mb-5">
+                        <button type="button" class="btn btn-primary btn-custom px-5">Calculate duration</button>
+                    </div>
+                </div>
+                <div class="container-lg p-0 px-md-4">
+                    <hr>
+                    <h5 class="py-2">2. The results of previous calculations</h5>
+                    <ul class="list-group pt-2">
+                        <li class="list-group-item bg-dark bg-gradient">
+                            <div class="row">
+                                <div class="col-4 fw-bold text-white">Start date</div>
+                                <div class="col-4 fw-bold text-white">End date</div>
+                                <div class="col-4 fw-bold text-white">Result</div>
+                            </div>
+                        </li>
+                        <li class="list-group-item bg-light ">
+                            <div class="row">
+                                <div class="col-4">[Start date]</div>
+                                <div class="col-4">[End date]</div>
+                                <div class="col-4">[Result]</div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-4">[Start date]</div>
+                                <div class="col-4">[End date]</div>
+                                <div class="col-4">[Result]</div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-4">[Start date]</div>
+                                <div class="col-4">[End date]</div>
+                                <div class="col-4">[Result]</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Tab 2 -->
+            <div class="tab-pane fade border border-top-0 px-3 py-3" id="get-holidays" role="tabpanel"
+                aria-labelledby="home-tab">
+                <div class="container p-0 px-md-4">
+                    <h5 class="py-2">1. Choose options</h5>
+                    <div class="row">
+                        <div class="col-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Country</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Year</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="d-flex py-3 mt-4 mb-4">
+                            <button type="button" class="btn btn-primary btn-custom px-5">Calculate duration</button>
+                        </div>
+                    </div>
+                    <div class="container-lg p-0 px-md-4">
+                        <hr>
+                        <h5 class="py-2">2. Holidays in <span id="selectedCountry">the country</span> in <span
+                                id="selectedYear">N</span> year</h5>
+                        <ul class="list-group pt-2">
+                            <li class="list-group-item bg-dark bg-gradient">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <button type="button" class="btn text-white fw-bold p-0">
+                                            Date
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                    viewBox="0 0 24 24">
+                                                    <path fill="currentColor"
+                                                        d="M16.29 14.29L12 18.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l5 5a1 1 0 0 0 1.42 0l5-5a1 1 0 0 0-1.42-1.42M7.71 9.71L12 5.41l4.29 4.3a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.42l-5-5a1 1 0 0 0-1.42 0l-5 5a1 1 0 0 0 1.42 1.42" />
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div class="col-8 fw-bold text-white">The name of the holiday</div>
+                                </div>
+                            </li>
+                            <li class="list-group-item bg-light ">
+                                <div class="row">
+                                    <div class="col-4">[Date]</div>
+                                    <div class="col-8">[The name of the holiday]</div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-4">[Date]</div>
+                                    <div class="col-8">[The name of the holiday]</div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-4">[Date]</div>
+                                    <div class="col-8">[The name of the holiday]</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container-lg mt-3">
+            <div class="container-fluid border-top pt-5 pb-0 ps-0 px-md-3">
+                <h3>Holidays</h3>
+                <p class="lead">The course project </p>
+            </div>
+            <div class="row justify-content-start">
+                <div class=" col-12">
+                    <div class="row">
+                        <div class="col-4 col-md-2 d-flex align-items-center justify-content-center">
+                            <img src="./img/jpg/4865096.jpg" class="img-fluid image">
+                        </div>
+                        <div class="col-12 col-md-5 d-flex flex-column align-items-start px-md-5">
+                            <p>
+                                The page was carried out as a course project in the course JS11 (Projector).
+                            </p>
+                            <p>
+                                Created a web application to determine the time interval between given dates and
+                                determined the public holidays for a country in a selected.
+                            </p>
+                        </div>
+                        <div class="col-2 d-none d-md-block"></div>
+                        <div class="col-12 col-md-3">
+                            <h6>Contacts</h6>
+                            <div rel="author">Khomych Liubov</div>
+                            <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                                href="mailto:kroka.luba@gmail.com" rel="author">kroka.luba@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="p-3 mt-4 mb-0 bg-dark bg-gradient text-white fw-light fs-6">
+                <small>&#9400; 2024, Khomych Liubov</small>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal About-->
+    <div class="modal fade " id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h1 class="modal-title d-flex align-items-center fs-5 text-white text-uppercase"
+                        id="aboutModalLabel">
+                        <svg class="me-2" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_65_42)">
+                                <path d="M4.5 0H6V4.5H4.5V0ZM16.5 0H18V4.5H16.5V0Z" fill="#ffffff" />
+                                <path
+                                    d="M9.9 21H1.5V9H21V9.9C21.6 10.2 22.05 10.5 22.5 10.95V1.5H19.5V6H15V1.5H7.5V6H3V1.5H0V22.5H10.95C10.5 22.05 10.2 21.6 9.9 21Z"
+                                    fill="#ffffff" />
+                                <path d="M21 18H16.5V13.5H18V16.5H21V18Z" fill="#ffffff" />
+                                <path
+                                    d="M17.25 12C20.1 12 22.5 14.4 22.5 17.25C22.5 20.1 20.1 22.5 17.25 22.5C14.4 22.5 12 20.1 12 17.25C12 14.4 14.4 12 17.25 12ZM17.25 10.5C13.5 10.5 10.5 13.5 10.5 17.25C10.5 21 13.5 24 17.25 24C21 24 24 21 24 17.25C24 13.5 21 10.5 17.25 10.5Z"
+                                    fill="#ffffff" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_65_42">
+                                    <rect width="24" height="24" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        About project Holidays
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="px-1 pb-0">
+                        <h2>Курсовий проєкт</h2>
+                        <div>
+                            <div>
+                                Створення веб-застосунку для визначення проміжку часу між заданими датами
+                                та визначення святкових дат&nbsp;для країни в обраний рік.
+                                Для роботи буде використовуватись API для отримання даних про
+                                країни та свята з сайту&nbsp;<a href="https://calendarific.com/&nbsp;" target="_blank"
+                                    rel="noopener noreferrer">https://calendarific.com/&nbsp;</a>.
+                                Для цього потрібно буде створити аккаунт на цьому сайті для
+                                використання API-ключа в роботі відкритого API цього
+                                сайту.
+                            </div>
+                            <h5>Основна ідея застосунку</h5>
+                            <div>
+                                Веб сторінка має містити 2 вкладки (таби):
+                            </div>
+                            <ol>
+                                <li>На першій табі юзер може обрати в
+                                    першому інпуті дату, потім в другому інпуті дату, задати
+                                    додаткові параметри - і отримати проміжок часу між цими
+                                    датами.</li>
+                                <li>На другій табі юзер може обрати
+                                    країну в першому інпуті, потім рік в другому інпуті - і
+                                    отримати список свят з датами<br></li>
+                            </ol>
+                            <h3>Особливості роботи таби №1</h3>
+                            <ol>
+                                <li>Тільки після того як юзер обрав одну
+                                    дату в першому інпуті, він може обрати дату в другому інпуті
+                                    яка йде не раніше дати з першого інпуту і навпаки</li>
+                                <li>Юзер може обрати пресети проміжків
+                                    часу:<br>— 'тиждень' (7 днів)<br>—&nbsp;'місяць' (30 днів)
+                                </li>
+                                <li>Юзер може обрати опції:<br>— 'Всі
+                                    дні'<br>— 'Будні дні'<br>—&nbsp;'Вихідні дні'</li>
+                                <li>Юзер може вибрати
+                                    опції:<br>—&nbsp;'Порахувати кількість
+                                    днів'<br>—&nbsp;'Порахувати кількість
+                                    годин'<br>—&nbsp;'Порахувати кількість хвилин'<br>—
+                                    'Порахувати кількість секунд'</li>
+                                <li>Юзер може зайти в застосунок і
+                                    побачити, якщо вони є, останні 10 результатів які він
+                                    рахував у вигляді таблиці (стартова дата, кінцева дата, і
+                                    який результат виміру)<br>— Для цього використати
+                                    localStorage</li>
+                            </ol>
+                            <h3>Особливості роботи таби №2</h3>
+                            <ol>
+                                <li>Коли юзер заходить на цю табу
+                                    має бути зроблений запит на ендпоїнт&nbsp;<a
+                                        href="https://calendarific.com/api/v2/countries">https://calendarific.com/api/v2/countries</a>&nbsp;
+                                    для отримання списку всіх країн. Цей список буде
+                                    використовуватись для опцій в першому інпуті '<b>Вибір
+                                        країни</b>'.&nbsp;</li>
+                                <li>В другому інпуті '<b>Вибір року</b>'
+                                    має бути список років від 2001 до 2049. Цей інпут має бути
+                                    заблокований доки юзер не обере країну&nbsp;</li>
+                                <li>Значенням по замовчуванню в інпуті
+                                    'Вибір року' має бути поточний рік&nbsp;</li>
+                                <li>Коли обидва параметри будуть обрані,
+                                    потрібно зробити запит на ендпоїнт&nbsp;<a
+                                        href="https://calendarific.com/api/v2/holidays">https://calendarific.com/api/v2/holidays</a>
+                                </li>
+                                <li>Отриманий результат потрібно
+                                    представити у вигляді таблиці з колонками '<b>Дата</b>' та
+                                    '<b>Назва свята</b>'&nbsp;</li>
+                                <li>Для колонки '<b>Дата</b>' має бути
+                                    кнопка по кліку на яку юзер може посортувати свята в
+                                    хронологічному чи зворотньому хронологічному порядку&nbsp;
+                                </li>
+                                <li>У випадку помилки якогось з цих двох
+                                    запитів до ендпоїнтів потрібно вивести на екран блок з
+                                    повідомленням про помилку&nbsp;&nbsp;</li>
+                            </ol>
+                            <h3>Загальні особливості роботи застосунку</h3>
+                            <ol>
+                                <li>Юзер має мати можливість комфортно
+                                    працювати з мобільного телефона з цим застосунком<br>—
+                                    Мається на увазі що має бути передбачена мобільна версія
+                                    сайту<br></li>
+                                <li>Юзер має мати можливість перейти на
+                                    реальну сторінку застосунку в інтернеті<br>— Мається на
+                                    увазі що застосунок розміщується на Github pages<br></li>
+                                <li>Інтерфейс має бути англійською або
+                                    українською<br>— Мається на увазі що застосунок має бути
+                                    перекладений ОДНІЄЮ з вказаних мов<br></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal contacts -->
+    <div class="modal fade " id="contactsModal" tabindex="-1" aria-labelledby="contactsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h1 class="modal-title d-flex align-items-center fs-5 text-white text-uppercase"
+                        id="contactsModalLabel">
+                        <svg class="me-2" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_65_42)">
+                                <path d="M4.5 0H6V4.5H4.5V0ZM16.5 0H18V4.5H16.5V0Z" fill="#ffffff" />
+                                <path
+                                    d="M9.9 21H1.5V9H21V9.9C21.6 10.2 22.05 10.5 22.5 10.95V1.5H19.5V6H15V1.5H7.5V6H3V1.5H0V22.5H10.95C10.5 22.05 10.2 21.6 9.9 21Z"
+                                    fill="#ffffff" />
+                                <path d="M21 18H16.5V13.5H18V16.5H21V18Z" fill="#ffffff" />
+                                <path
+                                    d="M17.25 12C20.1 12 22.5 14.4 22.5 17.25C22.5 20.1 20.1 22.5 17.25 22.5C14.4 22.5 12 20.1 12 17.25C12 14.4 14.4 12 17.25 12ZM17.25 10.5C13.5 10.5 10.5 13.5 10.5 17.25C10.5 21 13.5 24 17.25 24C21 24 24 21 24 17.25C24 13.5 21 10.5 17.25 10.5Z"
+                                    fill="#ffffff" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_65_42">
+                                    <rect width="24" height="24" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        Contacts
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row px-1 pb-0">
+                        <div class="col-4">
+                            <svg width="100" height="100" viewBox="0 0 21 22" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.00146 1H20.3365V13.605H1.00146V1Z" fill="#525252" stroke="#45413C"
+                                    stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M2.44646 2.29504H6.81147V3.63004H2.44646V2.29504ZM7.47647 2.29504H16.1815V3.63004H7.47647V2.29504ZM16.6765 2.29504H18.8865V3.63004H16.6765V2.29504ZM2.44646 4.46504H3.50146V5.80004H2.44646V4.46504ZM4.20146 4.46504H8.72147V5.80004H4.20146V4.46504ZM9.39646 4.46504H11.6565V5.80004H9.39646V4.46504ZM12.2515 4.46504H18.8815V5.80004H12.2515V4.46504ZM2.37646 6.63504H7.40646V7.97004H2.37646V6.63504ZM7.95146 6.63504H18.8865V7.97004H7.95146V6.63504ZM2.37646 8.80504H5.75646V10.14H2.37646V8.80504ZM6.50646 8.80504H14.1365V10.14H6.50646V8.80504ZM14.7565 8.80504H16.0815V10.14H14.7565V8.80504ZM16.6765 8.80504H18.8865V10.14H16.6765V8.80504ZM2.37646 10.975H14.7565V12.31H2.37646V10.975ZM15.4165 10.975H18.8865V12.31H15.4165V10.975Z"
+                                    fill="#6DD627" />
+                                <path
+                                    d="M10.6666 2.16003C12.1085 2.16003 13.4914 2.73249 14.5115 3.7516C15.5315 4.77072 16.1052 6.15312 16.1066 7.59503V13.595C16.1065 13.7176 16.0698 13.8373 16.0012 13.9389C15.9326 14.0405 15.8352 14.1192 15.7216 14.165C12.4779 15.4699 8.85526 15.4699 5.61156 14.165C5.4979 14.1192 5.40052 14.0405 5.33192 13.9389C5.26333 13.8373 5.22664 13.7176 5.22656 13.595V7.59503C5.22789 6.15312 5.80161 4.77072 6.82167 3.7516C7.84172 2.73249 9.22465 2.16003 10.6666 2.16003Z"
+                                    fill="#A86C4D" />
+                                <path
+                                    d="M10.6666 2.16003C9.22465 2.16003 7.84172 2.73249 6.82167 3.7516C5.80161 4.77072 5.22789 6.15312 5.22656 7.59503V9.09503C5.22656 7.65226 5.7997 6.26857 6.8199 5.24837C7.8401 4.22818 9.22378 3.65503 10.6666 3.65503C12.1093 3.65503 13.493 4.22818 14.5132 5.24837C15.5334 6.26857 16.1066 7.65226 16.1066 9.09503V7.59503C16.1052 6.15312 15.5315 4.77072 14.5115 3.7516C13.4914 2.73249 12.1085 2.16003 10.6666 2.16003Z"
+                                    fill="#DE926A" />
+                                <path
+                                    d="M10.6666 2.16003C12.1085 2.16003 13.4914 2.73249 14.5115 3.7516C15.5315 4.77072 16.1052 6.15312 16.1066 7.59503V13.595C16.1065 13.7176 16.0698 13.8373 16.0012 13.9389C15.9326 14.0405 15.8352 14.1192 15.7216 14.165C12.4779 15.4699 8.85526 15.4699 5.61156 14.165C5.4979 14.1192 5.40052 14.0405 5.33192 13.9389C5.26333 13.8373 5.22664 13.7176 5.22656 13.595V7.59503C5.22789 6.15312 5.80161 4.77072 6.82167 3.7516C7.84172 2.73249 9.22465 2.16003 10.6666 2.16003Z"
+                                    stroke="#45413C" stroke-width="0.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M10.6666 14.61C12.2419 14.61 13.7528 15.2358 14.8668 16.3498C15.9807 17.4637 16.6066 18.9746 16.6066 20.55V21.5H4.72656V20.55C4.72656 18.9746 5.35238 17.4637 6.46635 16.3498C7.58031 15.2358 9.09118 14.61 10.6666 14.61Z"
+                                    fill="#FF87AF" />
+                                <path
+                                    d="M10.6666 14.61C9.09118 14.61 7.58031 15.2358 6.46635 16.3498C5.35238 17.4637 4.72656 18.9746 4.72656 20.55V21.5H4.79156C4.99363 20.0854 5.69887 18.7911 6.77795 17.8543C7.85703 16.9176 9.23762 16.4013 10.6666 16.4C12.0955 16.4013 13.4761 16.9176 14.5552 17.8543C15.6343 18.7911 16.3395 20.0854 16.5416 21.5H16.6066V20.55C16.6066 18.9746 15.9807 17.4637 14.8668 16.3498C13.7528 15.2358 12.2419 14.61 10.6666 14.61Z"
+                                    fill="#FF6196" />
+                                <path
+                                    d="M10.6666 14.61C12.2419 14.61 13.7528 15.2358 14.8668 16.3498C15.9807 17.4637 16.6066 18.9746 16.6066 20.55V21.5H4.72656V20.55C4.72656 18.9746 5.35238 17.4637 6.46635 16.3498C7.58031 15.2358 9.09118 14.61 10.6666 14.61Z"
+                                    stroke="#45413C" stroke-width="0.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M9.39648 12.585H11.9415V16.555H9.39648V12.585Z" fill="#FFCEBF" />
+                                <path
+                                    d="M10.6665 12.585C10.3297 12.585 10.0066 12.7188 9.76846 12.9569C9.53029 13.1951 9.39648 13.5181 9.39648 13.855V14.155C9.39648 14.4918 9.53029 14.8148 9.76846 15.053C10.0066 15.2912 10.3297 15.425 10.6665 15.425C11.0033 15.425 11.3263 15.2912 11.5645 15.053C11.8027 14.8148 11.9365 14.4918 11.9365 14.155V13.86C11.9371 13.6928 11.9048 13.5271 11.8413 13.3724C11.7777 13.2178 11.6843 13.0772 11.5663 12.9587C11.4483 12.8402 11.3081 12.7462 11.1537 12.6821C10.9992 12.618 10.8337 12.585 10.6665 12.585Z"
+                                    fill="#FFB59E" />
+                                <path
+                                    d="M7.19629 21.5V20.295M14.1363 21.5V20.295M9.39629 12.585H11.9413V16.555H9.39629V12.585Z"
+                                    stroke="#45413C" stroke-width="0.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M15.2014 8.735C14.5715 8.55674 13.9894 8.23968 13.4979 7.80707C13.0065 7.37446 12.6182 6.8373 12.3614 6.235L12.0514 5.5C10.846 7.12479 9.0672 8.22965 7.07645 8.59L6.13645 8.76C5.89642 8.76 5.66623 8.85535 5.49651 9.02507C5.32679 9.19479 5.23145 9.42498 5.23145 9.665C5.23145 9.90502 5.32679 10.1352 5.49651 10.3049C5.66623 10.4747 5.89642 10.57 6.13645 10.57H6.19145C6.30844 11.6753 6.83034 12.6982 7.65659 13.4416C8.48284 14.185 9.55498 14.5963 10.6664 14.5963C11.7779 14.5963 12.85 14.185 13.6763 13.4416C14.5025 12.6982 15.0244 11.6753 15.1414 10.57H15.2014C15.4415 10.57 15.6717 10.4747 15.8414 10.3049C16.0111 10.1352 16.1064 9.90502 16.1064 9.665C16.1064 9.42498 16.0111 9.19479 15.8414 9.02507C15.6717 8.85535 15.4415 8.76 15.2014 8.76V8.735Z"
+                                    fill="#FFCEBF" stroke="#45413C" stroke-width="0.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M7.95169 9.45498C7.95169 9.53113 7.97427 9.60556 8.01658 9.66887C8.05888 9.73219 8.11901 9.78153 8.18936 9.81067C8.25971 9.83981 8.33712 9.84744 8.4118 9.83258C8.48649 9.81773 8.55509 9.78106 8.60893 9.72722C8.66277 9.67337 8.69944 9.60477 8.7143 9.53009C8.72915 9.45541 8.72153 9.378 8.69239 9.30765C8.66325 9.2373 8.6139 9.17717 8.55059 9.13486C8.48728 9.09256 8.41284 9.06998 8.33669 9.06998C8.28595 9.06931 8.23558 9.07881 8.18857 9.09792C8.14156 9.11703 8.09884 9.14536 8.06296 9.18125C8.02707 9.21713 7.99874 9.25984 7.97963 9.30686C7.96052 9.35387 7.95102 9.40423 7.95169 9.45498ZM13.3817 9.45498C13.3817 9.53113 13.3591 9.60556 13.3168 9.66887C13.2745 9.73219 13.2144 9.78153 13.144 9.81067C13.0737 9.83981 12.9963 9.84744 12.9216 9.83258C12.8469 9.81773 12.7783 9.78106 12.7245 9.72722C12.6706 9.67337 12.6339 9.60477 12.6191 9.53009C12.6042 9.45541 12.6119 9.378 12.641 9.30765C12.6701 9.2373 12.7195 9.17717 12.7828 9.13486C12.8461 9.09256 12.9205 9.06998 12.9967 9.06998C13.0474 9.06931 13.0978 9.07881 13.1448 9.09792C13.1918 9.11703 13.2345 9.14536 13.2704 9.18125C13.3063 9.21713 13.3346 9.25984 13.3538 9.30686C13.3729 9.35387 13.3824 9.40423 13.3817 9.45498Z"
+                                    fill="#45413C" stroke="#45413C" stroke-width="0.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M9.24634 11.8C9.21471 11.8007 9.18359 11.8082 9.15511 11.822C9.12664 11.8358 9.10147 11.8556 9.08134 11.88C9.06042 11.9035 9.04506 11.9315 9.0364 11.9618C9.02774 11.9921 9.02602 12.0239 9.03134 12.055C9.09886 12.4396 9.2998 12.7881 9.59883 13.0392C9.89787 13.2903 10.2759 13.428 10.6663 13.428C11.0568 13.428 11.4348 13.2903 11.7339 13.0392C12.0329 12.7881 12.2338 12.4396 12.3013 12.055C12.3067 12.0239 12.3049 11.9921 12.2963 11.9618C12.2876 11.9315 12.2723 11.9035 12.2513 11.88C12.2317 11.855 12.2066 11.8349 12.178 11.821C12.1495 11.8072 12.1181 11.8 12.0863 11.8H9.24634Z"
+                                    fill="#FF6242" />
+                                <path
+                                    d="M10.6667 12.5C10.2153 12.4823 9.7712 12.618 9.40674 12.885C9.56429 13.0605 9.75702 13.2008 9.97239 13.2968C10.1877 13.3929 10.4209 13.4426 10.6567 13.4426C10.8926 13.4426 11.1257 13.3929 11.3411 13.2968C11.5565 13.2008 11.7492 13.0605 11.9067 12.885C11.5477 12.6223 11.1114 12.4869 10.6667 12.5Z"
+                                    fill="#FFA694" />
+                                <path
+                                    d="M9.24634 11.8C9.21471 11.8007 9.18359 11.8082 9.15511 11.822C9.12664 11.8358 9.10147 11.8556 9.08134 11.88C9.06042 11.9035 9.04506 11.9315 9.0364 11.9618C9.02774 11.9921 9.02602 12.0239 9.03134 12.055C9.09886 12.4396 9.2998 12.7881 9.59883 13.0392C9.89787 13.2903 10.2759 13.428 10.6663 13.428C11.0568 13.428 11.4348 13.2903 11.7339 13.0392C12.0329 12.7881 12.2338 12.4396 12.3013 12.055C12.3067 12.0239 12.3049 11.9921 12.2963 11.9618C12.2876 11.9315 12.2723 11.9035 12.2513 11.88C12.2317 11.855 12.2066 11.8349 12.178 11.821C12.1495 11.8072 12.1181 11.8 12.0863 11.8H9.24634Z"
+                                    stroke="#45413C" stroke-width="0.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M7.19629 11.095C7.19629 11.1746 7.24897 11.2509 7.34274 11.3072C7.4365 11.3634 7.56368 11.395 7.69629 11.395C7.8289 11.395 7.95607 11.3634 8.04984 11.3072C8.14361 11.2509 8.19629 11.1746 8.19629 11.095C8.19629 11.0155 8.14361 10.9392 8.04984 10.8829C7.95607 10.8267 7.8289 10.795 7.69629 10.795C7.56368 10.795 7.4365 10.8267 7.34274 10.8829C7.24897 10.9392 7.19629 11.0155 7.19629 11.095ZM13.1363 11.095C13.1363 11.1746 13.189 11.2509 13.2827 11.3072C13.3765 11.3634 13.5037 11.395 13.6363 11.395C13.7689 11.395 13.8961 11.3634 13.9898 11.3072C14.0836 11.2509 14.1363 11.1746 14.1363 11.095C14.1363 11.0155 14.0836 10.9392 13.9898 10.8829C13.8961 10.8267 13.7689 10.795 13.6363 10.795C13.5037 10.795 13.3765 10.8267 13.2827 10.8829C13.189 10.9392 13.1363 11.0155 13.1363 11.095Z"
+                                    fill="#FFB59E" />
+                                <path
+                                    d="M14.9266 21.5H6.42663C6.33604 21.5028 6.24744 21.473 6.17684 21.4162C6.10624 21.3593 6.05829 21.2791 6.04163 21.19L5.43663 16.24C5.43367 16.1883 5.44176 16.1365 5.46038 16.0881C5.479 16.0397 5.50771 15.9958 5.54461 15.9594C5.58151 15.9229 5.62575 15.8948 5.67438 15.8768C5.72301 15.8588 5.77491 15.8514 5.82663 15.855H15.5266C15.5784 15.8514 15.6303 15.8588 15.6789 15.8768C15.7275 15.8948 15.7718 15.9229 15.8087 15.9594C15.8456 15.9958 15.8743 16.0397 15.8929 16.0881C15.9115 16.1365 15.9196 16.1883 15.9166 16.24L15.3116 21.19C15.295 21.2791 15.247 21.3593 15.1764 21.4162C15.1058 21.473 15.0172 21.5028 14.9266 21.5Z"
+                                    fill="#ADC4D9" />
+                                <path
+                                    d="M5.80661 17.47H15.5266C15.6092 17.4704 15.6897 17.4966 15.7566 17.545L15.9166 16.24C15.9196 16.1883 15.9115 16.1365 15.8929 16.0881C15.8743 16.0397 15.8455 15.9958 15.8086 15.9594C15.7717 15.9229 15.7275 15.8948 15.6789 15.8768C15.6302 15.8588 15.5783 15.8514 15.5266 15.855H5.80661C5.75489 15.8514 5.70299 15.8588 5.65436 15.8768C5.60573 15.8948 5.56149 15.9229 5.52459 15.9594C5.48769 15.9958 5.45898 16.0397 5.44036 16.0881C5.42174 16.1365 5.41365 16.1883 5.41661 16.24L5.57661 17.545C5.64355 17.4966 5.72399 17.4704 5.80661 17.47Z"
+                                    fill="#C0DCEB" />
+                                <path
+                                    d="M14.9266 21.5H6.42663C6.33604 21.5028 6.24744 21.473 6.17684 21.4162C6.10624 21.3593 6.05829 21.2791 6.04163 21.19L5.43663 16.24C5.43367 16.1883 5.44176 16.1365 5.46038 16.0881C5.479 16.0397 5.50771 15.9958 5.54461 15.9594C5.58151 15.9229 5.62575 15.8948 5.67438 15.8768C5.72301 15.8588 5.77491 15.8514 5.82663 15.855H15.5266C15.5784 15.8514 15.6303 15.8588 15.6789 15.8768C15.7275 15.8948 15.7718 15.9229 15.8087 15.9594C15.8456 15.9958 15.8743 16.0397 15.8929 16.0881C15.9115 16.1365 15.9196 16.1883 15.9166 16.24L15.3116 21.19C15.295 21.2791 15.247 21.3593 15.1764 21.4162C15.1058 21.473 15.0172 21.5028 14.9266 21.5Z"
+                                    stroke="#45413C" stroke-width="0.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M11.2614 18.68C11.2555 18.5292 11.2975 18.3805 11.3814 18.255C11.3356 18.1947 11.2701 18.1522 11.1964 18.135C11.1102 18.105 11.0164 18.1049 10.9302 18.1349C10.8439 18.1648 10.7704 18.223 10.7214 18.3C10.67 18.2189 10.5921 18.1582 10.5009 18.1281C10.4097 18.098 10.3109 18.1005 10.2214 18.135C9.97137 18.185 9.84637 18.545 9.93637 18.93C10.0264 19.315 10.3064 19.59 10.5614 19.54C10.6132 19.5261 10.6611 19.5004 10.7014 19.465C10.7392 19.5012 10.7857 19.527 10.8364 19.54C11.0414 19.58 11.2614 19.41 11.3864 19.14C11.2893 19.0074 11.2448 18.8435 11.2614 18.68Z"
+                                    fill="white" />
+                                <path
+                                    d="M10.7632 18.057C10.7742 18.0687 10.7908 18.0742 10.812 18.073C10.8331 18.0717 10.8583 18.0639 10.8861 18.0499C10.9139 18.0359 10.9437 18.016 10.9738 17.9914C11.0038 17.9668 11.0335 17.938 11.061 17.9068C11.0885 17.8755 11.1133 17.8424 11.1339 17.8095C11.1545 17.7766 11.1705 17.7445 11.181 17.7151C11.1914 17.6857 11.196 17.6597 11.1946 17.6385C11.1932 17.6173 11.1857 17.6015 11.1727 17.592C11.1612 17.581 11.1443 17.5762 11.1232 17.5778C11.1021 17.5795 11.077 17.5876 11.0495 17.6018C11.0219 17.6159 10.9925 17.6356 10.9629 17.66C10.9332 17.6843 10.904 17.7127 10.8768 17.7435C10.8497 17.7743 10.8251 17.8069 10.8047 17.8394C10.7842 17.8719 10.7682 17.9037 10.7575 17.9328C10.7469 17.962 10.7419 17.988 10.7428 18.0093C10.7437 18.0306 10.7504 18.0468 10.7627 18.057"
+                                    fill="white" />
+                            </svg>
+                        </div>
+                        <div class="col-8">
+                            <div rel="author">Khomych Liubov</div>
+                            <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                                href="mailto:kroka.luba@gmail.com" rel="author">
+                                kroka.luba@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"
+        integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
