@@ -1,0 +1,20 @@
+a {
+  transition: 0.3s ease;
+}
+
+.main {
+  min-height: 300px;
+}
+
+.img-fluid {
+  width: 300px;
+  height: auto;
+}
+
+.btn-custom {
+  line-height: 1;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+/* ---------------------------------- */
