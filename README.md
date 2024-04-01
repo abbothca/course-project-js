@@ -48,10 +48,10 @@ The web page should contain 2 tabs:
 - [ ] #1 Create Readme.md and make a list of tasks.
 - [x] #2 Create a page: HTML layout and attach CSS styles. Use Bootstrap.
 - [ ] The issues/tickets of work tab #1:
-  - [ ] #3.1 Get the values of the start date and end date. Make sure that the end date is not earlier than the start date
-  - [ ] #3.2 The user can choose time interval presets: 'week' (7 days) / 'month' (30 days)
-  - [ ] #3.3 The user can choose options
-  - [ ] #3.4 Calculate the time interval between given dates
+  - [x] #3.1 Get the values of the start date and end date. Make sure that the end date is not earlier than the start date
+  - [x] #3.2 The user can choose time interval presets: 'week' (7 days) / 'month' (30 days)
+  - [x] #3.3 The user can choose options
+  - [x] #3.4 Calculate the time interval between given dates
   - [ ] #3.5 The user can enter the application and see, if there are any, the last 10 results that he calculated in the form of a table (start date, end date, and what the measurement result is). To do this, use localStorage.
 - [ ] The issues/tickets of work tab #2:
   - [ ] #4.1 Make request to [the endpoint](https://calendarific.com/api/v2/countries) to receive a list of all countries. This list will be used for the options in the first **'Select Country'** input.
