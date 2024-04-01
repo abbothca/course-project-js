@@ -17,4 +17,40 @@ a {
   padding-bottom: 15px;
 }
 
+.warning {
+  position: absolute;
+  top: 0.7rem;
+  font-size: 0.7rem;
+  color: red;
+}
+
 /* ---------------------------------- */
+.input__date {
+  padding: 0.375rem 0.75rem;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.gj-datepicker-md [role="right-icon"]{
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+}
+
+@media screen and (max-width: 600px) {
+  html,
+  body{
+    font-size: 14px;
+  } 
+}
+
+@media screen and (max-width: 600px) {
+  .list-group{
+    font-size: 11px;
+    /* min-width: 370px; */
+  } 
+}
