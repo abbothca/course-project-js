@@ -1,8 +1,8 @@
 "use strict"
 
 // Get the DOM elements
-const setWeekPreset = document.getElementById("setWeek");
-const setMonthPreset = document.getElementById("setMonth");
+const buttonPresetWeek = document.getElementById("setWeek");
+const buttonPresetMonth = document.getElementById("setMonth");
 const calculatedDaysElements = document.querySelectorAll("input[name='radioCalc']");
 const calculatedMeasuresElements = document.querySelectorAll("input[name='radioCount']");
 const calculateButton = document.getElementById("calculateButton");
@@ -23,9 +23,10 @@ class Datepicker {
 			let minEnabledDay = (new Date(startDateValue));
 			minEnabledDay.setDate(minEnabledDay.getDate() + 1);
 			this.#endLink.datepicker("option", "minDate", minEnabledDay);
-		} else {
-			this.#endLink.datepicker("option", "minDate", "");
+			return;
 		}
+
+		this.#endLink.datepicker("option", "minDate", "");
 	}
 
 	#setMaxDate() {
@@ -33,9 +34,9 @@ class Datepicker {
 			let maxEnabledDay = new Date(endDateValue);
 			maxEnabledDay.setDate(maxEnabledDay.getDate() - 1);
 			this.#startLink.datepicker("option", "maxDate", maxEnabledDay);
-		} else {
-			this.#startLink.datepicker("option", "maxDate", "");
+			return;
 		}
+		this.#startLink.datepicker("option", "maxDate", "");
 	}
 
 	#handleKeyup(event) {
@@ -102,7 +103,6 @@ class Datepicker {
 				newDate.setMonth(+newDate.getMonth() + 1);
 				newDate.setDate(newDate.getDate() - 1)
 				break;
-			default: ;
 		}
 		this.#endLink.datepicker("setDate", newDate);
 		endDateValue = newDate;
@@ -207,22 +207,22 @@ const checkIsDisabledButton = () => {
 
 const checkIsDisabledPresets = () => {
 	let isDateSelected = !!startDateValue;
-	setMonthPreset.disabled = !isDateSelected;
-	setWeekPreset.disabled = !isDateSelected;
+	buttonPresetMonth.disabled = !isDateSelected;
+	buttonPresetWeek.disabled = !isDateSelected;
 }
 
 // Handler 
-const setWeekPresetHandler = function (event) {
+const buttonPresetWeekHandler = (event) => {
 	datepicker.setEndDateByPreset("week");
 	checkIsDisabledButton();
 }
 
-const setMonthPresetHandler = function (event) {
+const buttonPresetMonthHandler = (event) => {
 	datepicker.setEndDateByPreset("month");
 	checkIsDisabledButton();
 }
 
-const calculateButtonHandler = function () {
+const calculateButtonHandler = () => {
 	const value = HandleDate.calcDuration(startDateValue, endDateValue, calculatedDaysValue, calculatedMeasuresValue);
 	console.log(value);
 }
@@ -243,6 +243,6 @@ calculatedMeasuresElements.forEach((element) => {
 		calculatedMeasuresValue = event.target.checked ? event.target.value : calculatedMeasuresValue;
 	})
 });
-setWeekPreset.addEventListener("click", setWeekPresetHandler);
-setMonthPreset.addEventListener("click", setMonthPresetHandler);
+buttonPresetWeek.addEventListener("click", buttonPresetWeekHandler);
+buttonPresetMonth.addEventListener("click", buttonPresetMonthHandler);
 calculateButton.addEventListener("click", calculateButtonHandler);
