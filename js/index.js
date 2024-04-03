@@ -1,5 +1,6 @@
 import { getDurationTime } from "./date.js";
 import { Datepicker } from "./datepicker.js";
+import { setStorage, getFromStorage, KEY } from "./localstorage.js"
 
 // Get the DOM elements
 const startDateInput = document.getElementById("startDate");
@@ -39,10 +40,21 @@ const calculateButtonHandler = () => {
 	const value = getDurationTime(
 		datepicker.getDate(startDatePicker),
 		datepicker.getDate(endDatePicker),
-		calculatedDaysValue,
+		selectedDaysValue,
 		measuresValue
 	);
+	let start = datepicker.getDate(startDatePicker),
+		end = datepicker.getDate(endDatePicker),
+		days = selectedDaysValue,
+		measure = measuresValue;
 	console.log(value);
+	setStorage({
+		start,
+		end,
+		days,
+		measure,
+		value
+	});
 }
 
 // Initialization 
@@ -55,15 +67,34 @@ const datepicker = new Datepicker(
 const startDatePicker = datepicker.startLink;
 const endDatePicker = datepicker.endLink;
 
+const ul = document.querySelector("#get-time .list-group");
+function init() {
+	const initStorage = getFromStorage(KEY);
+	initStorage.forEach((item) => {
+		console.table({item});
+		let newItem = document.createElement("li");
+		newItem.classList.add("list-group-item");
+		newItem.innerHTML = `
+		
+		`
+	})
+}
+
+init()
+
 // listeners
 selectedDaysElements.forEach((element) => {
 	element.addEventListener("change", (event) => {
-		calculatedDaysValue = event.target.checked ? event.target.value : calculatedDaysValue;
+		if (event.target.checked) {
+			selectedDaysValue = event.target.value
+		}
 	})
 });
 measuresElements.forEach((element) => {
 	element.addEventListener("change", (event) => {
-		measuresValue = event.target.checked ? event.target.value : measuresValue;
+		if (event.target.checked) {
+			measuresValue = event.target.value
+		}
 	})
 });
 buttonPresetWeek.addEventListener("click", buttonPresetWeekHandler);
