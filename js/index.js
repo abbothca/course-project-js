@@ -7,11 +7,11 @@ const endDateInput = document.getElementById("endDate");
 const buttonPresetWeek = document.getElementById("setWeek");
 const buttonPresetMonth = document.getElementById("setMonth");
 const calculateButton = document.getElementById("calculateButton");
-const calculatedDaysElements = document.querySelectorAll("input[name='radioCalc']");
-const calculatedMeasuresElements = document.querySelectorAll("input[name='radioCount']");
+const selectedDaysElements = document.querySelectorAll("input[name='radioCalc']");
+const measuresElements = document.querySelectorAll("input[name='radioCount']");
 // Start values
-let calculatedDaysValue = document.querySelector("input[name='radioCalc']:checked").value;
-let calculatedMeasuresValue = document.querySelector("input[name='radioCount']:checked").value;
+let selectedDaysValue = document.querySelector("input[name='radioCalc']:checked").value;
+let measuresValue = document.querySelector("input[name='radioCount']:checked").value;
 
 // Helpers
 const checkIsDisabledButton = (valueStart, valueEnd) => {
@@ -36,24 +36,34 @@ const buttonPresetMonthHandler = (event) => {
 }
 
 const calculateButtonHandler = () => {
-	const value = getDurationTime(datepicker.getDate(startDatePicker), datepicker.getDate(endDatePicker), calculatedDaysValue, calculatedMeasuresValue);
+	const value = getDurationTime(
+		datepicker.getDate(startDatePicker),
+		datepicker.getDate(endDatePicker),
+		calculatedDaysValue,
+		measuresValue
+	);
 	console.log(value);
 }
 
 // Initialization 
-const datepicker = new Datepicker("#startDate", "#endDate", checkIsDisabledPresets, checkIsDisabledButton);
+const datepicker = new Datepicker(
+	"#startDate",
+	"#endDate",
+	checkIsDisabledPresets,
+	checkIsDisabledButton
+);
 const startDatePicker = datepicker.startLink;
-const endDatePicker = datepicker.endLink; 
+const endDatePicker = datepicker.endLink;
 
 // listeners
-calculatedDaysElements.forEach((element) => {
+selectedDaysElements.forEach((element) => {
 	element.addEventListener("change", (event) => {
 		calculatedDaysValue = event.target.checked ? event.target.value : calculatedDaysValue;
 	})
 });
-calculatedMeasuresElements.forEach((element) => {
+measuresElements.forEach((element) => {
 	element.addEventListener("change", (event) => {
-		calculatedMeasuresValue = event.target.checked ? event.target.value : calculatedMeasuresValue;
+		measuresValue = event.target.checked ? event.target.value : measuresValue;
 	})
 });
 buttonPresetWeek.addEventListener("click", buttonPresetWeekHandler);
