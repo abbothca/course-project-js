@@ -39,7 +39,7 @@ const calculateButtonHandler = () => {
 	const value = getDurationTime(
 		datepicker.getDate(startDatePicker),
 		datepicker.getDate(endDatePicker),
-		calculatedDaysValue,
+		selectedDaysValue,
 		measuresValue
 	);
 	console.log(value);
@@ -58,12 +58,16 @@ const endDatePicker = datepicker.endLink;
 // listeners
 selectedDaysElements.forEach((element) => {
 	element.addEventListener("change", (event) => {
-		calculatedDaysValue = event.target.checked ? event.target.value : calculatedDaysValue;
+		if (event.target.checked) {
+			selectedDaysValue = event.target.value
+		}
 	})
 });
 measuresElements.forEach((element) => {
 	element.addEventListener("change", (event) => {
-		measuresValue = event.target.checked ? event.target.value : measuresValue;
+		if (event.target.checked) {
+			measuresValue = event.target.value
+		}
 	})
 });
 buttonPresetWeek.addEventListener("click", buttonPresetWeekHandler);
