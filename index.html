@@ -14,8 +14,10 @@
     <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" /> -->
     <link rel="stylesheet" href="./css/style.css">
     <title>Holidays</title>
 </head>
@@ -127,9 +129,10 @@
                                                     </svg>
                                                 </span>
                                             </label>
-                                            <input id="startDate" class="form-control" type="date" placeholder="Start date"/>
+                                            <input id="startDate" class="form-control input__date" type="text" placeholder="Start date"/>
+                                            <!-- <input id="datepicker" width="276" /> -->
+
                                         </div>
-                                        <!-- <span id="startDateSelected"></span> -->
                                     </div>
                                     <div class="col-sm-6 pb-2">
                                         <div class="d-flex flex-row align-items-center">
@@ -152,9 +155,9 @@
 
                                                 </span>
                                             </label>
-                                            <input id="endDate" class="form-control" type="date" placeholder="End date"/>
+                                            <input id="endDate" class="form-control input__date" type="text" placeholder="End date" />
+                                            <!-- <input id="endDate" class="form-control" type="date" /> -->
                                         </div>
-                                        <!-- <span id="endDateSelected"></span> -->
                                     </div>
                                 </div>
                             </div>
@@ -165,12 +168,12 @@
                             </span>
                             <div class=" ms-sm-3">
                                 <div class="form-check ps-0 d-inline ms-sm-4">
-                                    <button class="btn btn-dark btn-sm text-capitalize">
+                                    <button id="setWeek" class="btn btn-dark btn-sm text-capitalize" disabled>
                                         Week
                                     </button>
                                 </div>
                                 <div class="d-inline ms-4">
-                                    <button class="btn btn-sm btn-dark text-capitalize">
+                                    <button id="setMonth" class="btn btn-sm btn-dark text-capitalize" disabled>
                                         month
                                     </button>
                                 </div>
@@ -182,21 +185,21 @@
                             <legend class="fw-light lh-sm fs-6">Choose what days will count</legend>
                             <div class="d-flex justify-content-start">
                                 <div class="form-check ps-0 d-inline">
-                                    <input class="btn-check" type="radio" name="radioCalc" id="radioCalcDays"
+                                    <input class="btn-check" type="radio" name="radioCalc" value="days" id="radioCalcDays"
                                         autocomplete="off" checked>
                                     <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCalcDays">
                                         Days
                                     </label>
                                 </div>
                                 <div class="form-check  d-inline  ps-2 ps-md-4">
-                                    <input class="btn-check" type="radio" name="radioCalc" id="radioCalcWeekdays"
+                                    <input class="btn-check" type="radio" name="radioCalc" value="weekdays" id="radioCalcWeekdays"
                                         autocomplete="off">
                                     <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCalcWeekdays">
                                         weekdays
                                     </label>
                                 </div>
                                 <div class="form-check  d-inline  ps-2 ps-md-4">
-                                    <input class="btn-check" type="radio" name="radioCalc" id="radioCalcWeekends"
+                                    <input class="btn-check" type="radio" name="radioCalc" value="weekends" id="radioCalcWeekends"
                                         autocomplete="off">
                                     <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCalcWeekends">
                                         weekends
@@ -209,25 +212,25 @@
                             <legend class="fw-light lh-sm fs-6">The measure of time</legend>
 
                             <div class="form-check ps-0 d-inline">
-                                <input class="btn-check" type="radio" name="radioCount" id="radioCountSeconds" checked>
+                                <input class="btn-check" type="radio" name="radioCount" value="seconds" id="radioCountSeconds" checked>
                                 <label class="btn btn-sm btn-outline-dark text-capitalize" for="radioCountSeconds">
                                     Seconds
                                 </label>
                             </div>
                             <div class="form-check d-inline ps-2 ps-md-4">
-                                <input class="btn-check" type="radio" name="radioCount" id="radioCountMinutes">
+                                <input class="btn-check" type="radio" name="radioCount" value="minutes" id="radioCountMinutes">
                                 <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCountMinutes">
                                     Minutes
                                 </label>
                             </div>
                             <div class="form-check d-inline ps-2 ps-md-4">
-                                <input class="btn-check" type="radio" name="radioCount" id="radioCountHours">
+                                <input class="btn-check" type="radio" name="radioCount" value="hours" id="radioCountHours">
                                 <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCountHours">
                                     Hours
                                 </label>
                             </div>
                             <div class="form-check d-inline ps-2 ps-md-4">
-                                <input class="btn-check" type="radio" name="radioCount" id="radioCountDays">
+                                <input class="btn-check" type="radio" name="radioCount" value="days" id="radioCountDays">
                                 <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCountDays">
                                     Days
                                 </label>
@@ -236,7 +239,7 @@
                         </fieldset>
                     </div>
                     <div class="d-flex py-3 mt-2 mb-5">
-                        <button type="button" class="btn btn-primary btn-custom px-5">Calculate duration</button>
+                        <button type="button" id="calculateButton" class="btn btn-primary btn-custom px-5" disabled>Calculate duration</button>
                     </div>
                 </div>
                 <div class="container-lg p-0 px-0 px-sm-2 px-md-4">
@@ -636,20 +639,11 @@
             </div>
         </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"
-        integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
-
-    <script src="./js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"></script> -->
+    <script src="./js/index.js" type="module"></script>
 </body>
 
 </html>
