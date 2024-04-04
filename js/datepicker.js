@@ -29,7 +29,8 @@ export class Datepicker {
 	#handleKeyup(event) {
 		if (event.key === "Enter") {
 			const element = event.target;
-			let dateNew = $.datepicker.parseDate(this.#FORMAT, element.value);
+			const format = $(element).datepicker("option", "dateFormat" );
+			let dateNew = $.datepicker.parseDate(format, element.value);
 			$(element).datepicker("setDate", dateNew);
 			$(element).datepicker("hide");
 			element.blur();
@@ -61,6 +62,10 @@ export class Datepicker {
 
 	get startLink() {
 		return this.#startLink;
+	}
+
+	get getFormat() {
+		return this.#FORMAT;
 	}
 
 	get endLink() {
