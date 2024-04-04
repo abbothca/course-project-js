@@ -12,12 +12,12 @@ export function setStorage(value) {
         return;
     }
 
-    lastRequests.unshift(value);
+    lastRequests.push(value);
     if (lastRequests.length > LS_MAX_COUNT_ITEMS) {
-        lastRequests.pop();
+        lastRequests.shift();
     };
 
     localStorage.setItem(LS_KEY_LAST_REQUESTS, JSON.stringify(lastRequests));
 }
 
-export { LS_KEY_LAST_REQUESTS as KEY }
+export { LS_KEY_LAST_REQUESTS as KEY, LS_MAX_COUNT_ITEMS as MAX_COUNT }

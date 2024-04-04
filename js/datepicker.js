@@ -4,7 +4,7 @@ export class Datepicker {
 	#endLink;
 
 	#setMinDate() {
-        const startDateValue = this.getDate(this.#startLink);
+		const startDateValue = Datepicker.getDate(this.#startLink);
 		if (startDateValue) {
 			let minEnabledDay = new Date(startDateValue);
 			minEnabledDay.setDate(minEnabledDay.getDate() + 1);
@@ -16,7 +16,7 @@ export class Datepicker {
 	}
 
 	#setMaxDate() {
-        const endDateValue = this.getDate(this.#endLink);
+		const endDateValue = Datepicker.getDate(this.#endLink);
 		if (endDateValue) {
 			let maxEnabledDay = new Date(endDateValue);
 			maxEnabledDay.setDate(maxEnabledDay.getDate() - 1);
@@ -40,10 +40,10 @@ export class Datepicker {
 		this.#startLink = $(selectorStart).datepicker({
 			dateFormat: this.#FORMAT,
 			onSelect: () => {
-				let startDateValue = this.getDate(this.#startLink);
+				let startDateValue = Datepicker.getDate(this.#startLink);
 				this.#setMinDate();
-                checkerPresets(startDateValue);
-				checkerButton(startDateValue, this.getDate(this.#endLink));
+				checkerPresets(startDateValue);
+				checkerButton(startDateValue, Datepicker.getDate(this.#endLink));
 			}
 		});
 
@@ -51,7 +51,7 @@ export class Datepicker {
 			dateFormat: this.#FORMAT,
 			onSelect: () => {
 				this.#setMaxDate();
-				checkerButton(this.getDate(this.#startLink), this.getDate(this.#endLink));
+				checkerButton(Datepicker.getDate(this.#startLink), Datepicker.getDate(this.#endLink));
 			}
 		});
 
@@ -67,12 +67,12 @@ export class Datepicker {
 		return this.#endLink;
 	}
 
-	getDate(object) {
-		return object.datepicker("getDate");
+	static getDate(object) {
+		return $(object).datepicker("getDate");
 	}
 
 	setEndDateByPreset(value) {
-		let newDate = new Date(this.getDate(this.#startLink));
+		let newDate = new Date(Datepicker.getDate(this.#startLink));
 		switch (value) {
 			case "week":
 				newDate.setDate(+newDate.getDate() + 6);

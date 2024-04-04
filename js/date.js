@@ -4,33 +4,39 @@ const ONE_MINUTE = 1000 * 60; //ms
 const ONE_SECOND = 1000; //ms
 const WEEKENDS = [0, 6];
 
-function arrangeDates(dayOne, dayTwo) {
-    return ((new Date(dayOne)).getTime() - (new Date(dayTwo)).getTime() < 0) ?
-        { start: dayOne, end: dayTwo } :
-        { start: dayTwo, end: dayOne }
+export function setHoursStartDate(date) {
+    return (new Date(date)).setHours(0, 0, 0, 0);
+}
+
+export function setHoursEndDate(date) {
+    return (new Date(date)).setHours(23, 59, 59, 999);
+}
+
+function differenceTimestamps(dayOne, dayTwo) {
+    return (new Date(dayOne)).getTime() - (new Date(dayTwo)).getTime();
 }
 
 function getDuration(dayOne, dayTwo, measure) {
-    const differenceTimeInMS = getTimestampSetByTwoDays(new Date(dayOne), new Date(dayTwo));
+    const differenceTimeInMS =
+        Math.abs(differenceTimestamps(dayOne, dayTwo));
     return getDurationAsMeasure(differenceTimeInMS, measure);
 }
 
 function getTimestampSetByTwoDays(dayOne, dayTwo) {
-    const period = arrangeDates(dayOne, dayTwo);
-    let endDate = (new Date(period.end)).setHours(23, 59, 59, 999);
-    let startDate = (new Date(period.start)).setHours(0, 0, 0, 0);
-    return endDate - startDate;
+    return Math.abs(endDate - startDate);
 }
 
 function getWeeks(dayOne, dayTwo) {
     const durationOfPeriod = getDuration(dayOne, dayTwo, "days");
     const daysLeft = durationOfPeriod % 7;
-    const period = arrangeDates(dayOne, dayTwo);
-    const startDay = (new Date(period.start)).getDay();
+    const start = (differenceTimestamps(dayOne, dayTwo) > 0) ? dayOne : dayTwo;
+    const startDay = (new Date(start)).getDay();
     let indexesOfRestDays = [];
     for (let i = 0; i < daysLeft; i++) {
         let numberCurrentDay = startDay + i;
-        (numberCurrentDay < 7) ? indexesOfRestDays.push(numberCurrentDay) : indexesOfRestDays.push(numberCurrentDay - 7);
+        (numberCurrentDay < 7) ?
+            indexesOfRestDays.push(numberCurrentDay) :
+            indexesOfRestDays.push(numberCurrentDay - 7);
     }
 
     return {
@@ -59,16 +65,16 @@ function getDurationAsMeasure(milliseconds, measure) {
     }
 }
 
-function calcDuration(dayOne, dayTwo, days, measure) {
+function calcDuration({start, end, days, measure}) {
     switch (days) {
         case "days":
-            return getDuration(dayOne, dayTwo, measure);
+            return getDuration(start, end, measure);
         case "weekdays":
-            const weekdays = getWeeks(dayOne, dayTwo);
+            const weekdays = getWeeks(start, end);
             const amountWeekdays = weekdays.fullWeek * 5 + (weekdays.restDays.length - calcWeekends(weekdays.restDays));
             return getDurationAsMeasure(amountWeekdays * ONE_DAY, measure)
         case "weekends":
-            const weekends = getWeeks(dayOne, dayTwo);
+            const weekends = getWeeks(start, end);
             const amountWeekends = weekends.fullWeek * 2 + calcWeekends(weekends.restDays);
             return getDurationAsMeasure(amountWeekends * ONE_DAY, measure);
     }
