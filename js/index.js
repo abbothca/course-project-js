@@ -21,8 +21,9 @@ export const datepicker = new Datepicker(
 	checkIsDisabledButton
 );
 
-initListResults()
+initListResults();
 
+// Event Listeners
 buttonPresetWeek.addEventListener("click", buttonPresetWeekHandler);
 buttonPresetMonth.addEventListener("click", buttonPresetMonthHandler);
 calculateButton.addEventListener("click", calculateButtonHandler);

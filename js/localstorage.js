@@ -1,11 +1,11 @@
 const LS_KEY_LAST_REQUESTS = "holidays_duration_store";
 const LS_MAX_COUNT_ITEMS = 10;
 
-export function getFromStorage(key) {
+export const getFromStorage = (key) => {
     return JSON.parse(localStorage.getItem(key));
 }
 
-export function setStorage(value) {
+export const setStorage = (value) => {
     let lastRequests = getFromStorage(LS_KEY_LAST_REQUESTS);
     if (lastRequests === null) {
         localStorage.setItem(LS_KEY_LAST_REQUESTS, JSON.stringify([value]));

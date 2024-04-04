@@ -14,7 +14,7 @@ export const checkIsDisabledPresets = (value) => {
     buttonPresetWeek.disabled = !isDateSelected;
 }
 
-function generateTemplateLi(obj) {
+const generateTemplateLi = (obj) => {
     return `
 			<div class="row">
 				<div class="col-3">${(new Date(obj.start)).toDateString()}</div>
@@ -26,7 +26,7 @@ function generateTemplateLi(obj) {
 			`
 };
 
-export function addNewLi(obj) {
+export const addNewLi = (obj) => {
     let newItem = document.createElement("li");
     newItem.classList.add("list-group-item");
     newItem.innerHTML = generateTemplateLi(obj);
@@ -38,7 +38,7 @@ export function addNewLi(obj) {
     }
 }
 
-export function initListResults() {
+export const initListResults = () => {
     const initStorage = getFromStorage(KEY);
     if (initStorage) {
         initStorage.forEach(addNewLi);

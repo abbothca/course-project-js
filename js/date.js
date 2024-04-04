@@ -4,29 +4,29 @@ const ONE_MINUTE = 1000 * 60; //ms
 const ONE_SECOND = 1000; //ms
 const WEEKENDS = [0, 6];
 
-export function setHoursStartDate(date) {
+export const setHoursStartDate = (date) => {
     return (new Date(date)).setHours(0, 0, 0, 0);
 }
 
-export function setHoursEndDate(date) {
+export const setHoursEndDate = (date) => {
     return (new Date(date)).setHours(23, 59, 59, 999);
 }
 
-function differenceTimestamps(dayOne, dayTwo) {
+const differenceTimestamps = (dayOne, dayTwo) => {
     return (new Date(dayOne)).getTime() - (new Date(dayTwo)).getTime();
 }
 
-function getDuration(dayOne, dayTwo, measure) {
+const getDuration = (dayOne, dayTwo, measure) => {
     const differenceTimeInMS =
         Math.abs(differenceTimestamps(dayOne, dayTwo));
     return getDurationAsMeasure(differenceTimeInMS, measure);
 }
 
-function getTimestampSetByTwoDays(dayOne, dayTwo) {
+const getTimestampSetByTwoDays = (dayOne, dayTwo) => {
     return Math.abs(endDate - startDate);
 }
 
-function getWeeks(dayOne, dayTwo) {
+const getWeeks = (dayOne, dayTwo) => {
     const durationOfPeriod = getDuration(dayOne, dayTwo, "days");
     const daysLeft = durationOfPeriod % 7;
     const start = (differenceTimestamps(dayOne, dayTwo) > 0) ? dayOne : dayTwo;
@@ -45,14 +45,14 @@ function getWeeks(dayOne, dayTwo) {
     }
 }
 
-function calcWeekends(arrayOfIndexes) {
+const calcWeekends = (arrayOfIndexes) => {
     const arrayOfWeekends = arrayOfIndexes.filter(function (item) {
         return (WEEKENDS).includes(item);
     });
     return arrayOfWeekends.length;
 }
 
-function getDurationAsMeasure(milliseconds, measure) {
+const getDurationAsMeasure = (milliseconds, measure) => {
     switch (measure) {
         case "days":
             return Math.round(milliseconds / ONE_DAY);
@@ -65,7 +65,7 @@ function getDurationAsMeasure(milliseconds, measure) {
     }
 }
 
-function calcDuration({start, end, days, measure}) {
+const calcDuration = ({start, end, days, measure}) => {
     switch (days) {
         case "days":
             return getDuration(start, end, measure);
