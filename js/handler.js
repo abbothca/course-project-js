@@ -13,7 +13,6 @@ import {
 
 export const buttonPresetWeekHandler = (event) => {
     datepicker.setEndDateByPreset("week");
-    console.log(Datepicker.getDate(datepicker.startLink))
     checkIsDisabledButton(Datepicker.getDate(datepicker.startLink), Datepicker.getDate(datepicker.endLink));
 }
 
