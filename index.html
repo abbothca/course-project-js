@@ -16,8 +16,6 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" /> -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" /> -->
     <link rel="stylesheet" href="./css/style.css">
     <title>Holidays</title>
 </head>
@@ -130,8 +128,6 @@
                                                 </span>
                                             </label>
                                             <input id="startDate" class="form-control input__date" type="text" placeholder="Start date"/>
-                                            <!-- <input id="datepicker" width="276" /> -->
-
                                         </div>
                                     </div>
                                     <div class="col-sm-6 pb-2">
@@ -156,13 +152,12 @@
                                                 </span>
                                             </label>
                                             <input id="endDate" class="form-control input__date" type="text" placeholder="End date" />
-                                            <!-- <input id="endDate" class="form-control" type="date" /> -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="d-sm-flex justify-content-start align-items-center pt-2 ps-4">
+                        <div class="d-sm-flex justify-content-start align-items-center pt-1 ps-4">
                             <span class="d-block mb-2 mb-md-0">
                                 Сalculate from the start date:
                             </span>
@@ -181,7 +176,7 @@
                         </div>
                     </fieldset>
                     <div class="row py-1">
-                        <fieldset class="col-12 col-lg-5 rounded py-1 my-2">
+                        <fieldset class="col-12 col-lg-5 rounded py-1 my-0">
                             <legend class="fw-light lh-sm fs-6">Choose what days will count</legend>
                             <div class="d-flex justify-content-start">
                                 <div class="form-check ps-0 d-inline">
@@ -207,10 +202,8 @@
                                 </div>
                             </div>
                         </fieldset>
-
-                        <fieldset class="col-12 col-lg-7 rounded py-1 my-2">
+                        <fieldset class="col-12 col-lg-7 rounded py-1 my-0">
                             <legend class="fw-light lh-sm fs-6">The measure of time</legend>
-
                             <div class="form-check ps-0 d-inline">
                                 <input class="btn-check" type="radio" name="radioCount" value="seconds" id="radioCountSeconds" checked>
                                 <label class="btn btn-sm btn-outline-dark text-capitalize" for="radioCountSeconds">
@@ -235,10 +228,9 @@
                                     Days
                                 </label>
                             </div>
-
                         </fieldset>
                     </div>
-                    <div class="d-flex py-3 mt-2 mb-5">
+                    <div class="d-flex py-3 mt-2 mb-2">
                         <button type="button" id="calculateButton" class="btn btn-primary btn-custom px-5" disabled>Calculate duration</button>
                     </div>
                 </div>
@@ -255,33 +247,6 @@
                                 <div class="col-2 fw-bold text-white">Result</div>
                             </div>
                         </li>
-                        <!-- <li class="list-group-item bg-light ">
-                            <div class="row">
-                                <div class="col-3">[Start date]</div>
-                                <div class="col-3">[End date]</div>
-                                <div class="col-2">[Countable]</div>
-                                <div class="col-2">[Measure]</div>
-                                <div class="col-2">[Result]</div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-3">[Start date]</div>
-                                <div class="col-3">[End date]</div>
-                                <div class="col-2">[Countable]</div>
-                                <div class="col-2">[Measure]</div>
-                                <div class="col-2">[Result]</div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-3">[Start date]</div>
-                                <div class="col-3">[End date]</div>
-                                <div class="col-2">[Countable]</div>
-                                <div class="col-2">[Measure]</div>
-                                <div class="col-2">[Result]</div>
-                            </div>
-                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -642,7 +607,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"></script> -->
     <script src="./js/index.js" type="module"></script>
 </body>
 

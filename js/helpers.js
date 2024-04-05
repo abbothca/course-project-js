@@ -34,7 +34,10 @@ export const addNewLi = (obj) => {
     listResults.insertBefore(newItem, firstItem);
 
     if (listResults.children.length > (MAX_COUNT + 1)) {
-        listResults.removeChild(listResults.lastChild);
+        listResults.lastChild.classList.add("removed");
+        setTimeout(()=> {
+            listResults.removeChild(listResults.lastChild);
+        }, 1000)
     }
 }
 
