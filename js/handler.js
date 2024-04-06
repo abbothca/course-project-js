@@ -28,7 +28,7 @@ export const calculateButtonHandler = () => {
         days: document.querySelector("input[name='radioCalc']:checked").value,
         measure: document.querySelector("input[name='radioCount']:checked").value,
     }
-    const value = getDurationTime({ ...arg });
+    const value = getDurationTime(arg);
     setStorage({ ...arg, value });
     addNewLi({ ...arg, value });
 }

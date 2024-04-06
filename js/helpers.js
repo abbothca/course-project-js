@@ -33,6 +33,7 @@ export const addNewLi = (obj) => {
     newItem.innerHTML = generateTemplateLi(obj);
     let firstItem = listResults.querySelector("li:nth-child(2)");
     listResults.insertBefore(newItem, firstItem);
+    blockResults.classList.add("show");
 
     if (listResults.children.length > (MAX_COUNT + 1)) {
         listResults.lastChild.classList.add("removed");
@@ -42,23 +43,6 @@ export const addNewLi = (obj) => {
     }
 }
 
-const observerResults = () => {
-    const config = { attributes: false, childList: true, subtree: true };
-    const callback = (mutationList, observer) => {
-        for (const mutation of mutationList) {
-            if (mutation.type === "childList") {
-                if (listResults.children.length > 1) {
-                    blockResults.classList.add("show");
-                    observer.disconnect();
-                }
-            };
-        }
-    };
-
-    const observer = new MutationObserver(callback);
-    observer.observe(listResults, config);
-}
-
 export const initListResults = () => {
     const initStorage = getFromStorage(KEY);
     if (initStorage) {
@@ -66,8 +50,6 @@ export const initListResults = () => {
         blockResults.classList.add("show");
         return;
     }
-
-    observerResults();
 }
 
 export { buttonPresetMonth, buttonPresetWeek }

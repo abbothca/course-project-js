@@ -9,8 +9,6 @@ import { calculateButtonHandler, buttonPresetMonthHandler, buttonPresetWeekHandl
 import { Datepicker } from "./datepicker.js";
 
 // Get the DOM elements
-const startDateInput = document.getElementById("startDate");
-const endDateInput = document.getElementById("endDate");
 const calculateButton = document.getElementById("calculateButton");
 
 // Initialization 
@@ -20,7 +18,6 @@ export const datepicker = new Datepicker(
 	checkIsDisabledPresets,
 	checkIsDisabledButton
 );
-
 initListResults();
 
 // Event Listeners
