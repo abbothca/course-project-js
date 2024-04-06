@@ -31,7 +31,8 @@ export class Datepicker {
 			const element = event.target;
 			const format = $(element).datepicker("option", "dateFormat" );
 			let dateNew = $.datepicker.parseDate(format, element.value);
-			$(element).datepicker("setDate", dateNew);
+			// $(element).datepicker("setDate", dateNew);
+			Datepicker.setDate(element, dateNew);
 			$(element).datepicker("hide");
 			element.blur();
 		}
@@ -74,6 +75,10 @@ export class Datepicker {
 
 	static getDate(object) {
 		return $(object).datepicker("getDate");
+	}
+
+	static setDate(element, date) {
+		$(element).datepicker("setDate", date);
 	}
 
 	setEndDateByPreset(value) {
