@@ -35,7 +35,7 @@ a {
   line-height: 1.5;
 }
 
-.gj-datepicker-md [role="right-icon"]{
+.gj-datepicker-md [role="right-icon"] {
   top: 50%;
   right: 8px;
   transform: translateY(-50%);
@@ -43,14 +43,55 @@ a {
 
 @media screen and (max-width: 600px) {
   html,
-  body{
+  body {
     font-size: 14px;
-  } 
+  }
 }
 
 @media screen and (max-width: 600px) {
-  .list-group{
+  .list-group {
     font-size: 11px;
-    /* min-width: 370px; */
-  } 
+  }
+}
+
+.duration-results{
+  display: none;
+}
+
+.duration-results.show{
+  display: block;
+}
+
+.list-group-item:nth-child(2) {
+  background-color: #d5e6ff;
+  animation: myAnim 0.5s ease 0s 1 normal forwards;
+}
+.list-group-item.removed {
+  animation: exit 1s ease 0s 1 normal forwards;
+}
+
+@keyframes exit {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(250px);
+  }
+}
+
+@keyframes myAnim {
+  0% {
+    opacity: 0;
+    transform: rotateX(-100deg);
+    transform-origin: top;
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+    transform-origin: top;
+  }
 }
