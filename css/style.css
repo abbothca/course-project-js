@@ -54,6 +54,18 @@ a {
   }
 }
 
+.datepicker{
+  position: relative;
+}
+
+.error{
+  /* position: absolute;
+  left: 30px;
+  top: 0px; */
+  /* font-size: 10px; */
+  color: red;
+}
+
 .duration-results{
   display: none;
 }
