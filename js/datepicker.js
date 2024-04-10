@@ -7,7 +7,6 @@ export class Datepicker {
 
 	#setMinDate() {
 		const startDateValue = Datepicker.getDate(this.#startLink);
-		console.log("startDateValue ", startDateValue)
 		if (startDateValue) {
 			let minEnabledDay = new Date(startDateValue);
 			minEnabledDay.setDate(minEnabledDay.getDate() + 1);
@@ -29,6 +28,18 @@ export class Datepicker {
 		this.#startLink.datepicker("option", "maxDate", "");
 	}
 
+	#createErrorMessage(element, value, error) {
+		const container = element.closest('.datepicker');
+		container.classList.add("datepicker-error");
+		let errorElement = container.querySelector(".error");
+		if (!errorElement) {
+			errorElement = document.createElement("span");
+			errorElement.classList.add('error');
+			container.append(errorElement);
+		}
+		errorElement.textContent = `Error! For ${value} : ${error}`;
+	}
+
 	#handleKeyup(event) {
 		if (event.key === "Enter") {
 			const element = event.target;
@@ -44,27 +55,17 @@ export class Datepicker {
 					element.blur();
 				})
 				.catch((error) => {
-					Datepicker.setDate(element, null);
+					this.setDate(element, null);
 					$(element).datepicker("hide");
 					element.blur();
 
-					if ($(element).id === $(this.#startLink).id) {
-						this.#setMaxDate();
-					} else {
+					if ($(element)[0].id === $(this.#startLink)[0].id) {
 						this.#setMinDate();
-
+					} else {
+						this.#setMaxDate();
 					}
 
-					const container = element.closest('.datepicker');
-					container.classList.add("datepicker-error");
-					let errorElement = container.querySelector(".error");
-					if (!errorElement) {
-						errorElement = document.createElement("span");
-						errorElement.classList.add('error');
-						container.append(errorElement);
-					}
-					this.#setMinDate(null)
-					errorElement.textContent = `Error! For ${value} : ${error}`;
+					this.#createErrorMessage(element, value, error);
 				})
 				.then(() => {
 					this.validButtonFunction(Datepicker.getDate(this.startLink), Datepicker.getDate(this.endLink));
@@ -137,7 +138,7 @@ export class Datepicker {
 	}
 
 	setDate(element, date) {
-		if(element && date) {
+		if(element) {
 			$(element).datepicker("setDate", date);
 			return;
 		}
