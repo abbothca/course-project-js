@@ -47,6 +47,14 @@ export class Datepicker {
 					Datepicker.setDate(element, null);
 					$(element).datepicker("hide");
 					element.blur();
+
+					if ($(element).id === $(this.#startLink).id) {
+						this.#setMaxDate();
+					} else {
+						this.#setMinDate();
+
+					}
+
 					const container = element.closest('.datepicker');
 					container.classList.add("datepicker-error");
 					let errorElement = container.querySelector(".error");
@@ -76,24 +84,12 @@ export class Datepicker {
 				let startDateValue = Datepicker.getDate(this.#startLink);
 				this.#setMinDate();
 				const id = $(this.#startLink)[0].id;
-				Promise.resolve("Success")
-				.then(() => {
-					return document.querySelector(`#${id}`).closest('.datepicker');
-				})
-				.then((container) => {
-					container.classList.remove("datepicker-error");
-					return container.querySelector(".error");
-				})
-				.then((errorElement) => {
+				const container = document.querySelector(`#${id}`).closest('.datepicker');
+				let errorElement = container.querySelector(".error");
+				if(errorElement) {
 					errorElement.textContent = "";
-				})
-				.catch(console.error)
-				// const container = document.querySelector(`#${id}`).closest('.datepicker');
-				// let errorElement = container.querySelector(".error");
-				// if(errorElement) {
-				// 	errorElement.textContent = "";
-				// 	container.classList.remove("datepicker-error");
-				// }
+					container.classList.remove("datepicker-error");
+				}
 
 				checkerPresets(startDateValue);
 				checkerButton(startDateValue, Datepicker.getDate(this.#endLink));
@@ -104,6 +100,14 @@ export class Datepicker {
 			dateFormat: this.#FORMAT,
 			onSelect: () => {
 				this.#setMaxDate();
+				const id = $(this.#endLink)[0].id;
+				const container = document.querySelector(`#${id}`).closest('.datepicker');
+				let errorElement = container.querySelector(".error");
+				if(errorElement) {
+					errorElement.textContent = "";
+					container.classList.remove("datepicker-error");
+				}
+
 				checkerButton(Datepicker.getDate(this.#startLink), Datepicker.getDate(this.#endLink));
 			}
 		});
