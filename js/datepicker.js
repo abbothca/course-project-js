@@ -46,14 +46,15 @@ export class Datepicker {
 					Datepicker.setDate(element, null);
 					$(element).datepicker("hide");
 					element.blur();
-					const container = element.closest('.datepicker');;
+					const container = element.closest('.datepicker');
+					container.classList.add("datepicker-error");
 					let errorElement = container.querySelector(".error");
 					if (!errorElement) {
 						errorElement = document.createElement("span");
 						errorElement.classList.add('error');
 						container.append(errorElement);
 					}
-
+					this.#setMinDate(null)
 					errorElement.textContent = `Error! For ${value} : ${error}`;
 				})
 				.then(() => {
@@ -79,6 +80,7 @@ export class Datepicker {
 				let errorElement = container.querySelector(".error");
 				if(errorElement) {
 					errorElement.textContent = "";
+					container.classList.remove("datepicker-error");
 				}
 
 				checkerPresets(startDateValue);

@@ -54,23 +54,28 @@ a {
   }
 }
 
-.datepicker{
+.datepicker {
   position: relative;
 }
 
-.error{
-  /* position: absolute;
-  left: 30px;
-  top: 0px; */
-  /* font-size: 10px; */
-  color: red;
+.datepicker-error {
+  background-color: #dc3545;
+  border-radius: 3px;
 }
 
-.duration-results{
+.error {
+  position: absolute;
+  left: -11px;
+  top: -15px;
+  font-size: 10px;
+  color: #dc3545;
+}
+
+.duration-results {
   display: none;
 }
 
-.duration-results.show{
+.duration-results.show {
   display: block;
 }
 

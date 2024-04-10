@@ -29,7 +29,7 @@ const getTimestampSetByTwoDays = (dayOne, dayTwo) => {
 const getWeeks = (dayOne, dayTwo) => {
     const durationOfPeriod = getDuration(dayOne, dayTwo, "days");
     const daysLeft = durationOfPeriod % 7;
-    const start = (differenceTimestamps(dayOne, dayTwo) > 0) ? dayOne : dayTwo;
+    const start = (differenceTimestamps(dayOne, dayTwo) < 0) ? dayOne : dayTwo;
     const startDay = (new Date(start)).getDay();
     let indexesOfRestDays = [];
     for (let i = 0; i < daysLeft; i++) {
@@ -46,7 +46,7 @@ const getWeeks = (dayOne, dayTwo) => {
 }
 
 const calcWeekends = (arrayOfIndexes) => {
-    const arrayOfWeekends = arrayOfIndexes.filter(function (item) {
+    const arrayOfWeekends = arrayOfIndexes.filter((item) => {
         return (WEEKENDS).includes(item);
     });
     return arrayOfWeekends.length;
