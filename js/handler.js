@@ -31,7 +31,9 @@ export const calculateButtonHandler = () => {
     const value = getDurationTime(arg);
     setStorage({ ...arg, value });
     addNewLi({ ...arg, value });
-    Datepicker.setDate(datepicker.startLink, null);
-    Datepicker.setDate(datepicker.endLink, null);
+    datepicker.setDate()
+    // datepicker.setDate(datepicker.endLink, null)
+    // Datepicker.setDate(datepicker.startLink, null);
+    // Datepicker.setDate(datepicker.endLink, null);
     checkIsDisabledButton()
 }

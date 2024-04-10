@@ -7,6 +7,7 @@ export class Datepicker {
 
 	#setMinDate() {
 		const startDateValue = Datepicker.getDate(this.#startLink);
+		console.log("startDateValue ", startDateValue)
 		if (startDateValue) {
 			let minEnabledDay = new Date(startDateValue);
 			minEnabledDay.setDate(minEnabledDay.getDate() + 1);
@@ -74,14 +75,25 @@ export class Datepicker {
 			onSelect: () => {
 				let startDateValue = Datepicker.getDate(this.#startLink);
 				this.#setMinDate();
-
 				const id = $(this.#startLink)[0].id;
-				const container = document.querySelector(`#${id}`).closest('.datepicker');
-				let errorElement = container.querySelector(".error");
-				if(errorElement) {
-					errorElement.textContent = "";
+				Promise.resolve("Success")
+				.then(() => {
+					return document.querySelector(`#${id}`).closest('.datepicker');
+				})
+				.then((container) => {
 					container.classList.remove("datepicker-error");
-				}
+					return container.querySelector(".error");
+				})
+				.then((errorElement) => {
+					errorElement.textContent = "";
+				})
+				.catch(console.error)
+				// const container = document.querySelector(`#${id}`).closest('.datepicker');
+				// let errorElement = container.querySelector(".error");
+				// if(errorElement) {
+				// 	errorElement.textContent = "";
+				// 	container.classList.remove("datepicker-error");
+				// }
 
 				checkerPresets(startDateValue);
 				checkerButton(startDateValue, Datepicker.getDate(this.#endLink));
@@ -118,6 +130,18 @@ export class Datepicker {
 
 	static setDate(element, date) {
 		$(element).datepicker("setDate", date);
+	}
+
+	setDate(element, date) {
+		if(element && date) {
+			$(element).datepicker("setDate", date);
+			return;
+		}
+
+		$(this.#startLink).datepicker("setDate", date);
+		$(this.#endLink).datepicker("setDate", date);
+		this.#setMaxDate();
+		this.#setMinDate();
 	}
 
 	setEndDateByPreset(value) {
