@@ -37,7 +37,16 @@ export class Datepicker {
 			errorElement.classList.add('error');
 			container.append(errorElement);
 		}
-		errorElement.textContent = `Error! For ${value} : ${error}`;
+		errorElement.textContent = `Error! ${error} [${value}]`;
+	}
+
+	#deleteErrorMessage(id) {
+		const container = document.querySelector(`#${id}`).closest('.datepicker');
+		let errorElement = container.querySelector(".error");
+		if (errorElement) {
+			errorElement.textContent = "";
+			container.classList.remove("datepicker-error");
+		}
 	}
 
 	#handleKeyup(event) {
@@ -84,14 +93,7 @@ export class Datepicker {
 			onSelect: () => {
 				let startDateValue = Datepicker.getDate(this.#startLink);
 				this.#setMinDate();
-				const id = $(this.#startLink)[0].id;
-				const container = document.querySelector(`#${id}`).closest('.datepicker');
-				let errorElement = container.querySelector(".error");
-				if(errorElement) {
-					errorElement.textContent = "";
-					container.classList.remove("datepicker-error");
-				}
-
+				this.#deleteErrorMessage($(this.#startLink)[0].id)
 				checkerPresets(startDateValue);
 				checkerButton(startDateValue, Datepicker.getDate(this.#endLink));
 			}
@@ -101,14 +103,7 @@ export class Datepicker {
 			dateFormat: this.#FORMAT,
 			onSelect: () => {
 				this.#setMaxDate();
-				const id = $(this.#endLink)[0].id;
-				const container = document.querySelector(`#${id}`).closest('.datepicker');
-				let errorElement = container.querySelector(".error");
-				if(errorElement) {
-					errorElement.textContent = "";
-					container.classList.remove("datepicker-error");
-				}
-
+				this.#deleteErrorMessage($(this.#endLink)[0].id);
 				checkerButton(Datepicker.getDate(this.#startLink), Datepicker.getDate(this.#endLink));
 			}
 		});
@@ -138,7 +133,7 @@ export class Datepicker {
 	}
 
 	setDate(element, date) {
-		if(element) {
+		if (element) {
 			$(element).datepicker("setDate", date);
 			return;
 		}
@@ -161,6 +156,7 @@ export class Datepicker {
 				break;
 		}
 		this.#endLink.datepicker("setDate", newDate);
+		this.#deleteErrorMessage($(this.#endLink)[0].id)
 		this.#setMaxDate();
 	}
 }
