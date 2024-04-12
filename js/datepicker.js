@@ -1,3 +1,5 @@
+import { createErrorValidation, hideErrorValidation } from "./errors.js";
+
 export class Datepicker {
 	#FORMAT = "yy-mm-dd";
 	#startLink;
@@ -28,58 +30,33 @@ export class Datepicker {
 		this.#startLink.datepicker("option", "maxDate", "");
 	}
 
-	#createErrorMessage(element, value, error) {
-		const container = element.closest('.datepicker');
-		container.classList.add("datepicker-error");
-		let errorElement = container.querySelector(".error");
-		if (!errorElement) {
-			errorElement = document.createElement("span");
-			errorElement.classList.add('error');
-			container.append(errorElement);
-		}
-		errorElement.textContent = `Error! ${error} [${value}]`;
-	}
-
-	#deleteErrorMessage(id) {
-		const container = document.querySelector(`#${id}`).closest('.datepicker');
-		let errorElement = container.querySelector(".error");
-		if (errorElement) {
-			errorElement.textContent = "";
-			container.classList.remove("datepicker-error");
-		}
-	}
-
 	#handleKeyup(event) {
 		if (event.key === "Enter") {
 			const element = event.target;
-			const format = $(element).datepicker("option", "dateFormat");
 			const value = element.value;
-			Promise.resolve("Success")
-				.then(() => {
-					return $.datepicker.parseDate(format, value);
-				})
-				.then((data) => {
-					Datepicker.setDate(element, data);
-					$(element).datepicker("hide");
-					element.blur();
-				})
-				.catch((error) => {
-					this.setDate(element, null);
-					$(element).datepicker("hide");
-					element.blur();
+			try {
+				let data = $.datepicker.parseDate(this.#FORMAT, value);
+				Datepicker.setDate(element, data);
+				$(element).datepicker("hide");
+				element.blur();
+			}
+			catch (error) {
+				this.setDate(element, null);
+				$(element).datepicker("hide");
+				element.blur();
 
-					if ($(element)[0].id === $(this.#startLink)[0].id) {
-						this.#setMinDate();
-					} else {
-						this.#setMaxDate();
-					}
+				if ($(element)[0].id === $(this.#startLink)[0].id) {
+					this.#setMinDate();
+				} else {
+					this.#setMaxDate();
+				}
 
-					this.#createErrorMessage(element, value, error);
-				})
-				.then(() => {
-					this.validButtonFunction(Datepicker.getDate(this.startLink), Datepicker.getDate(this.endLink));
-					this.validPresetsFunction(Datepicker.getDate(this.startLink));
-				})
+				createErrorValidation(element, value, error);
+			}
+				finally {
+				this.validButtonFunction(Datepicker.getDate(this.startLink), Datepicker.getDate(this.endLink));
+				this.validPresetsFunction(Datepicker.getDate(this.startLink));
+			}
 
 
 		}
@@ -93,7 +70,7 @@ export class Datepicker {
 			onSelect: () => {
 				let startDateValue = Datepicker.getDate(this.#startLink);
 				this.#setMinDate();
-				this.#deleteErrorMessage($(this.#startLink)[0].id)
+				hideErrorValidation($(this.#startLink)[0].id)
 				checkerPresets(startDateValue);
 				checkerButton(startDateValue, Datepicker.getDate(this.#endLink));
 			}
@@ -103,7 +80,7 @@ export class Datepicker {
 			dateFormat: this.#FORMAT,
 			onSelect: () => {
 				this.#setMaxDate();
-				this.#deleteErrorMessage($(this.#endLink)[0].id);
+				hideErrorValidation($(this.#endLink)[0].id);
 				checkerButton(Datepicker.getDate(this.#startLink), Datepicker.getDate(this.#endLink));
 			}
 		});
@@ -156,7 +133,7 @@ export class Datepicker {
 				break;
 		}
 		this.#endLink.datepicker("setDate", newDate);
-		this.#deleteErrorMessage($(this.#endLink)[0].id)
+		hideErrorValidation($(this.#endLink)[0].id)
 		this.#setMaxDate();
 	}
 }

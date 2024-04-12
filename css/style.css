@@ -63,6 +63,11 @@ a {
   border-radius: 3px;
 }
 
+.error-message{
+  color: #fff;
+  background-color: #dc3545;
+}
+
 .error {
   position: absolute;
   left: -11px;
