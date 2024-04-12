@@ -17,7 +17,7 @@ let datepicker;
 // Initialization 
 try {
 	datepicker = new Datepicker(
-		"#startDate3",
+		"#startDate",
 		"#endDate",
 		checkIsDisabledPresets,
 		checkIsDisabledButton
