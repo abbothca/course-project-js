@@ -4,6 +4,8 @@ const listResults = document.querySelector("#get-time .list-group");
 const blockResults = document.querySelector(".duration-results");
 const buttonPresetWeek = document.getElementById("setWeek");
 const buttonPresetMonth = document.getElementById("setMonth");
+export const countriesSelect = document.getElementById("country");
+export const yearSelect = document.getElementById("year");
 
 export const checkIsDisabledButton = (valueStart, valueEnd) => {
     calculateButton.disabled = !(valueStart && valueEnd);;
@@ -13,6 +15,13 @@ export const checkIsDisabledPresets = (value) => {
     let isDateSelected = !!value;
     buttonPresetMonth.disabled = !isDateSelected;
     buttonPresetWeek.disabled = !isDateSelected;
+}
+
+export const checkIsCanGetHolydays = () => {
+    if (countriesSelect.value !== "" && yearSelect.value !== "") {
+        document.querySelector("button#get-holidays").disabled = false;
+        return;
+    }
 }
 
 const generateTemplateLi = (obj) => {

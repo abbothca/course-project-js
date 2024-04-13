@@ -304,23 +304,25 @@
                     <h5 class="py-2">1. Choose options</h5>
                     <div class="row">
                         <div class="col-6">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Country</option>
+                            <select id="country" class="form-select" aria-label="Default select example">
+                                <option value="" disabled selected hidden>Choose a country</option>
+                                <!-- <option selected>Country</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="3">Three</option> -->
                             </select>
                         </div>
                         <div class="col-6">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Year</option>
+                            <select id="year" class="form-select" aria-label="Default select example" placeholder="Year">
+                                <option value="" disabled selected hidden>Choose a year</option>
+                                <!-- <option selected>Year</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="3">Three</option> -->
                             </select>
                         </div>
                         <div class="d-flex py-3 mt-4 mb-4">
-                            <button type="button" class="btn btn-primary btn-custom px-5">Calculate duration</button>
+                            <button id="get-holidays" type="button" class="btn btn-primary btn-custom px-5" disabled>Calculate duration</button>
                         </div>
                     </div>
                     <div class="container-lg p-0 px-md-4">
