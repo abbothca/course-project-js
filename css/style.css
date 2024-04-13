@@ -54,11 +54,35 @@ a {
   }
 }
 
-.duration-results{
+.datepicker {
+  position: relative;
+}
+
+.datepicker-error {
+  background-color: #dc3545;
+  border-radius: 3px;
+}
+
+.error-message{
+  color: #fff;
+  background-color: #dc3545;
+}
+
+.error {
+  position: absolute;
+  left: -11px;
+  top: unset;
+  bottom: calc(100% + 1px);
+  line-height: 0.9;
+  font-size: 10px;
+  color: #dc3545;
+}
+
+.duration-results {
   display: none;
 }
 
-.duration-results.show{
+.duration-results.show {
   display: block;
 }
 

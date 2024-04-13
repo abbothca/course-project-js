@@ -1,7 +1,11 @@
+import { createErrorValidation, hideErrorValidation } from "./errors.js";
+
 export class Datepicker {
 	#FORMAT = "yy-mm-dd";
 	#startLink;
 	#endLink;
+	validPresetsFunction;
+	validButtonFunction;
 
 	#setMinDate() {
 		const startDateValue = Datepicker.getDate(this.#startLink);
@@ -29,21 +33,44 @@ export class Datepicker {
 	#handleKeyup(event) {
 		if (event.key === "Enter") {
 			const element = event.target;
-			const format = $(element).datepicker("option", "dateFormat" );
-			let dateNew = $.datepicker.parseDate(format, element.value);
-			// $(element).datepicker("setDate", dateNew);
-			Datepicker.setDate(element, dateNew);
-			$(element).datepicker("hide");
-			element.blur();
+			const value = element.value;
+			try {
+				let data = $.datepicker.parseDate(this.#FORMAT, value);
+				Datepicker.setDate(element, data);
+				$(element).datepicker("hide");
+				element.blur();
+			}
+			catch (error) {
+				this.setDate(element, null);
+				$(element).datepicker("hide");
+				element.blur();
+
+				if ($(element)[0].id === $(this.#startLink)[0].id) {
+					this.#setMinDate();
+				} else {
+					this.#setMaxDate();
+				}
+
+				createErrorValidation(element, value, error);
+			}
+				finally {
+				this.validButtonFunction(Datepicker.getDate(this.startLink), Datepicker.getDate(this.endLink));
+				this.validPresetsFunction(Datepicker.getDate(this.startLink));
+			}
+
+
 		}
 	}
 
 	constructor(selectorStart, selectorEnd, checkerPresets, checkerButton) {
+		this.validButtonFunction = checkerButton;
+		this.validPresetsFunction = checkerPresets;
 		this.#startLink = $(selectorStart).datepicker({
 			dateFormat: this.#FORMAT,
 			onSelect: () => {
 				let startDateValue = Datepicker.getDate(this.#startLink);
 				this.#setMinDate();
+				hideErrorValidation($(this.#startLink)[0].id)
 				checkerPresets(startDateValue);
 				checkerButton(startDateValue, Datepicker.getDate(this.#endLink));
 			}
@@ -53,12 +80,13 @@ export class Datepicker {
 			dateFormat: this.#FORMAT,
 			onSelect: () => {
 				this.#setMaxDate();
+				hideErrorValidation($(this.#endLink)[0].id);
 				checkerButton(Datepicker.getDate(this.#startLink), Datepicker.getDate(this.#endLink));
 			}
 		});
 
-		this.#startLink[0].addEventListener("keyup", this.#handleKeyup)
-		this.#endLink[0].addEventListener("keyup", this.#handleKeyup)
+		this.#startLink[0].addEventListener("keyup", this.#handleKeyup.bind(this))
+		this.#endLink[0].addEventListener("keyup", this.#handleKeyup.bind(this))
 	}
 
 	get startLink() {
@@ -81,6 +109,18 @@ export class Datepicker {
 		$(element).datepicker("setDate", date);
 	}
 
+	setDate(element, date) {
+		if (element) {
+			$(element).datepicker("setDate", date);
+			return;
+		}
+
+		$(this.#startLink).datepicker("setDate", date);
+		$(this.#endLink).datepicker("setDate", date);
+		this.#setMaxDate();
+		this.#setMinDate();
+	}
+
 	setEndDateByPreset(value) {
 		let newDate = new Date(Datepicker.getDate(this.#startLink));
 		switch (value) {
@@ -93,6 +133,7 @@ export class Datepicker {
 				break;
 		}
 		this.#endLink.datepicker("setDate", newDate);
+		hideErrorValidation($(this.#endLink)[0].id)
 		this.#setMaxDate();
 	}
 }
