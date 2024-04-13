@@ -1,5 +1,6 @@
 import { getFromStorage, KEY, MAX_COUNT } from "./localstorage.js";
 
+const CLASS_NAME_NO_ANIMATED = "no-animation";
 const listResults = document.querySelector("#get-time .list-group");
 const blockResults = document.querySelector(".duration-results");
 const buttonPresetWeek = document.getElementById("setWeek");
@@ -36,10 +37,13 @@ const generateTemplateLi = (obj) => {
 			`
 };
 
-export const addNewLi = (obj) => {
+export const addNewLi = (obj, className) => {
     let newItem = document.createElement("li");
     newItem.classList.add("list-group-item");
     newItem.innerHTML = generateTemplateLi(obj);
+    if(className) {
+        newItem.classList.add(className);
+    }
     let firstItem = listResults.querySelector("li:nth-child(2)");
     listResults.insertBefore(newItem, firstItem);
     blockResults.classList.add("show");
@@ -55,10 +59,11 @@ export const addNewLi = (obj) => {
 export const initListResults = () => {
     const initStorage = getFromStorage(KEY);
     if (initStorage) {
-        initStorage.forEach(addNewLi);
+        initStorage.forEach((item) => addNewLi(item, CLASS_NAME_NO_ANIMATED));
         blockResults.classList.add("show");
         return;
     }
+
 }
 
 export { buttonPresetMonth, buttonPresetWeek }

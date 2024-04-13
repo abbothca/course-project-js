@@ -94,6 +94,10 @@ a {
   animation: exit 1s ease 0s 1 normal forwards;
 }
 
+.no-animation.list-group-item:nth-child(2){
+  animation: unset;
+}
+
 @keyframes exit {
   0% {
     opacity: 1;

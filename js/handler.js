@@ -8,8 +8,11 @@ import {
 import { setStorage } from "./localstorage.js";
 import {
     checkIsDisabledButton,
-    addNewLi
+    addNewLi,
+    countriesSelect,
+    yearSelect
 } from "./helpers.js";
+import { getHolidays } from "./request.js";
 
 export const buttonPresetWeekHandler = (event) => {
     datepicker.setEndDateByPreset("week");
@@ -33,4 +36,11 @@ export const calculateButtonHandler = () => {
     addNewLi({ ...arg, value });
     datepicker.setDate();
     checkIsDisabledButton()
+}
+
+export const requestGetHolidays = () => {
+    getHolidays(countriesSelect.value, yearSelect.value)
+        .then((response) => {
+            console.log(response)
+        })
 }

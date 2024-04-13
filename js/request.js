@@ -8,7 +8,7 @@ const options = {
 }
 
 const getURLCountries = () => {
-    return `https://calendarific.com/api/v2/countri-es?api_key=${API_KEY}`;
+    return `https://calendarific.com/api/v2/countries?api_key=${API_KEY}`;
 }
 
 const getURLHolidays = (country, year) => {
