@@ -3,6 +3,7 @@ import { getFromStorage, KEY, MAX_COUNT } from "./localstorage.js";
 const CLASS_NAME_NO_ANIMATED = "no-animation";
 const listResults = document.querySelector("#get-time .list-group");
 const blockResults = document.querySelector(".duration-results");
+const listHolidays = document.querySelector("#holidays-list");
 const buttonPresetWeek = document.getElementById("setWeek");
 const buttonPresetMonth = document.getElementById("setMonth");
 export const countriesSelect = document.getElementById("country");
@@ -37,11 +38,31 @@ const generateTemplateLi = (obj) => {
 			`
 };
 
+const generateTemplateHolidaysLi = (obj) => {
+    return `
+        <div class="row">
+            <div class="col-2"> ${obj.date.iso} </div>
+            <div class="col-5" title="${obj.description}">${obj.name}</div>
+            <div class="col-2">${obj.states}</div>
+            <div class="col-3">${obj.primary_type}</div>
+        </div>
+        `
+};
+
+export const addNewHolidayLi = (obj) => {
+    let newItem = document.createElement("li");
+    newItem.classList.add("list-group-item");
+    newItem.innerHTML = generateTemplateHolidaysLi(obj);
+    // let firstItem = listHolidays.querySelector("li:nth-child(2)");
+    listHolidays.append(newItem);
+    // blockHolidays.classList.add("show");
+}
+
 export const addNewLi = (obj, className) => {
     let newItem = document.createElement("li");
     newItem.classList.add("list-group-item");
     newItem.innerHTML = generateTemplateLi(obj);
-    if(className) {
+    if (className) {
         newItem.classList.add(className);
     }
     let firstItem = listResults.querySelector("li:nth-child(2)");

@@ -298,7 +298,7 @@
                 </div>
             </div>
             <!-- Tab 2 -->
-            <div class="tab-pane fade border border-top-0 px-3 py-3" id="get-holidays" role="tabpanel"
+            <div class="tab-pane fade border border-top-0 px-2 py-3" id="get-holidays" role="tabpanel"
                 aria-labelledby="home-tab">
                 <div class="container p-0 px-md-4">
                     <h5 class="py-2">1. Choose options</h5>
@@ -325,14 +325,14 @@
                             <button id="get-holidays" type="button" class="btn btn-primary btn-custom px-5" disabled>Calculate duration</button>
                         </div>
                     </div>
-                    <div class="container-lg p-0 px-md-4">
+                    <div class="container-lg p-0 px-md-1">
                         <hr>
                         <h5 class="py-2">2. Holidays in <span id="selectedCountry">the country</span> in <span
                                 id="selectedYear">N</span> year</h5>
-                        <ul class="list-group pt-2">
+                        <ul id="holidays-list" class="list-group pt-2">
                             <li class="list-group-item bg-dark bg-gradient">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-2">
                                         <button type="button" class="btn text-white fw-bold p-0">
                                             Date
                                             <span>
@@ -344,25 +344,9 @@
                                             </span>
                                         </button>
                                     </div>
-                                    <div class="col-8 fw-bold text-white">The name of the holiday</div>
-                                </div>
-                            </li>
-                            <li class="list-group-item bg-light ">
-                                <div class="row">
-                                    <div class="col-4">[Date]</div>
-                                    <div class="col-8">[The name of the holiday]</div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-4">[Date]</div>
-                                    <div class="col-8">[The name of the holiday]</div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-4">[Date]</div>
-                                    <div class="col-8">[The name of the holiday]</div>
+                                    <div class="col-5 fw-bold text-white">The name of the holiday</div>
+                                    <div class="col-2 fw-bold text-white">States</div>
+                                    <div class="col-3 fw-bold text-white">Type</div>
                                 </div>
                             </li>
                         </ul>

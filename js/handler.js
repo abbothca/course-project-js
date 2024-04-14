@@ -10,7 +10,8 @@ import {
     checkIsDisabledButton,
     addNewLi,
     countriesSelect,
-    yearSelect
+    yearSelect,
+    addNewHolidayLi
 } from "./helpers.js";
 import { getHolidays } from "./request.js";
 
@@ -41,6 +42,10 @@ export const calculateButtonHandler = () => {
 export const requestGetHolidays = () => {
     getHolidays(countriesSelect.value, yearSelect.value)
         .then((response) => {
-            console.log(response)
+            // console.log(response.holidays);
+            response.holidays.forEach(element => {
+                addNewHolidayLi(element)
+            });
+            
         })
 }
