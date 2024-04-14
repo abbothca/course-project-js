@@ -14,7 +14,9 @@ import {
     addNewHolidayLi
 } from "./helpers.js";
 import { getHolidays } from "./request.js";
+import { showErrorHeaderMessage } from "./errors.js";
 
+const blockResultsHolidays = document.querySelector("#holidays-results");
 const selectedCountryBlock = document.querySelector("#selectedCountry");
 const selectedYearBlock = document.querySelector("#selectedYear");
 
@@ -45,12 +47,15 @@ export const calculateButtonHandler = () => {
 export const requestGetHolidays = () => {
     getHolidays(countriesSelect.value, yearSelect.value)
         .then((response) => {
-            // console.log(response.holidays);
             response.holidays.forEach(element => {
                 addNewHolidayLi(element)
             });
             let country = document.querySelector(`option[value='${countriesSelect.value}']`).textContent;
             selectedCountryBlock.textContent  = country;
             selectedYearBlock.textContent  = yearSelect.value;
+            blockResultsHolidays.classList.add("show");
         })
+        .catch((error) => {
+            showErrorHeaderMessage(error);
+        }) 
 }
