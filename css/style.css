@@ -92,6 +92,10 @@ a {
   animation: myAnim 0.5s ease 0s 1 normal forwards;
 }
 
+.holidays-item:nth-child(2n) {
+  background-color: #d5e6ff;
+}
+
 .duration-list .list-group-item:nth-child(2) {
   background-color: #d5e6ff;
   animation: myAnim 0.5s ease 0s 1 normal forwards;
