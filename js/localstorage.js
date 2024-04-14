@@ -1,6 +1,7 @@
-const LS_KEY_LAST_REQUESTS = "holidays_duration_store";
+export const LS_KEY_LAST_REQUESTS = "holidays_duration_store";
 export const LS_KEY_COUNTRIES = "holidays_countries_list";
-const LS_MAX_COUNT_ITEMS = 10;
+export const LS_MAX_COUNT_ITEMS = 10;
+export const TIME_ACTUALITY_LOCAL_STORAGE = 3 * 24 * 60 * 60 * 1000; //ms
 
 export const getFromStorage = (lsKey) => {
     return JSON.parse(localStorage.getItem(lsKey));
@@ -11,8 +12,6 @@ export const setStorage = (key, value) => {
 }
 
 export const setLastCalculationStorage = (value) => {
-    console.log( getFromStorage(LS_KEY_LAST_REQUESTS))
-
     let lastRequests = getFromStorage(LS_KEY_LAST_REQUESTS);
     if (lastRequests === null) {
         setStorage(LS_KEY_LAST_REQUESTS, [value]);
@@ -27,5 +26,3 @@ export const setLastCalculationStorage = (value) => {
     setStorage(LS_KEY_LAST_REQUESTS, lastRequests);
 
 }
-
-export { LS_KEY_LAST_REQUESTS, LS_MAX_COUNT_ITEMS as MAX_COUNT }

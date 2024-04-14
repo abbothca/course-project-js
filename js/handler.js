@@ -14,7 +14,7 @@ import {
     addNewHolidayLi,
     DOM_CLASS_HOLIDAYS_ITEM
 } from "./helpers.js";
-import { getHolidays } from "./request.js";
+import { getHolidays } from "./api.js";
 import { showErrorHeaderMessage } from "./errors.js";
 
 const blockResultsHolidays = document.querySelector("#holidays-results");
@@ -45,7 +45,7 @@ export const calculateButtonHandler = () => {
     checkIsDisabledButton()
 }
 
-export const requestGetHolidays = () => {
+export const handleRequestHolidays = () => {
     document.querySelectorAll(`.${DOM_CLASS_HOLIDAYS_ITEM}`).forEach((element) => {
         element.remove();
     })
@@ -59,7 +59,5 @@ export const requestGetHolidays = () => {
             selectedYearBlock.textContent  = yearSelect.value;
             blockResultsHolidays.classList.add("show");
         })
-        .catch((error) => {
-            showErrorHeaderMessage(error);
-        }) 
+        .catch(showErrorHeaderMessage) 
 }
