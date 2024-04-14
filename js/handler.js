@@ -15,6 +15,9 @@ import {
 } from "./helpers.js";
 import { getHolidays } from "./request.js";
 
+const selectedCountryBlock = document.querySelector("#selectedCountry");
+const selectedYearBlock = document.querySelector("#selectedYear");
+
 export const buttonPresetWeekHandler = (event) => {
     datepicker.setEndDateByPreset("week");
     checkIsDisabledButton(Datepicker.getDate(datepicker.startLink), Datepicker.getDate(datepicker.endLink));
@@ -46,6 +49,8 @@ export const requestGetHolidays = () => {
             response.holidays.forEach(element => {
                 addNewHolidayLi(element)
             });
-            
+            let country = document.querySelector(`option[value='${countriesSelect.value}']`).textContent;
+            selectedCountryBlock.textContent  = country;
+            selectedYearBlock.textContent  = yearSelect.value;
         })
 }
