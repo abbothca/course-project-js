@@ -12,7 +12,8 @@ import {
     countriesSelect,
     yearSelect,
     addNewHolidayLi,
-    DOM_CLASS_HOLIDAYS_ITEM
+    DOM_CLASS_HOLIDAYS_ITEM,
+    DOM_CLASS_NAME_ANIMATED_SHOW
 } from "./helpers.js";
 import { getHolidays } from "./api.js";
 import { showErrorHeaderMessage } from "./errors.js";
@@ -51,13 +52,28 @@ export const handleRequestHolidays = () => {
     })
     getHolidays(countriesSelect.value, yearSelect.value)
         .then((response) => {
-            response.holidays.forEach(element => {
-                addNewHolidayLi(element)
-            });
+            const countries = response?.holidays;
+            if (countries && countries.length) {
+                response.holidays.forEach(element => {
+                    addNewHolidayLi(element)
+                });
+            } else {
+                //Tanzania, 2010
+                blockResultsHolidays.classList.add(DOM_CLASS_NAME_ANIMATED_SHOW);
+                const obj = {
+                    name: "Sorry! We've not found this info",
+                    states: "--",
+                    primary_type: "--",
+                    date: {
+                        iso: null
+                    }
+                }
+                addNewHolidayLi(obj)
+            }
             let country = document.querySelector(`option[value='${countriesSelect.value}']`).textContent;
-            selectedCountryBlock.textContent  = country;
-            selectedYearBlock.textContent  = yearSelect.value;
+            selectedCountryBlock.textContent = country;
+            selectedYearBlock.textContent = yearSelect.value;
             blockResultsHolidays.classList.add("show");
         })
-        .catch(showErrorHeaderMessage) 
+        .catch(showErrorHeaderMessage)
 }

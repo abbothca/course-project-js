@@ -10,7 +10,7 @@ import { getHolidays, getCountries } from "./api.js";
 import { showErrorHeaderMessage } from "./errors.js";
 
 const DOM_CLASS_NAME_NO_ANIMATED = "no-animation";
-const DOM_CLASS_NAME_ANIMATED_SHOW = "show";
+export const DOM_CLASS_NAME_ANIMATED_SHOW = "show";
 const DOM_CLASS_NAME_ANIMATED_REMOVE = "removed";
 export const DOM_CLASS_HOLIDAYS_ITEM = "holidays-item";
 
@@ -64,9 +64,10 @@ const generateTemplateLi = (obj) => {
 };
 
 const generateTemplateHolidaysLi = (obj) => {
+    const date = (obj.date.iso) ? (new Date(obj.date.iso)).toDateString() : "--";
     return `
         <div class="row">
-            <div class="col-3"> ${(new Date(obj.date.iso)).toDateString()} </div>
+            <div class="col-3"> ${date} </div>
             <div class="col-4" title="${obj.description}">${obj.name}</div>
             <div class="col-2">${getStringStates(obj)}</div>
             <div class="col-3">${obj.primary_type}</div>
