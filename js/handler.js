@@ -5,7 +5,7 @@ import {
     setHoursStartDate,
     setHoursEndDate
 } from "./date.js";
-import { setStorage } from "./localstorage.js";
+import { setLastCalculationStorage } from "./localstorage.js";
 import {
     checkIsDisabledButton,
     addNewLi,
@@ -39,7 +39,7 @@ export const calculateButtonHandler = () => {
         measure: document.querySelector("input[name='radioCount']:checked").value,
     }
     const value = getDurationTime(arg);
-    setStorage({ ...arg, value });
+    setLastCalculationStorage({ ...arg, value });
     addNewLi({ ...arg, value });
     datepicker.setDate();
     checkIsDisabledButton()

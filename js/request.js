@@ -1,5 +1,6 @@
 import { showErrorHeaderMessage } from "./errors.js"
 import { checkIsCanGetHolydays, countriesSelect, yearSelect } from "./helpers.js"
+import { getFromStorage, setStorage, LS_KEY_COUNTRIES } from "./localstorage.js"
 
 const API_KEY = "wL5X18bK9oeeWUu7HL3BeLQf6rWDmDBe";
 const options = {
@@ -23,32 +24,38 @@ const addOption = (parent, value, text) => {
 }
 
 export const setConnection = async () => {
-    try {
-        const response = await fetch(getURLCountries(), options);
+    let countries = getFromStorage(LS_KEY_COUNTRIES);
 
-        if (!response.ok) {
-            throw new Error("There is not connection with the endpoint!");
+    if (!countries) {
+        try {
+            const response = await fetch(getURLCountries(), options);
+
+            if (!response.ok) {
+                throw new Error("There is not connection with the endpoint!");
+            }
+
+            const parseResponse = await response.json();
+            setStorage(LS_KEY_COUNTRIES, parseResponse.response.countries);
+            countries = parseResponse.response.countries;
+        } catch (error) {
+            showErrorHeaderMessage(error);
+            return false;
         }
+    };
 
-        const parseResponse = await response.json();
-        parseResponse.response.countries.forEach((country) => {
-            addOption(countriesSelect, country["iso-3166"], country["country_name"]);
-        });
-        countriesSelect.value = "UA";
+    countries[0].forEach((country) => {
+        addOption(countriesSelect, country["iso-3166"], country["country_name"]);
+    });
+    countriesSelect.value = "UA";
 
-        for (let i = 2001; i < 2050; i++) {
-            addOption(yearSelect, i, i);
-        };
-        yearSelect.value = (new Date()).getFullYear();
+    for (let i = 2001; i < 2050; i++) {
+        addOption(yearSelect, i, i);
+    };
+    yearSelect.value = (new Date()).getFullYear();
 
-        checkIsCanGetHolydays();
+    checkIsCanGetHolydays();
 
-        return true;
-    } catch (error) {
-        showErrorHeaderMessage(error)
-    }
-
-    return false;
+    return true;
 }
 
 export const getHolidays = async (country, year) => {
