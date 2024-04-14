@@ -15,7 +15,7 @@ export const setLastCalculationStorage = (value) => {
 
     let lastRequests = getFromStorage(LS_KEY_LAST_REQUESTS);
     if (lastRequests === null) {
-        setStorage(LS_KEY_LAST_REQUESTS, value);
+        setStorage(LS_KEY_LAST_REQUESTS, [value]);
         return;
     }
 
