@@ -6,7 +6,8 @@ import {
 	buttonPresetWeek,
 	checkIsCanGetHolydays,
 	countriesSelect,
-	yearSelect
+	yearSelect,
+	requestButton
 } from "./helpers.js";
 import {
 	calculateButtonHandler,
@@ -20,7 +21,6 @@ import { setConnection } from "./request.js";
 
 // Get the DOM elements
 const calculateButton = document.getElementById("calculateButton");
-const requestButton = document.querySelector("button#get-holidays");
 
 let datepicker;
 

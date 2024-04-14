@@ -11,7 +11,8 @@ import {
     addNewLi,
     countriesSelect,
     yearSelect,
-    addNewHolidayLi
+    addNewHolidayLi,
+    DOM_CLASS_HOLIDAYS_ITEM
 } from "./helpers.js";
 import { getHolidays } from "./request.js";
 import { showErrorHeaderMessage } from "./errors.js";
@@ -45,6 +46,9 @@ export const calculateButtonHandler = () => {
 }
 
 export const requestGetHolidays = () => {
+    document.querySelectorAll(`.${DOM_CLASS_HOLIDAYS_ITEM}`).forEach((element) => {
+        element.remove();
+    })
     getHolidays(countriesSelect.value, yearSelect.value)
         .then((response) => {
             response.holidays.forEach(element => {
