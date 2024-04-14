@@ -7,10 +7,12 @@ export const getFromStorage = (lsKey) => {
 }
 
 export const setStorage = (key, value) => {
-    localStorage.setItem(key, JSON.stringify([value]));
+    localStorage.setItem(key, JSON.stringify(value));
 }
 
 export const setLastCalculationStorage = (value) => {
+    console.log( getFromStorage(LS_KEY_LAST_REQUESTS))
+
     let lastRequests = getFromStorage(LS_KEY_LAST_REQUESTS);
     if (lastRequests === null) {
         setStorage(LS_KEY_LAST_REQUESTS, value);
@@ -26,4 +28,4 @@ export const setLastCalculationStorage = (value) => {
 
 }
 
-export { LS_KEY_LAST_REQUESTS as KEY, LS_MAX_COUNT_ITEMS as MAX_COUNT }
+export { LS_KEY_LAST_REQUESTS, LS_MAX_COUNT_ITEMS as MAX_COUNT }

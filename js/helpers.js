@@ -1,4 +1,4 @@
-import { getFromStorage, KEY, MAX_COUNT } from "./localstorage.js";
+import { getFromStorage, LS_KEY_LAST_REQUESTS, MAX_COUNT } from "./localstorage.js";
 
 const DOM_CLASS_NAME_NO_ANIMATED = "no-animation";
 const DOM_CLASS_NAME_ANIMATED_SHOW = "show";
@@ -93,7 +93,7 @@ export const addNewLi = (obj, className) => {
 }
 
 export const initListResults = () => {
-    const initStorage = getFromStorage(KEY);
+    const initStorage = getFromStorage(LS_KEY_LAST_REQUESTS);
     if (initStorage) {
         initStorage.forEach((item) => addNewLi(item, DOM_CLASS_NAME_NO_ANIMATED));
         blockResults.classList.add(DOM_CLASS_NAME_ANIMATED_SHOW);

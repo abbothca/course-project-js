@@ -43,7 +43,7 @@ export const setConnection = async () => {
         }
     };
 
-    countries[0].forEach((country) => {
+    countries.forEach((country) => {
         addOption(countriesSelect, country["iso-3166"], country["country_name"]);
     });
     countriesSelect.value = "UA";
