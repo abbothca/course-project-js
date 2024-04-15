@@ -132,45 +132,26 @@ const createOptionsYears = (start, end) => {
 }
 
 const updateListCountries = async () => {
-    let countriesList;
-    await getCountries()
-        .then((result) => {
-            const countries = result;
-            setStorage(LS_KEY_COUNTRIES, { countries: countries, date: new Date() });
-            countriesList = countries;
-        })
-        .catch((error) => {
-            showErrorHeaderMessage(error);
-            countriesList = []
-        });
-    return countriesList;
+    const countries = await getCountries();
+    setStorage(LS_KEY_COUNTRIES, { countries: countries, date: new Date() });
+    return countries;
 }
 
 const getListCountries = async () => {
     let dataFromStorage = getFromStorage(LS_KEY_COUNTRIES);
     if (!dataFromStorage || (Date.now() - (new Date(dataFromStorage?.date)).getTime()) > TIME_ACTUALITY_LOCAL_STORAGE) {
-        let countries = [];
-        await updateListCountries()
-            .then((result) => {
-                countries = result;
-            })
-            .catch((error) => {
-                showErrorHeaderMessage(error);
-            });
-        return Promise.resolve(countries)
+        let countries = await updateListCountries()
+        return countries;
     };
 
-    return Promise.resolve(dataFromStorage.countries)
+    return dataFromStorage.countries;
 }
 
-export const initSelects = () => {
-    getListCountries()
-        .then((result) => {
-            createOptionsCountries(result);
-            createOptionsYears(2001, 2049);
-            checkIsCanGetHolidays();
-        })
-        .catch(showErrorHeaderMessage)
+export const initSelects = async () => {
+    const countries = await getListCountries();
+    createOptionsCountries(countries);
+    createOptionsYears(2001, 2049);
+    checkIsCanGetHolidays();
 }
 
 export { buttonPresetMonth, buttonPresetWeek }

@@ -33,7 +33,7 @@ export const getHolidays = async (country, year) => {
 
         const parseResponse = await response.json();
 
-        return Promise.resolve(parseResponse.response);
+        return parseResponse.response;
     } catch (error) {
         showErrorHeaderMessage(error)
     }

@@ -46,13 +46,14 @@ export const calculateButtonHandler = () => {
     checkIsDisabledButton()
 }
 
-export const handleRequestHolidays = () => {
+export const handleRequestHolidays = async () => {
     document.querySelectorAll(`.${DOM_CLASS_HOLIDAYS_ITEM}`).forEach((element) => {
         element.remove();
     })
-    getHolidays(countriesSelect.value, yearSelect.value)
-        .then((response) => {
-            const countries = response?.holidays;
+
+    const response = await getHolidays(countriesSelect.value, yearSelect.value);
+    try {
+        const countries = response?.holidays;
             if (countries && countries.length) {
                 response.holidays.forEach(element => {
                     addNewHolidayLi(element)
@@ -74,6 +75,8 @@ export const handleRequestHolidays = () => {
             selectedCountryBlock.textContent = country;
             selectedYearBlock.textContent = yearSelect.value;
             blockResultsHolidays.classList.add("show");
-        })
-        .catch(showErrorHeaderMessage)
+    }
+    catch (error) {
+        showErrorHeaderMessage(error)
+    }
 }
