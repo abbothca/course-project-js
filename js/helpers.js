@@ -133,9 +133,13 @@ const createOptionsYears = (start, end) => {
 }
 
 const updateListCountries = async () => {
-    const countries = await getCountries();
-    setStorage(LS_KEY_COUNTRIES, { countries: countries, date: new Date() });
-    return countries;
+    try {
+        const countries = await getCountries();
+        setStorage(LS_KEY_COUNTRIES, { countries: countries, date: new Date() });
+        return countries;
+    } catch (error) {
+        showErrorHeaderMessage(error)
+    }
 }
 
 const getListCountries = async () => {

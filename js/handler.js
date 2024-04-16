@@ -17,7 +17,7 @@ import {
     sortItemHolidays,
     rearrangeHolidays
 } from "./helpers.js";
-import {DOM_CLASS_HOLIDAYS_ITEM, DOM_CLASS_NAME_ANIMATED_SHOW} from "./options.js";
+import { DOM_CLASS_HOLIDAYS_ITEM, DOM_CLASS_NAME_ANIMATED_SHOW } from "./options.js";
 import { getHolidays } from "./api.js";
 import { showErrorHeaderMessage } from "./errors.js";
 
@@ -53,9 +53,9 @@ export const handleRequestHolidays = async () => {
     document.querySelectorAll(`.${DOM_CLASS_HOLIDAYS_ITEM}`).forEach((element) => {
         element.remove();
     })
-try {
-    const response = await getHolidays(countriesSelect.value, yearSelect.value);
-    
+    try {
+        const response = await getHolidays(countriesSelect.value, yearSelect.value);
+
         const countries = response?.holidays;
         if (countries && countries.length) {
             response.holidays.forEach(element => {
