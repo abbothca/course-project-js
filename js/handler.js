@@ -53,9 +53,9 @@ export const handleRequestHolidays = async () => {
     document.querySelectorAll(`.${DOM_CLASS_HOLIDAYS_ITEM}`).forEach((element) => {
         element.remove();
     })
-
+try {
     const response = await getHolidays(countriesSelect.value, yearSelect.value);
-    try {
+    
         const countries = response?.holidays;
         if (countries && countries.length) {
             response.holidays.forEach(element => {

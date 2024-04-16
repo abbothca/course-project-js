@@ -1,6 +1,6 @@
 import { showErrorHeaderMessage } from "./errors.js";
 
-const API_KEY = "nnkTLKWhF93nGBOyswJWLM4lLfb1or3e";
+const API_KEY = "IWHFEEH2R8D3OEy2r3TF7I7kkhfCoG6a";
 const API_URL = "https://calendarific.com/api/v2/";
 const DEFAULT_OPTIONS = {
     method: "GET",
