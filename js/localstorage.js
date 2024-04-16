@@ -1,7 +1,9 @@
-export const LS_KEY_LAST_REQUESTS = "holidays_duration_store";
-export const LS_KEY_COUNTRIES = "holidays_countries_list";
-export const LS_MAX_COUNT_ITEMS = 10;
-export const TIME_ACTUALITY_LOCAL_STORAGE = 3 * 24 * 60 * 60 * 1000; //ms
+import {
+    LS_KEY_COUNTRIES,
+    LS_KEY_LAST_REQUESTS,
+    LS_MAX_COUNT_ITEMS,
+    TIME_ACTUALITY_LOCAL_STORAGE
+} from "./options.js";
 
 export const getFromStorage = (lsKey) => {
     return JSON.parse(localStorage.getItem(lsKey));
