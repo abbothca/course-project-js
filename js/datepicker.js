@@ -93,10 +93,6 @@ export class Datepicker {
 		return this.#startLink;
 	}
 
-	get getFormat() {
-		return this.#FORMAT;
-	}
-
 	get endLink() {
 		return this.#endLink;
 	}

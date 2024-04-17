@@ -3,9 +3,19 @@ import {
 	checkIsDisabledPresets,
 	checkIsDisabledButton,
 	buttonPresetMonth,
-	buttonPresetWeek
+	buttonPresetWeek,
+	checkIsCanGetHolidays,
+	countriesSelect,
+	yearSelect,
+	requestButton,
+	initSelects
 } from "./helpers.js";
-import { calculateButtonHandler, buttonPresetMonthHandler, buttonPresetWeekHandler } from "./handler.js"
+import {
+	calculateButtonHandler,
+	buttonPresetMonthHandler,
+	buttonPresetWeekHandler,
+	handleRequestHolidays
+} from "./handler.js"
 import { Datepicker } from "./datepicker.js";
 import { showErrorHeaderMessage } from "./errors.js";
 
@@ -27,10 +37,14 @@ try {
 	showErrorHeaderMessage(error);
 }
 
+initSelects();
 
 // Event Listeners
 buttonPresetWeek.addEventListener("click", buttonPresetWeekHandler);
 buttonPresetMonth.addEventListener("click", buttonPresetMonthHandler);
 calculateButton.addEventListener("click", calculateButtonHandler);
+countriesSelect.addEventListener("change", checkIsCanGetHolidays)
+yearSelect.addEventListener("change", checkIsCanGetHolidays)
+requestButton.addEventListener("click", handleRequestHolidays)
 
 export { datepicker };

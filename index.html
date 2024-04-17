@@ -284,7 +284,7 @@
                 <div class="duration-results container-lg p-0 px-0 px-sm-2 px-md-4">
                     <hr>
                     <h5 class="py-2 px-3 px-md-0">2. The results of previous calculations</h5>
-                    <ul class="list-group pt-2">
+                    <ul class="list-group pt-2 duration-list">
                         <li class="list-group-item bg-dark bg-gradient">
                             <div class="row">
                                 <div class="col-3 fw-bold text-white">Start date</div>
@@ -298,39 +298,33 @@
                 </div>
             </div>
             <!-- Tab 2 -->
-            <div class="tab-pane fade border border-top-0 px-3 py-3" id="get-holidays" role="tabpanel"
+            <div class="tab-pane fade border border-top-0 px-2 py-3" id="get-holidays" role="tabpanel"
                 aria-labelledby="home-tab">
                 <div class="container p-0 px-md-4">
                     <h5 class="py-2">1. Choose options</h5>
                     <div class="row">
                         <div class="col-6">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Country</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select id="country" class="form-select" aria-label="Default select example">
+                                <option value="" disabled selected hidden>Choose a country</option>
                             </select>
                         </div>
                         <div class="col-6">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Year</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select id="year" class="form-select" aria-label="Default select example" placeholder="Year">
+                                <option value="" disabled selected hidden>Choose a year</option>
                             </select>
                         </div>
                         <div class="d-flex py-3 mt-4 mb-4">
-                            <button type="button" class="btn btn-primary btn-custom px-5">Calculate duration</button>
+                            <button id="get-holidays" type="button" class="btn btn-primary btn-custom px-5" disabled>Calculate duration</button>
                         </div>
                     </div>
-                    <div class="container-lg p-0 px-md-4">
+                    <div id="holidays-results" class="holidays-results container-lg p-0 px-md-1">
                         <hr>
-                        <h5 class="py-2">2. Holidays in <span id="selectedCountry">the country</span> in <span
-                                id="selectedYear">N</span> year</h5>
-                        <ul class="list-group pt-2">
+                        <h5 class="py-2">2. Holidays in <strong id="selectedCountry">the country</strong> in <strong
+                                id="selectedYear">N</strong> year</h5>
+                        <ul id="holidays-list" class="list-group pt-2 holidays-list">
                             <li class="list-group-item bg-dark bg-gradient">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <button type="button" class="btn text-white fw-bold p-0">
                                             Date
                                             <span>
@@ -342,25 +336,9 @@
                                             </span>
                                         </button>
                                     </div>
-                                    <div class="col-8 fw-bold text-white">The name of the holiday</div>
-                                </div>
-                            </li>
-                            <li class="list-group-item bg-light ">
-                                <div class="row">
-                                    <div class="col-4">[Date]</div>
-                                    <div class="col-8">[The name of the holiday]</div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-4">[Date]</div>
-                                    <div class="col-8">[The name of the holiday]</div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-4">[Date]</div>
-                                    <div class="col-8">[The name of the holiday]</div>
+                                    <div class="col-4 fw-bold text-white">The name of the holiday</div>
+                                    <div class="col-2 fw-bold text-white">States</div>
+                                    <div class="col-3 fw-bold text-white">Type</div>
                                 </div>
                             </li>
                         </ul>

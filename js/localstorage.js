@@ -1,14 +1,20 @@
-const LS_KEY_LAST_REQUESTS = "holidays_duration_store";
-const LS_MAX_COUNT_ITEMS = 10;
+export const LS_KEY_LAST_REQUESTS = "holidays_duration_store";
+export const LS_KEY_COUNTRIES = "holidays_countries_list";
+export const LS_MAX_COUNT_ITEMS = 10;
+export const TIME_ACTUALITY_LOCAL_STORAGE = 3 * 24 * 60 * 60 * 1000; //ms
 
-export const getFromStorage = (key) => {
-    return JSON.parse(localStorage.getItem(key));
+export const getFromStorage = (lsKey) => {
+    return JSON.parse(localStorage.getItem(lsKey));
 }
 
-export const setStorage = (value) => {
+export const setStorage = (key, value) => {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+export const setLastCalculationStorage = (value) => {
     let lastRequests = getFromStorage(LS_KEY_LAST_REQUESTS);
     if (lastRequests === null) {
-        localStorage.setItem(LS_KEY_LAST_REQUESTS, JSON.stringify([value]));
+        setStorage(LS_KEY_LAST_REQUESTS, [value]);
         return;
     }
 
@@ -17,7 +23,6 @@ export const setStorage = (value) => {
         lastRequests.shift();
     };
 
-    localStorage.setItem(LS_KEY_LAST_REQUESTS, JSON.stringify(lastRequests));
-}
+    setStorage(LS_KEY_LAST_REQUESTS, lastRequests);
 
-export { LS_KEY_LAST_REQUESTS as KEY, LS_MAX_COUNT_ITEMS as MAX_COUNT }
+}

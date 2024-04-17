@@ -78,20 +78,34 @@ a {
   color: #dc3545;
 }
 
-.duration-results {
+.duration-results,
+.holidays-results {
   display: none;
 }
 
-.duration-results.show {
+.duration-results.show,
+.holidays-results.show {
   display: block;
 }
 
-.list-group-item:nth-child(2) {
+.holidays-results.show{
+  animation: myAnim 0.5s ease 0s 1 normal forwards;
+}
+
+.holidays-item:nth-child(2n) {
+  background-color: #d5e6ff;
+}
+
+.duration-list .list-group-item:nth-child(2) {
   background-color: #d5e6ff;
   animation: myAnim 0.5s ease 0s 1 normal forwards;
 }
-.list-group-item.removed {
+.duration-list .list-group-item.removed {
   animation: exit 1s ease 0s 1 normal forwards;
+}
+
+.no-animation.list-group-item:nth-child(2){
+  animation: unset;
 }
 
 @keyframes exit {
