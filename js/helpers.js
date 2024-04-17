@@ -160,10 +160,9 @@ export const initSelects = async () => {
 }
 
 export const sortItemHolidays = (a, b, direction) => {
-    return (!direction || direction === ">") ?
-        b.dataset?.timestamp - a.dataset?.timestamp
-        :
-        a.dataset?.timestamp - b.dataset?.timestamp;
+    const isBBiggerA = b.dataset?.timestamp > a.dataset?.timestamp;
+    const isGrowth = (!direction || direction === ">") ? isBBiggerA : !isBBiggerA;
+    return (isGrowth) ? 1 : -1;
 }
 
 export const switchListHolidaysState = (state) => {
@@ -172,14 +171,9 @@ export const switchListHolidaysState = (state) => {
 }
 
 export const rearrangeHolidays = (allHolidays) => {
-    try {
-        for (let i = 0; i < allHolidays.length; i++) {
-            listHolidays.append(allHolidays[i]);
-        }
-    }
-    catch (error) {
-        showErrorHeaderMessage(error)
-    }
+        allHolidays.forEach((item) => {
+            listHolidays.append(item);
+        })
 }
 
 export { buttonPresetMonth, buttonPresetWeek }
