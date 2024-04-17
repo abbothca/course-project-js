@@ -17,7 +17,7 @@ import {
     sortItemHolidays,
     rearrangeHolidays
 } from "./helpers.js";
-import { DOM_CLASS_HOLIDAYS_ITEM, DOM_CLASS_NAME_ANIMATED_SHOW } from "./options.js";
+import { DOM_CLASS_HOLIDAYS_ITEM, DOM_CLASS_NAME_ANIMATED_SHOW } from "./constants.js";
 import { getHolidays } from "./api.js";
 import { showErrorHeaderMessage } from "./errors.js";
 
