@@ -3,7 +3,7 @@ import {
     LS_KEY_LAST_REQUESTS,
     LS_MAX_COUNT_ITEMS,
     TIME_ACTUALITY_LOCAL_STORAGE
-} from "./options.js";
+} from "./constants.js";
 
 export const getFromStorage = (lsKey) => {
     return JSON.parse(localStorage.getItem(lsKey));

@@ -1,7 +1,7 @@
 import { showErrorHeaderMessage } from "./errors.js";
 
 const API_KEY = "IWHFEEH2R8D3OEy2r3TF7I7kkhfCoG6a";
-const API_URL = "https://calendarific.com/api/v2/";
+const API_URL = "https://calendarific.com";
 const API_HOLIDAY_PATH = "/api/v2/holidays";
 const API_COUNTRY_PATH = "/api/v2/countries";
 const DEFAULT_OPTIONS = {

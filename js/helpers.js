@@ -7,10 +7,10 @@ import {
     LS_KEY_LAST_REQUESTS,
     LS_MAX_COUNT_ITEMS,
     TIME_ACTUALITY_LOCAL_STORAGE
-} from "./options.js";
+} from "./constants.js";
 import { getHolidays, getCountries } from "./api.js";
 import { showErrorHeaderMessage } from "./errors.js";
-import { DOM_CLASS_HOLIDAYS_ITEM, DOM_CLASS_NAME_ANIMATED_SHOW } from "./options.js";
+import { DOM_CLASS_HOLIDAYS_ITEM, DOM_CLASS_NAME_ANIMATED_SHOW } from "./constants.js";
 const DOM_CLASS_NAME_NO_ANIMATED = "no-animation";
 const DOM_CLASS_NAME_ANIMATED_REMOVE = "removed";
 
