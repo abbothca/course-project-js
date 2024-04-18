@@ -8,7 +8,8 @@ import {
 	countriesSelect,
 	yearSelect,
 	requestButton,
-	initSelects
+	initSelects,
+	initTabActive
 } from "./helpers.js";
 import {
 	calculateButtonHandler,
@@ -39,6 +40,7 @@ try {
 }
 
 initSelects();
+initTabActive();
 
 // Event Listeners
 buttonPresetWeek.addEventListener("click", buttonPresetWeekHandler);

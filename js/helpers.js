@@ -171,9 +171,25 @@ export const switchListHolidaysState = (state) => {
 }
 
 export const rearrangeHolidays = (allHolidays) => {
-        allHolidays.forEach((item) => {
-            listHolidays.append(item);
-        })
+    allHolidays.forEach((item) => {
+        listHolidays.append(item);
+    })
 }
 
+export const initTabActive = () => {
+    const url = new URL(window.location.href);
+    const hash = url.hash;
+    if (hash) {
+        const someTabTriggerEl = document.querySelector(url.hash)
+        const tab = new bootstrap.Tab(someTabTriggerEl)
+        tab.show()
+    }
+
+    const tabEl = document.querySelectorAll('button[data-bs-toggle="tab"]')
+    tabEl.forEach((item) => {
+        item.addEventListener('shown.bs.tab', event => {
+            window.location.hash = event.target.id;
+        })
+    })
+}
 export { buttonPresetMonth, buttonPresetWeek }
