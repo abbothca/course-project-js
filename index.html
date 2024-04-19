@@ -53,13 +53,13 @@
                     <ul class="navbar-nav ">
                         <li class="nav-item">
                             <button type="button" class="btn nav-link" data-bs-toggle="modal"
-                                data-bs-target="#aboutModal">
+                                data-bs-target="#aboutModal" data-lang="nav_item_about">
                                 About project
                             </button>
                         </li>
                         <li class="nav-item">
                             <button type="button" class="btn nav-link" data-bs-toggle="modal"
-                                data-bs-target="#contactsModal">
+                                data-bs-target="#contactsModal" data-lang="nav_item_contacts">
                                 Contacts
                             </button>
                         </li>
@@ -69,8 +69,8 @@
                                 ENG
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">UA</a></li>
-                                <li><a class="dropdown-item" href="#">ENG</a></li>
+                                <li><a class="dropdown-item lang lang-ua" href="#" data-lang="ua">UA</a></li>
+                                <li><a class="dropdown-item lang lang-eng" href="#" data-lang="eng">ENG</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -85,14 +85,12 @@
             <li class="nav-item" role="presentation">
                 <button class="nav-link active text-uppercase fw-bold text-dark" id="get-time-tab" data-bs-toggle="tab"
                     data-bs-target="#get-time" type="button" role="tab" aria-controls="get-time"
-                    aria-selected="true">Get the
-                    time</button>
+                    aria-selected="true" data-lang="tab_name_duration">Get the time</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link text-uppercase fw-bold text-dark" id="get-holidays-tab" data-bs-toggle="tab"
                     data-bs-target="#get-holidays" type="button" role="tab" aria-controls="get-holidays"
-                    aria-selected="false">get
-                    holidays</button>
+                    aria-selected="false" data-lang="tab_name_holidays">get holidays</button>
             </li>
         </ul>
         <div class="tab-content mb-5" id="myTabContent">
@@ -100,9 +98,9 @@
             <div class="tab-pane fade show active border border-top-0 px-0 py-3" id="get-time" role="tabpanel"
                 aria-labelledby="get-time-tab">
                 <div class="container-lg p-0 px-3 px-md-4">
-                    <h5 class="py-2">1. Enter dates and other options</h5>
+                    <h5 class="py-2" data-lang="tab_block_enter">1. Enter dates and other options</h5>
                     <fieldset class="py-2 position-relative">
-                        <legend class="fw-light lh-sm fs-6 pb-1">Select of the period of time</legend>
+                        <legend class="fw-light lh-sm fs-6 pb-1" data-lang="tab_task_time">Select of the period of time</legend>
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="row justify-content-between ">
@@ -276,12 +274,14 @@
                             </select>
                         </div>
                         <div class="col-6">
-                            <select id="year" class="form-select" aria-label="Default select example" placeholder="Year">
+                            <select id="year" class="form-select" aria-label="Default select example"
+                                placeholder="Year">
                                 <option value="" disabled selected hidden>Choose a year</option>
                             </select>
                         </div>
                         <div class="d-flex py-3 mt-4 mb-4">
-                            <button id="get-holidays" type="button" class="btn btn-primary btn-custom px-5" disabled>Calculate duration</button>
+                            <button id="get-holidays" type="button" class="btn btn-primary btn-custom px-5"
+                                disabled>Calculate duration</button>
                         </div>
                     </div>
                     <div id="holidays-results" class="holidays-results container-lg p-0 px-md-1">
@@ -314,8 +314,8 @@
             </div>
         </div>
     </div>
-    <footer>
-        <div class="container-lg px-0 px-md-5 mt-3">
+    <footer id="footer">
+        <div id="footerContent" class="container-lg px-0 px-md-5 mt-3">
             <div class="container-fluid border-top pt-5 pb-0 ps-2 px-md-3">
                 <h3>Holidays</h3>
                 <p class="lead">The course project </p>
@@ -346,6 +346,7 @@
             <p class="p-3 mt-4 mb-0 bg-dark bg-gradient text-white fw-light fs-6">
                 <small>&#9400; 2024, Khomych Liubov</small>
             </p>
+        </div>
     </footer>
 
     <!-- Modal About-->

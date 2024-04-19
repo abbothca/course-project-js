@@ -1,0 +1,26 @@
+{
+    "nav_item_about": {
+        "eng": "About",
+        "ua": "Про проєкт"
+    },
+    "nav_item_contacts": {
+        "eng": "Contacts",
+        "ua": "Контакти"
+    },
+    "tab_name_duration": {
+        "eng": "Get the time",
+        "ua": "Розрахувати тривалість"
+    },
+    "tab_name_holidays": {
+        "eng": "get holidays",
+        "ua": "Отримати список свят"
+    },
+    "tab_block_enter": {
+        "eng": "1. Enter dates and other options",
+        "ua": "1. Введіть дати і виберіть інші опції"
+    },
+    "tab_task_time": {
+        "eng": "Select of the period of time",
+        "ua": "Виберіть проміжок часу" 
+    }
+}
