@@ -12,9 +12,12 @@ import {
     countriesSelect,
     yearSelect,
     addNewHolidayLi,
-    DOM_CLASS_HOLIDAYS_ITEM,
-    DOM_CLASS_NAME_ANIMATED_SHOW
+    listHolidays,
+    switchListHolidaysState,
+    sortItemHolidays,
+    rearrangeHolidays
 } from "./helpers.js";
+import { DOM_CLASS_HOLIDAYS_ITEM, DOM_CLASS_NAME_ANIMATED_SHOW } from "./constants.js";
 import { getHolidays } from "./api.js";
 import { showErrorHeaderMessage } from "./errors.js";
 
@@ -50,33 +53,41 @@ export const handleRequestHolidays = async () => {
     document.querySelectorAll(`.${DOM_CLASS_HOLIDAYS_ITEM}`).forEach((element) => {
         element.remove();
     })
-
-    const response = await getHolidays(countriesSelect.value, yearSelect.value);
     try {
+        const response = await getHolidays(countriesSelect.value, yearSelect.value);
+
         const countries = response?.holidays;
-            if (countries && countries.length) {
-                response.holidays.forEach(element => {
-                    addNewHolidayLi(element)
-                });
-            } else {
-                //Tanzania, 2010
-                blockResultsHolidays.classList.add(DOM_CLASS_NAME_ANIMATED_SHOW);
-                const obj = {
-                    name: "Sorry! We've not found this info",
-                    states: "--",
-                    primary_type: "--",
-                    date: {
-                        iso: null
-                    }
+        if (countries && countries.length) {
+            response.holidays.forEach(element => {
+                addNewHolidayLi(element)
+            });
+        } else {
+            //Tanzania, 2010
+            blockResultsHolidays.classList.add(DOM_CLASS_NAME_ANIMATED_SHOW);
+            const obj = {
+                name: "Sorry! We've not found this info",
+                states: "--",
+                primary_type: "--",
+                date: {
+                    iso: null
                 }
-                addNewHolidayLi(obj)
             }
-            let country = document.querySelector(`option[value='${countriesSelect.value}']`).textContent;
-            selectedCountryBlock.textContent = country;
-            selectedYearBlock.textContent = yearSelect.value;
-            blockResultsHolidays.classList.add("show");
+            addNewHolidayLi(obj)
+        }
+        let country = document.querySelector(`option[value='${countriesSelect.value}']`).textContent;
+        selectedCountryBlock.textContent = country;
+        selectedYearBlock.textContent = yearSelect.value;
+        blockResultsHolidays.classList.add("show");
     }
     catch (error) {
         showErrorHeaderMessage(error)
     }
+}
+
+export const sortButtonHandler = () => {
+    const allHolidays = [...(document.querySelectorAll(`.${DOM_CLASS_HOLIDAYS_ITEM}`))];
+    const currentState = listHolidays.dataset.timestamp;
+    allHolidays.sort((a, b) => sortItemHolidays(a, b, currentState));
+    listHolidays.dataset.timestamp = switchListHolidaysState(currentState);
+    rearrangeHolidays(allHolidays);
 }

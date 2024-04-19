@@ -1,22 +1,22 @@
 import {
     getFromStorage,
-    setStorage,
+    setStorage
+} from "./localstorage.js";
+import {
+    LS_KEY_COUNTRIES,
     LS_KEY_LAST_REQUESTS,
     LS_MAX_COUNT_ITEMS,
-    LS_KEY_COUNTRIES,
     TIME_ACTUALITY_LOCAL_STORAGE
-} from "./localstorage.js";
+} from "./constants.js";
 import { getHolidays, getCountries } from "./api.js";
 import { showErrorHeaderMessage } from "./errors.js";
-
+import { DOM_CLASS_HOLIDAYS_ITEM, DOM_CLASS_NAME_ANIMATED_SHOW } from "./constants.js";
 const DOM_CLASS_NAME_NO_ANIMATED = "no-animation";
-export const DOM_CLASS_NAME_ANIMATED_SHOW = "show";
 const DOM_CLASS_NAME_ANIMATED_REMOVE = "removed";
-export const DOM_CLASS_HOLIDAYS_ITEM = "holidays-item";
 
 const listResults = document.querySelector("#get-time .list-group");
 const blockResults = document.querySelector(".duration-results");
-const listHolidays = document.querySelector("#holidays-list");
+export const listHolidays = document.querySelector("#holidays-list");
 const buttonPresetWeek = document.getElementById("setWeek");
 const buttonPresetMonth = document.getElementById("setMonth");
 export const countriesSelect = document.getElementById("country");
@@ -78,6 +78,7 @@ const generateTemplateHolidaysLi = (obj) => {
 export const addNewHolidayLi = (obj) => {
     let newItem = document.createElement("li");
     newItem.classList.add("list-group-item", DOM_CLASS_HOLIDAYS_ITEM);
+    newItem.dataset.timestamp = (obj.date.iso) ? `${(new Date(obj.date.iso)).getTime()}` : "0"
     newItem.innerHTML = generateTemplateHolidaysLi(obj);
     listHolidays.append(newItem);
 }
@@ -139,7 +140,6 @@ const updateListCountries = async () => {
     } catch (error) {
         showErrorHeaderMessage(error)
     }
-
 }
 
 const getListCountries = async () => {
@@ -159,4 +159,37 @@ export const initSelects = async () => {
     checkIsCanGetHolidays();
 }
 
+export const sortItemHolidays = (a, b, direction) => {
+    const isBBiggerA = b.dataset?.timestamp > a.dataset?.timestamp;
+    const isGrowth = (!direction || direction === ">") ? isBBiggerA : !isBBiggerA;
+    return (isGrowth) ? 1 : -1;
+}
+
+export const switchListHolidaysState = (state) => {
+    return (!state || state === ">") ?
+        "<" : ">";
+}
+
+export const rearrangeHolidays = (allHolidays) => {
+    allHolidays.forEach((item) => {
+        listHolidays.append(item);
+    })
+}
+
+export const initTabActive = () => {
+    const url = new URL(window.location.href);
+    const hash = url.hash;
+    if (hash) {
+        const someTabTriggerEl = document.querySelector(url.hash)
+        const tab = new bootstrap.Tab(someTabTriggerEl)
+        tab.show()
+    }
+
+    const tabEl = document.querySelectorAll('button[data-bs-toggle="tab"]')
+    tabEl.forEach((item) => {
+        item.addEventListener('shown.bs.tab', event => {
+            window.location.hash = event.target.id;
+        })
+    })
+}
 export { buttonPresetMonth, buttonPresetWeek }
