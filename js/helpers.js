@@ -52,12 +52,14 @@ const getStringStates = (obj) => {
 }
 
 const generateTemplateLi = (obj) => {
+    const measure = obj.measure.toLowerCase();
+    console.log("measure: ", measure)
     return `
 			<div class="row">
 				<div class="col-3">${(new Date(obj.start)).toDateString()}</div>
 				<div class="col-3">${(new Date(obj.end)).toDateString()}</div>
-				<div class="col-2">${obj.days}</div>
-				<div class="col-2">${obj.measure}</div>
+				<div class="col-2" data-lang="tab_task_days_${obj.days}">${obj.days}</div>
+				<div class="col-2" data-lang="tab_task_measure_${measure}">${obj.measure}</div>
 				<div class="col-2">${obj.value}</div>
 			</div>
 			`

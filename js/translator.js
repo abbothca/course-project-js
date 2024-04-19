@@ -26,15 +26,20 @@ export const translate = async ({ target }) => {
 			const stringStorage = sessionStorage.getItem("translator_holidays");
 			jsonObj = JSON.parse(stringStorage);
 		}
-		// const responseJson = await fetch(`./content/translate.json`);
-		// const jsonObj = await responseJson.json();
-		// sessionStorage.setItem("translator_holidays", JSON.stringify(jsonObj));
-		// console.log(jsonObj)
-		const keys = Object.keys(jsonObj);
+		console.log(jsonObj)
+
+		const keys = Object.keys(jsonObj["content"]);
+		console.log(keys)
 		keys.forEach((key) => {
 			const dataName = key;
-			console.log(`[data-lang="${dataName}"]`)
-			document.querySelector(`[data-lang="${key}"]`).textContent = jsonObj[key][selectedLang]
+			document.querySelectorAll(`[data-lang="${key}"]`).forEach((item) => {
+				item.textContent = jsonObj["content"][key][selectedLang]
+			})
+		})
+
+		Object.keys(jsonObj["placeholder"]).forEach((key) => {
+			const dataName = key;
+			document.querySelector(`[data-placeholder="${key}"]`).placeholder = jsonObj["placeholder"][key][selectedLang]
 		})
 	}
 
