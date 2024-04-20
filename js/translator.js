@@ -63,8 +63,8 @@ const translateByTemplate = async (selectedLang) => {
 			const html = await getTemplateFromServer(selectedLang);
 			const about = (html.querySelector(`#aboutContent-${selectedLang}`)).cloneNode(true);
 			const footer = (html.querySelector(`#footerContent-${selectedLang}`)).cloneNode(true);
-			document.getElementById(DOM_ID_HIDDEN_AREA).append(about);
-			document.getElementById(DOM_ID_HIDDEN_AREA).append(footer);
+			hiddenArea.append(about);
+			hiddenArea.append(footer);
 		} catch (error) {
 			showErrorHeaderMessage(error);
 		}
@@ -78,31 +78,19 @@ const translateByTemplate = async (selectedLang) => {
 }
 
 export const translate = async ({ target }) => {
-	console.log(window.location.href);
 	if (target.classList.contains("lang")) {
 		const selectedLang = target.dataset.lang;
-		console.log(selectedLang);
 		document.getElementById("langpicker").querySelector("span").textContent = selectedLang.toUpperCase();
 
 		await translateByTemplate(selectedLang);
-		console.log(window.location.href);
 
 		let jsonObj = getSSTranslator();
 		if (!jsonObj) {
-			try {
-				jsonObj = await getJSONFromServer();
-				setSSTranslator(jsonObj);
-			} catch (error) {
-				showErrorHeaderMessage(error);
-			}
+			jsonObj = await getJSONFromServer();
+			setSSTranslator(jsonObj);
 		};
 		translateByKey(jsonObj, selectedLang);
-	console.log(window.location.href);
-
 	}
-
-	console.log(window.location.href);
-
 }
 
 initTranslate();

@@ -127,6 +127,10 @@
         "modal_contact" : {
             "eng": "Contacts",
             "ua": "Контакти"
+        },
+        "header" : {
+            "eng": "Holidays",
+            "ua": "Святкові і вихідні дні"
         }
     },
     "placeholder": {
