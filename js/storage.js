@@ -4,6 +4,7 @@ import {
     LS_MAX_COUNT_ITEMS,
     TIME_ACTUALITY_LOCAL_STORAGE
 } from "./constants.js";
+const SS_KEY_TRANSLATOR = "translator_holidays";
 
 export const getFromStorage = (lsKey) => {
     return JSON.parse(localStorage.getItem(lsKey));
@@ -26,5 +27,13 @@ export const setLastCalculationStorage = (value) => {
     };
 
     setStorage(LS_KEY_LAST_REQUESTS, lastRequests);
+};
 
+export const getSSTranslator = () => {
+    const stringStorage = sessionStorage.getItem(SS_KEY_TRANSLATOR);
+    return JSON.parse(stringStorage);
+}
+
+export const setSSTranslator = (jsonObj) => {
+    sessionStorage.setItem(SS_KEY_TRANSLATOR, JSON.stringify(jsonObj));
 }

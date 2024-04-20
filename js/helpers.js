@@ -1,7 +1,7 @@
 import {
     getFromStorage,
     setStorage
-} from "./localstorage.js";
+} from "./storage.js";
 import {
     LS_KEY_COUNTRIES,
     LS_KEY_LAST_REQUESTS,
@@ -53,7 +53,6 @@ const getStringStates = (obj) => {
 
 const generateTemplateLi = (obj) => {
     const measure = obj.measure.toLowerCase();
-    console.log("measure: ", measure)
     return `
 			<div class="row">
 				<div class="col-3">${(new Date(obj.start)).toDateString()}</div>

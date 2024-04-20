@@ -5,7 +5,7 @@ import {
     setHoursStartDate,
     setHoursEndDate
 } from "./date.js";
-import { setLastCalculationStorage } from "./localstorage.js";
+import { setLastCalculationStorage } from "./storage.js";
 import {
     checkIsDisabledButton,
     addNewLi,
