@@ -5,8 +5,8 @@ const DOM_ID_HIDDEN_AREA = "hiddenArea";
 let hiddenArea = document.getElementById(DOM_ID_HIDDEN_AREA);
 
 const getTemplateFromServer = async (selectedLang) => {
-	const url = new URL(`/modal/template_modal_about-${selectedLang}.html`, window.location.href);
-	const response = await fetch(url);
+	// const url = new URL(`/modal/template_modal_about-${selectedLang}.html`, window.location.href);
+	const response = await fetch("https://github.com/abbothca/course-project-js/tree/translate/modal/template_modal_about-${selectedLang}.html");
 
 	if (!response.ok) {
 		throw new Error(`Something went wrong with connection! Status Code: ${response.status}`);
@@ -18,8 +18,8 @@ const getTemplateFromServer = async (selectedLang) => {
 }
 
 const getJSONFromServer = async () => {
-	const url = new URL(`./content/translate.json`, window.location.href);
-	const response = await fetch(url);
+	// const url = new URL(`./content/translate.json`, window.location.href);
+	const response = await fetch("https://github.com/abbothca/course-project-js/tree/translate/content/translate.json");
 
 	if (!response.ok) {
 		throw new Error(`Something went wrong with connection! Status Code: ${response.status}`);
