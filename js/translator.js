@@ -19,7 +19,7 @@ const getTemplateFromServer = async (selectedLang) => {
 
 const getJSONFromServer = async () => {
 	// const url = new URL(`./content/translate.json`, window.location.href);
-	const response = await fetch(`./translate/content/translate.json`);
+	const response = await fetch(`./content/translate.json`);
 
 	if (!response.ok) {
 		throw new Error(`Something went wrong with connection! Status Code: ${response.status}`);
