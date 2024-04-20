@@ -1,5 +1,6 @@
 import { datepicker } from "./index.js";
 import { Datepicker } from "./datepicker.js";
+import { translate } from "./translator.js";
 import {
     getDurationTime,
     setHoursStartDate,
@@ -90,4 +91,13 @@ export const sortButtonHandler = () => {
     allHolidays.sort((a, b) => sortItemHolidays(a, b, currentState));
     listHolidays.dataset.timestamp = switchListHolidaysState(currentState);
     rearrangeHolidays(allHolidays);
+}
+
+export const langHandler = async (event) => {
+	try {
+		await translate(event);
+	}
+	catch (error) {
+		showErrorHeaderMessage(error)
+	};
 }

@@ -78,12 +78,14 @@ const translateByTemplate = async (selectedLang) => {
 }
 
 export const translate = async ({ target }) => {
+	console.log(window.location.href);
 	if (target.classList.contains("lang")) {
 		const selectedLang = target.dataset.lang;
 		console.log(selectedLang);
-		document.getElementById("langpicker").querySelector("a").textContent = selectedLang.toUpperCase();
+		document.getElementById("langpicker").querySelector("span").textContent = selectedLang.toUpperCase();
 
 		await translateByTemplate(selectedLang);
+		console.log(window.location.href);
 
 		let jsonObj = getSSTranslator();
 		if (!jsonObj) {
@@ -95,7 +97,11 @@ export const translate = async ({ target }) => {
 			}
 		};
 		translateByKey(jsonObj, selectedLang);
+	console.log(window.location.href);
+
 	}
+
+	console.log(window.location.href);
 
 }
 
