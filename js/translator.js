@@ -6,7 +6,7 @@ let hiddenArea = document.getElementById(DOM_ID_HIDDEN_AREA);
 
 const getTemplateFromServer = async (selectedLang) => {
 	// const url = new URL(`/modal/template_modal_about-${selectedLang}.html`, window.location.href);
-	const response = await fetch(`https://github.com/abbothca/course-project-js/tree/translate/modal/template_modal_about-${selectedLang}.html`);
+	const response = await fetch(`https://github.com/abbothca/course-project-js/tree/translate/modal/template_modal_about-${selectedLang}.html`, {mode: "cors"});
 
 	if (!response.ok) {
 		throw new Error(`Something went wrong with connection! Status Code: ${response.status}`);
