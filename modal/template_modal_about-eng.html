@@ -1,0 +1,123 @@
+<!-- Modal About content -->
+<div id="aboutContent-eng" class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+        <div class="modal-header bg-primary">
+            <h1 class="modal-title d-flex align-items-center fs-5 text-white text-uppercase" id="aboutModalLabel">
+                <svg class="me-2" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_65_42)">
+                        <path d="M4.5 0H6V4.5H4.5V0ZM16.5 0H18V4.5H16.5V0Z" fill="#ffffff" />
+                        <path
+                            d="M9.9 21H1.5V9H21V9.9C21.6 10.2 22.05 10.5 22.5 10.95V1.5H19.5V6H15V1.5H7.5V6H3V1.5H0V22.5H10.95C10.5 22.05 10.2 21.6 9.9 21Z"
+                            fill="#ffffff" />
+                        <path d="M21 18H16.5V13.5H18V16.5H21V18Z" fill="#ffffff" />
+                        <path
+                            d="M17.25 12C20.1 12 22.5 14.4 22.5 17.25C22.5 20.1 20.1 22.5 17.25 22.5C14.4 22.5 12 20.1 12 17.25C12 14.4 14.4 12 17.25 12ZM17.25 10.5C13.5 10.5 10.5 13.5 10.5 17.25C10.5 21 13.5 24 17.25 24C21 24 24 21 24 17.25C24 13.5 21 10.5 17.25 10.5Z"
+                            fill="#ffffff" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_65_42">
+                            <rect width="24" height="24" fill="white" />
+                        </clipPath>
+                    </defs>
+                </svg>
+                About the project Holidays
+            </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="px-1 pb-0">
+                <h2>The course project</h2>
+                <div>
+                    <div>
+                        Create a web application to determine the time interval between given dates and to determine
+                        public holidays for a country in a selected year. The API will obtain data about countries and
+                        holidays from <a href="https://calendarific.com/&nbsp;" target="_blank"
+                            rel="noopener noreferrer">https://calendarific.com/&nbsp;</a>.
+                        To do this, you will need to create an account on this site to use the API key in the work of
+                        the open API of this site.
+                    </div>
+                    <h5>The basic idea of the app</h5>
+                    <div>
+                        The web page should contain 2 tabs:
+                    </div>
+                    <ol>
+                        <li>On the first tab, the user can select a date in the first input, then a date in the second
+                            input, and set additional parameters - then get the time interval between these dates.</li>
+                        <li>On the second tab, the user can select the country in the first input, then the year in the
+                            second input - and get a list of holidays with dates.</li>
+                    </ol>
+                    <h3>Features of work tab #1</h3>
+                    <ol>
+                        <li>Only after the user has selected one date in the first input, he can change the date in the
+                            second input, which is earlier than the date from the first input and vice versa</li>
+                        <li>The user can choose time interval presets:<br>— 'week' (7 days)<br>— 'month' (30 days)</li>
+                        <li>The user can choose options:<br>— 'All days'<br>— 'Working days'<br>— 'Weekend'</li>
+                        <li>The user can choose options:<br>— 'Count the number of days'<br>— 'Calculate the number of
+                            hours'<br>— 'Count the number of minutes'<br>— 'Count number of seconds'</li>
+                        <li>The user can enter the application and see, if there are any, the last 10 results that he
+                            calculated in the form of a table (start date, end date, and what the measurement result
+                            is). To do this, use localStorage.</li>
+                    </ol>
+                    <h3>Features of work tab #2</h3>
+                    <ol>
+                        <li>When the user enters this tab, a request must be made to<a
+                                href="https://calendarific.com/api/v2/countries">https://calendarific.com/api/v2/countries</a>&nbsp;
+                                to receive a list of all countries. This list will be used for the options in the first <strong>'Select Country'</strong> input.</li>
+                        <li>The second input <strong>'Select a year'</strong> should contain a list of years from 2001 to 2049. This input should be blocked until the user selects a country.</li>
+                        <li>The default value in the <strong>'Select a year'</strong> input should be the current year.</li>
+                        <li>When both options are selected, you need to make a request to <a
+                                href="https://calendarific.com/api/v2/holidays">https://calendarific.com/api/v2/holidays</a>
+                        </li>
+                        <li>The obtained result should be presented in the form of a table with columns <strong>'Date'</strong> and <strong>'Name of the holiday'</strong></li>
+                        <li>For the <strong>'Date'</strong> column, there should be a clickable button on which the user can sort the holidays in chronological or reverse chronological order
+                        </li>
+                        <li>If either of these two requests to endpoints fails, an error block should be displayed on the screen.</li>
+                    </ol>
+                    <h3>General features of the application</h3>
+                    <ol>
+                        <li>The user should be able to comfortably work with this application from a mobile phone.</li>
+                        <li>The user must be able to go to the real page of the application on the Internet (Github pages).</li>
+                        <li>The interface should be in English or Ukrainian.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+<!-- Footer content -->
+<div id="footerContent-eng" class="container-lg px-0 px-md-5 mt-3">
+    <div class="container-fluid border-top pt-5 pb-0 ps-2 px-md-3">
+        <h3>Holidays</h3>
+        <p class="lead">The course project </p>
+    </div>
+    <div class="justify-content-start">
+        <div class="row px-0 mx-0">
+            <div class="col-4 col-md-2 d-none d-sm-flex align-items-center justify-content-center">
+                <img src="./img/jpg/4865096.jpg" class="img-fluid image">
+            </div>
+            <div class="col-12 col-sm-6 col-md-5 d-flex flex-column align-items-start px-md-5">
+                <p>
+                    The page was carried out as a course project in the course JS11 (Projector).
+                </p>
+                <p>
+                    Created a web application to determine the time interval between given dates and
+                    determined the public holidays for a country in a selected.
+                </p>
+            </div>
+            <div class="col-2 d-none d-md-block"></div>
+            <div class="col-12 col-md-3">
+                <h6>Contacts</h6>
+                <div rel="author">Khomych Liubov</div>
+                <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                    href="mailto:kroka.luba@gmail.com" rel="author">kroka.luba@gmail.com</a>
+            </div>
+        </div>
+    </div>
+    <p class="p-3 mt-4 mb-0 bg-dark bg-gradient text-white fw-light fs-6">
+        <small>&#9400; 2024, Khomych Liubov</small>
+    </p>
+</div>

@@ -1,0 +1,157 @@
+<!-- Modal About content -->
+<div id="aboutContent-ua" class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+        <div class="modal-header bg-primary">
+            <h1 class="modal-title d-flex align-items-center fs-5 text-white text-uppercase"
+                id="aboutModalLabel">
+                <svg class="me-2" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_65_42)">
+                        <path d="M4.5 0H6V4.5H4.5V0ZM16.5 0H18V4.5H16.5V0Z" fill="#ffffff" />
+                        <path
+                            d="M9.9 21H1.5V9H21V9.9C21.6 10.2 22.05 10.5 22.5 10.95V1.5H19.5V6H15V1.5H7.5V6H3V1.5H0V22.5H10.95C10.5 22.05 10.2 21.6 9.9 21Z"
+                            fill="#ffffff" />
+                        <path d="M21 18H16.5V13.5H18V16.5H21V18Z" fill="#ffffff" />
+                        <path
+                            d="M17.25 12C20.1 12 22.5 14.4 22.5 17.25C22.5 20.1 20.1 22.5 17.25 22.5C14.4 22.5 12 20.1 12 17.25C12 14.4 14.4 12 17.25 12ZM17.25 10.5C13.5 10.5 10.5 13.5 10.5 17.25C10.5 21 13.5 24 17.25 24C21 24 24 21 24 17.25C24 13.5 21 10.5 17.25 10.5Z"
+                            fill="#ffffff" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_65_42">
+                            <rect width="24" height="24" fill="white" />
+                        </clipPath>
+                    </defs>
+                </svg>
+                Про проект Holidays
+            </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="px-1 pb-0">
+                <h2>Курсовий проєкт</h2>
+                <div>
+                    <div>
+                        Створення веб-застосунку для визначення проміжку часу між заданими датами
+                        та визначення святкових дат&nbsp;для країни в обраний рік.
+                        Для роботи буде використовуватись API для отримання даних про
+                        країни та свята з сайту&nbsp;<a href="https://calendarific.com/&nbsp;" target="_blank"
+                            rel="noopener noreferrer">https://calendarific.com/&nbsp;</a>.
+                        Для цього потрібно буде створити аккаунт на цьому сайті для
+                        використання API-ключа в роботі відкритого API цього
+                        сайту.
+                    </div>
+                    <h5>Основна ідея застосунку</h5>
+                    <div>
+                        Веб сторінка має містити 2 вкладки (таби):
+                    </div>
+                    <ol>
+                        <li>На першій табі юзер може обрати в
+                            першому інпуті дату, потім в другому інпуті дату, задати
+                            додаткові параметри - і отримати проміжок часу між цими
+                            датами.</li>
+                        <li>На другій табі юзер може обрати
+                            країну в першому інпуті, потім рік в другому інпуті - і
+                            отримати список свят з датами<br></li>
+                    </ol>
+                    <h3>Особливості роботи таби №1</h3>
+                    <ol>
+                        <li>Тільки після того як юзер обрав одну
+                            дату в першому інпуті, він може обрати дату в другому інпуті
+                            яка йде не раніше дати з першого інпуту і навпаки</li>
+                        <li>Юзер може обрати пресети проміжків
+                            часу:<br>— 'тиждень' (7 днів)<br>—&nbsp;'місяць' (30 днів)
+                        </li>
+                        <li>Юзер може обрати опції:<br>— 'Всі
+                            дні'<br>— 'Будні дні'<br>—&nbsp;'Вихідні дні'</li>
+                        <li>Юзер може вибрати
+                            опції:<br>—&nbsp;'Порахувати кількість
+                            днів'<br>—&nbsp;'Порахувати кількість
+                            годин'<br>—&nbsp;'Порахувати кількість хвилин'<br>—
+                            'Порахувати кількість секунд'</li>
+                        <li>Юзер може зайти в застосунок і
+                            побачити, якщо вони є, останні 10 результатів які він
+                            рахував у вигляді таблиці (стартова дата, кінцева дата, і
+                            який результат виміру)<br>— Для цього використати
+                            localStorage</li>
+                    </ol>
+                    <h3>Особливості роботи таби №2</h3>
+                    <ol>
+                        <li>Коли юзер заходить на цю табу
+                            має бути зроблений запит на ендпоїнт&nbsp;<a
+                                href="https://calendarific.com/api/v2/countries">https://calendarific.com/api/v2/countries</a>&nbsp;
+                            для отримання списку всіх країн. Цей список буде
+                            використовуватись для опцій в першому інпуті '<b>Вибір
+                                країни</b>'.&nbsp;</li>
+                        <li>В другому інпуті '<b>Вибір року</b>'
+                            має бути список років від 2001 до 2049. Цей інпут має бути
+                            заблокований доки юзер не обере країну&nbsp;</li>
+                        <li>Значенням по замовчуванню в інпуті
+                            'Вибір року' має бути поточний рік&nbsp;</li>
+                        <li>Коли обидва параметри будуть обрані,
+                            потрібно зробити запит на ендпоїнт&nbsp;<a
+                                href="https://calendarific.com/api/v2/holidays">https://calendarific.com/api/v2/holidays</a>
+                        </li>
+                        <li>Отриманий результат потрібно
+                            представити у вигляді таблиці з колонками '<b>Дата</b>' та
+                            '<b>Назва свята</b>'&nbsp;</li>
+                        <li>Для колонки '<b>Дата</b>' має бути
+                            кнопка по кліку на яку юзер може посортувати свята в
+                            хронологічному чи зворотньому хронологічному порядку&nbsp;
+                        </li>
+                        <li>У випадку помилки якогось з цих двох
+                            запитів до ендпоїнтів потрібно вивести на екран блок з
+                            повідомленням про помилку&nbsp;&nbsp;</li>
+                    </ol>
+                    <h3>Загальні особливості роботи застосунку</h3>
+                    <ol>
+                        <li>Юзер має мати можливість комфортно
+                            працювати з мобільного телефона з цим застосунком<br>—
+                            Мається на увазі що має бути передбачена мобільна версія
+                            сайту<br></li>
+                        <li>Юзер має мати можливість перейти на
+                            реальну сторінку застосунку в інтернеті<br>— Мається на
+                            увазі що застосунок розміщується на Github pages<br></li>
+                        <li>Інтерфейс має бути англійською або
+                            українською<br>— Мається на увазі що застосунок має бути
+                            перекладений ОДНІЄЮ з вказаних мов<br></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Закрити</button>
+        </div>
+    </div>
+</div>
+<!-- Footer content -->
+<div id="footerContent-ua" class="container-lg px-0 px-md-5 mt-3">
+    <div class="container-fluid border-top pt-5 pb-0 ps-2 px-md-3">
+        <h3>Святкові і вихідні дні</h3>
+        <p class="lead">Курсовий проєкт </p>
+    </div>
+    <div class="justify-content-start">
+        <div class="row px-0 mx-0">
+            <div class="col-4 col-md-2 d-none d-sm-flex align-items-center justify-content-center">
+                <img src="./img/jpg/4865096.jpg" class="img-fluid image">
+            </div>
+            <div class="col-12 col-sm-6 col-md-5 d-flex flex-column align-items-start px-md-5">
+                <p>
+                    Додаток є результатом виконання курсового проєкту до навчального курсу JS11 (Projector), квітень, 2024р.
+                </p>
+                <p>
+                    Створено веб-додаток для визначення часового інтервалу між заданими датами та визначення державних свят для вибраної країни.
+                </p>
+            </div>
+            <div class="col-2 d-none d-md-block"></div>
+            <div class="col-12 col-md-3">
+                <h6>Контакти</h6>
+                <div rel="author">Хомич Любов</div>
+                <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                    href="mailto:kroka.luba@gmail.com" rel="author">kroka.luba@gmail.com</a>
+            </div>
+        </div>
+    </div>
+    <p class="p-3 mt-4 mb-0 bg-dark bg-gradient text-white fw-light fs-6">
+        <small>&#9400; 2024, Хомич Любов</small>
+    </p>
+</div>

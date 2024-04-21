@@ -53,24 +53,24 @@
                     <ul class="navbar-nav ">
                         <li class="nav-item">
                             <button type="button" class="btn nav-link" data-bs-toggle="modal"
-                                data-bs-target="#aboutModal">
+                                data-bs-target="#aboutModal" data-lang="nav_item_about">
                                 About project
                             </button>
                         </li>
                         <li class="nav-item">
                             <button type="button" class="btn nav-link" data-bs-toggle="modal"
-                                data-bs-target="#contactsModal">
+                                data-bs-target="#contactsModal" data-lang="nav_item_contacts">
                                 Contacts
                             </button>
                         </li>
                         <li id="langpicker" class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            <span class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 ENG
-                            </a>
+                            </span>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">UA</a></li>
-                                <li><a class="dropdown-item" href="#">ENG</a></li>
+                                <li><span class="dropdown-item lang lang-ua" data-lang="ua">UA</span></li>
+                                <li><span class="dropdown-item lang lang-eng" data-lang="eng">ENG</span></li>
                             </ul>
                         </li>
                     </ul>
@@ -80,19 +80,17 @@
     </header>
 
     <div class="main container-lg px-1 px-md-5">
-        <h1 class="mb-3">Holidays</h1>
+        <h1 class="mb-3" data-lang="header">Holidays</h1>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active text-uppercase fw-bold text-dark" id="get-time-tab" data-bs-toggle="tab"
                     data-bs-target="#get-time" type="button" role="tab" aria-controls="get-time"
-                    aria-selected="true">Get the
-                    time</button>
+                    aria-selected="true" data-lang="tab_name_duration">Get the time</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link text-uppercase fw-bold text-dark" id="get-holidays-tab" data-bs-toggle="tab"
                     data-bs-target="#get-holidays" type="button" role="tab" aria-controls="get-holidays"
-                    aria-selected="false">get
-                    holidays</button>
+                    aria-selected="false" data-lang="tab_name_holidays">get holidays</button>
             </li>
         </ul>
         <div class="tab-content mb-5" id="myTabContent">
@@ -100,9 +98,9 @@
             <div class="tab-pane fade show active border border-top-0 px-0 py-3" id="get-time" role="tabpanel"
                 aria-labelledby="get-time-tab">
                 <div class="container-lg p-0 px-3 px-md-4">
-                    <h5 class="py-2">1. Enter dates and other options</h5>
+                    <h5 class="py-2" data-lang="tab_block_enter">1. Enter dates and other options</h5>
                     <fieldset class="py-2 position-relative">
-                        <legend class="fw-light lh-sm fs-6 pb-1">Select of the period of time</legend>
+                        <legend class="fw-light lh-sm fs-6 pb-1" data-lang="tab_task_time">Select of the period of time</legend>
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="row justify-content-between ">
@@ -128,13 +126,11 @@
                                                         </svg>
                                                     </span>
                                                 </label>
-                                                <input id="startDate" class="form-control input__date" type="text"
+                                                <input id="startDate" class="form-control input__date" type="text" data-placeholder="placeholder_start"
                                                     placeholder="Start date" />
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="col-sm-6 pb-2">
                                         <div class="datepicker d-flex flex-column align-items-center py-1 mt-2">
                                             <div class="container error">
@@ -159,7 +155,7 @@
                                                     </span>
                                                 </label>
                                                 <input id="endDate" class="form-control input__date" type="text"
-                                                    placeholder="End date" />
+                                                    placeholder="End date" data-placeholder="placeholder_end"/>
                                             </div>
                                         </div>
                                     </div>
@@ -167,17 +163,17 @@
                             </div>
                         </div>
                         <div class="d-sm-flex justify-content-start align-items-center pt-1 ps-4">
-                            <span class="d-block mb-2 mb-md-0">
+                            <span class="d-block mb-2 mb-md-0" data-lang="tab_label_presets">
                                 Сalculate from the start date:
                             </span>
                             <div class=" ms-sm-3">
                                 <div class="form-check ps-0 d-inline ms-sm-4">
-                                    <button id="setWeek" class="btn btn-dark btn-sm text-capitalize" disabled>
+                                    <button id="setWeek" class="btn btn-dark btn-sm text-capitalize" data-lang="tab_presets_week" disabled>
                                         Week
                                     </button>
                                 </div>
                                 <div class="d-inline ms-4">
-                                    <button id="setMonth" class="btn btn-sm btn-dark text-capitalize" disabled>
+                                    <button id="setMonth" class="btn btn-sm btn-dark text-capitalize" data-lang="tab_presets_month" disabled>
                                         month
                                     </button>
                                 </div>
@@ -186,79 +182,79 @@
                     </fieldset>
                     <div class="row py-1">
                         <fieldset class="col-12 col-lg-5 rounded py-1 my-0">
-                            <legend class="fw-light lh-sm fs-6">Choose what days will count</legend>
+                            <legend class="fw-light lh-sm fs-6" data-lang="tab_task_days">Choose what days will count</legend>
                             <div class="d-flex justify-content-start">
                                 <div class="form-check ps-0 d-inline">
                                     <input class="btn-check" type="radio" name="radioCalc" value="days"
                                         id="radioCalcDays" autocomplete="off" checked>
-                                    <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCalcDays">
-                                        Days
+                                    <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCalcDays" data-lang="tab_task_days_days">
+                                        All days
                                     </label>
                                 </div>
                                 <div class="form-check  d-inline  ps-2 ps-md-4">
                                     <input class="btn-check" type="radio" name="radioCalc" value="weekdays"
                                         id="radioCalcWeekdays" autocomplete="off">
-                                    <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCalcWeekdays">
+                                    <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCalcWeekdays" data-lang="tab_task_days_weekdays">
                                         weekdays
                                     </label>
                                 </div>
                                 <div class="form-check  d-inline  ps-2 ps-md-4">
                                     <input class="btn-check" type="radio" name="radioCalc" value="weekends"
                                         id="radioCalcWeekends" autocomplete="off">
-                                    <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCalcWeekends">
+                                    <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCalcWeekends" data-lang="tab_task_days_weekends">
                                         weekends
                                     </label>
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset class="col-12 col-lg-7 rounded py-1 my-0">
-                            <legend class="fw-light lh-sm fs-6">The measure of time</legend>
+                            <legend class="fw-light lh-sm fs-6" data-lang="tab_task_days_measure">The measure of time</legend>
                             <div class="form-check ps-0 d-inline">
                                 <input class="btn-check" type="radio" name="radioCount" value="seconds"
                                     id="radioCountSeconds" checked>
-                                <label class="btn btn-sm btn-outline-dark text-capitalize" for="radioCountSeconds">
+                                <label class="btn btn-sm btn-outline-dark text-capitalize" for="radioCountSeconds" data-lang="tab_task_measure_seconds">
                                     Seconds
                                 </label>
                             </div>
                             <div class="form-check d-inline ps-2 ps-md-4">
                                 <input class="btn-check" type="radio" name="radioCount" value="minutes"
                                     id="radioCountMinutes">
-                                <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCountMinutes">
+                                <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCountMinutes" data-lang="tab_task_measure_minutes">
                                     Minutes
                                 </label>
                             </div>
                             <div class="form-check d-inline ps-2 ps-md-4">
                                 <input class="btn-check" type="radio" name="radioCount" value="hours"
                                     id="radioCountHours">
-                                <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCountHours">
+                                <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCountHours" data-lang="tab_task_measure_hours">
                                     Hours
                                 </label>
                             </div>
                             <div class="form-check d-inline ps-2 ps-md-4">
                                 <input class="btn-check" type="radio" name="radioCount" value="days"
                                     id="radioCountDays">
-                                <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCountDays">
+                                <label class="btn btn-sm  btn-outline-dark text-capitalize" for="radioCountDays" data-lang="tab_task_measure_days">
                                     Days
                                 </label>
                             </div>
                         </fieldset>
                     </div>
                     <div class="d-flex py-3 mt-2 mb-2">
-                        <button type="button" id="calculateButton" class="btn btn-primary btn-custom px-5"
+                        <button type="button" id="calculateButton" class="btn btn-primary btn-custom px-5" data-lang="tab_button_duration"
                             disabled>Calculate duration</button>
                     </div>
                 </div>
                 <div class="duration-results container-lg p-0 px-0 px-sm-2 px-md-4">
                     <hr>
-                    <h5 class="py-2 px-3 px-md-0">2. The results of previous calculations</h5>
+                    <h5 class="py-2 px-3 px-md-0" data-lang="tab_header_result_duration">2. The results of previous calculations</h5>
                     <ul class="list-group pt-2 duration-list">
                         <li class="list-group-item bg-dark bg-gradient">
                             <div class="row">
-                                <div class="col-3 fw-bold text-white">Start date</div>
-                                <div class="col-3 fw-bold text-white">End date</div>
-                                <div class="col-2 fw-bold text-white">Countable</div>
-                                <div class="col-2 fw-bold text-white">Measure</div>
-                                <div class="col-2 fw-bold text-white">Result</div>
+                                <div class="col-3 fw-bold text-white" data-lang="tab_table_start">Start date</div>
+                                <div class="col-3 fw-bold text-white" data-lang="tab_table_end">End date</div>
+                                <div class="col-2 fw-bold text-white" data-lang="tab_table_countable">Countable</div>
+                                <div class="col-2 fw-bold text-white" data-lang="tab_table_measure">Measure</div>
+                                <div class="col-2 fw-bold text-white" data-lang="tab_table_result">Result</div>
                             </div>
                         </li>
                     </ul>
@@ -268,20 +264,22 @@
             <div class="tab-pane fade border border-top-0 px-2 py-3" id="get-holidays" role="tabpanel"
                 aria-labelledby="home-tab">
                 <div class="container p-0 px-md-4">
-                    <h5 class="py-2">1. Choose options</h5>
+                    <h5 class="py-2" data-lang="tab_task_holiday_options">1. Choose options</h5>
                     <div class="row">
                         <div class="col-6">
                             <select id="country" class="form-select" aria-label="Default select example">
-                                <option value="" disabled selected hidden>Choose a country</option>
+                                <option value="" disabled selected hidden data-lang="tab_task_country">Choose a country</option>
                             </select>
                         </div>
                         <div class="col-6">
-                            <select id="year" class="form-select" aria-label="Default select example" placeholder="Year">
-                                <option value="" disabled selected hidden>Choose a year</option>
+                            <select id="year" class="form-select" aria-label="Default select example"
+                                placeholder="Year">
+                                <option value="" disabled selected hidden data-lang="tab_task_year">Choose a year</option>
                             </select>
                         </div>
                         <div class="d-flex py-3 mt-4 mb-4">
-                            <button id="get-holidays" type="button" class="btn btn-primary btn-custom px-5" disabled>Calculate duration</button>
+                            <button id="get-holidays" type="button" class="btn btn-primary btn-custom px-5" data-lang="tab_button_holidays"
+                                disabled>Get holidays</button>
                         </div>
                     </div>
                     <div id="holidays-results" class="holidays-results container-lg p-0 px-md-1">
@@ -314,8 +312,8 @@
             </div>
         </div>
     </div>
-    <footer>
-        <div class="container-lg px-0 px-md-5 mt-3">
+    <footer id="footer">
+        <div id="footerContent" class="container-lg px-0 px-md-5 mt-3">
             <div class="container-fluid border-top pt-5 pb-0 ps-2 px-md-3">
                 <h3>Holidays</h3>
                 <p class="lead">The course project </p>
@@ -346,15 +344,15 @@
             <p class="p-3 mt-4 mb-0 bg-dark bg-gradient text-white fw-light fs-6">
                 <small>&#9400; 2024, Khomych Liubov</small>
             </p>
+        </div>
     </footer>
 
     <!-- Modal About-->
     <div class="modal fade " id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div id="aboutContent" class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h1 class="modal-title d-flex align-items-center fs-5 text-white text-uppercase"
-                        id="aboutModalLabel">
+                    <h1 class="modal-title d-flex align-items-center fs-5 text-white text-uppercase" id="aboutModalLabel">
                         <svg class="me-2" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_65_42)">
@@ -373,98 +371,64 @@
                                 </clipPath>
                             </defs>
                         </svg>
-                        About project Holidays
+                        About the project Holidays
                     </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="px-1 pb-0">
-                        <h2>Курсовий проєкт</h2>
+                        <h2>The course project</h2>
                         <div>
                             <div>
-                                Створення веб-застосунку для визначення проміжку часу між заданими датами
-                                та визначення святкових дат&nbsp;для країни в обраний рік.
-                                Для роботи буде використовуватись API для отримання даних про
-                                країни та свята з сайту&nbsp;<a href="https://calendarific.com/&nbsp;" target="_blank"
+                                Create a web application to determine the time interval between given dates and to determine
+                                public holidays for a country in a selected year. The API will obtain data about countries and
+                                holidays from <a href="https://calendarific.com/&nbsp;" target="_blank"
                                     rel="noopener noreferrer">https://calendarific.com/&nbsp;</a>.
-                                Для цього потрібно буде створити аккаунт на цьому сайті для
-                                використання API-ключа в роботі відкритого API цього
-                                сайту.
+                                To do this, you will need to create an account on this site to use the API key in the work of
+                                the open API of this site.
                             </div>
-                            <h5>Основна ідея застосунку</h5>
+                            <h5>The basic idea of the app</h5>
                             <div>
-                                Веб сторінка має містити 2 вкладки (таби):
+                                The web page should contain 2 tabs:
                             </div>
                             <ol>
-                                <li>На першій табі юзер може обрати в
-                                    першому інпуті дату, потім в другому інпуті дату, задати
-                                    додаткові параметри - і отримати проміжок часу між цими
-                                    датами.</li>
-                                <li>На другій табі юзер може обрати
-                                    країну в першому інпуті, потім рік в другому інпуті - і
-                                    отримати список свят з датами<br></li>
+                                <li>On the first tab, the user can select a date in the first input, then a date in the second
+                                    input, and set additional parameters - then get the time interval between these dates.</li>
+                                <li>On the second tab, the user can select the country in the first input, then the year in the
+                                    second input - and get a list of holidays with dates.</li>
                             </ol>
-                            <h3>Особливості роботи таби №1</h3>
+                            <h3>Features of work tab #1</h3>
                             <ol>
-                                <li>Тільки після того як юзер обрав одну
-                                    дату в першому інпуті, він може обрати дату в другому інпуті
-                                    яка йде не раніше дати з першого інпуту і навпаки</li>
-                                <li>Юзер може обрати пресети проміжків
-                                    часу:<br>— 'тиждень' (7 днів)<br>—&nbsp;'місяць' (30 днів)
-                                </li>
-                                <li>Юзер може обрати опції:<br>— 'Всі
-                                    дні'<br>— 'Будні дні'<br>—&nbsp;'Вихідні дні'</li>
-                                <li>Юзер може вибрати
-                                    опції:<br>—&nbsp;'Порахувати кількість
-                                    днів'<br>—&nbsp;'Порахувати кількість
-                                    годин'<br>—&nbsp;'Порахувати кількість хвилин'<br>—
-                                    'Порахувати кількість секунд'</li>
-                                <li>Юзер може зайти в застосунок і
-                                    побачити, якщо вони є, останні 10 результатів які він
-                                    рахував у вигляді таблиці (стартова дата, кінцева дата, і
-                                    який результат виміру)<br>— Для цього використати
-                                    localStorage</li>
+                                <li>Only after the user has selected one date in the first input, he can change the date in the
+                                    second input, which is earlier than the date from the first input and vice versa</li>
+                                <li>The user can choose time interval presets:<br>— 'week' (7 days)<br>— 'month' (30 days)</li>
+                                <li>The user can choose options:<br>— 'All days'<br>— 'Working days'<br>— 'Weekend'</li>
+                                <li>The user can choose options:<br>— 'Count the number of days'<br>— 'Calculate the number of
+                                    hours'<br>— 'Count the number of minutes'<br>— 'Count number of seconds'</li>
+                                <li>The user can enter the application and see, if there are any, the last 10 results that he
+                                    calculated in the form of a table (start date, end date, and what the measurement result
+                                    is). To do this, use localStorage.</li>
                             </ol>
-                            <h3>Особливості роботи таби №2</h3>
+                            <h3>Features of work tab #2</h3>
                             <ol>
-                                <li>Коли юзер заходить на цю табу
-                                    має бути зроблений запит на ендпоїнт&nbsp;<a
+                                <li>When the user enters this tab, a request must be made to<a
                                         href="https://calendarific.com/api/v2/countries">https://calendarific.com/api/v2/countries</a>&nbsp;
-                                    для отримання списку всіх країн. Цей список буде
-                                    використовуватись для опцій в першому інпуті '<b>Вибір
-                                        країни</b>'.&nbsp;</li>
-                                <li>В другому інпуті '<b>Вибір року</b>'
-                                    має бути список років від 2001 до 2049. Цей інпут має бути
-                                    заблокований доки юзер не обере країну&nbsp;</li>
-                                <li>Значенням по замовчуванню в інпуті
-                                    'Вибір року' має бути поточний рік&nbsp;</li>
-                                <li>Коли обидва параметри будуть обрані,
-                                    потрібно зробити запит на ендпоїнт&nbsp;<a
+                                        to receive a list of all countries. This list will be used for the options in the first <strong>'Select Country'</strong> input.</li>
+                                <li>The second input <strong>'Select a year'</strong> should contain a list of years from 2001 to 2049. This input should be blocked until the user selects a country.</li>
+                                <li>The default value in the <strong>'Select a year'</strong> input should be the current year.</li>
+                                <li>When both options are selected, you need to make a request to <a
                                         href="https://calendarific.com/api/v2/holidays">https://calendarific.com/api/v2/holidays</a>
                                 </li>
-                                <li>Отриманий результат потрібно
-                                    представити у вигляді таблиці з колонками '<b>Дата</b>' та
-                                    '<b>Назва свята</b>'&nbsp;</li>
-                                <li>Для колонки '<b>Дата</b>' має бути
-                                    кнопка по кліку на яку юзер може посортувати свята в
-                                    хронологічному чи зворотньому хронологічному порядку&nbsp;
+                                <li>The obtained result should be presented in the form of a table with columns <strong>'Date'</strong> and <strong>'Name of the holiday'</strong></li>
+                                <li>For the <strong>'Date'</strong> column, there should be a clickable button on which the user can sort the holidays in chronological or reverse chronological order
                                 </li>
-                                <li>У випадку помилки якогось з цих двох
-                                    запитів до ендпоїнтів потрібно вивести на екран блок з
-                                    повідомленням про помилку&nbsp;&nbsp;</li>
+                                <li>If either of these two requests to endpoints fails, an error block should be displayed on the screen.</li>
                             </ol>
-                            <h3>Загальні особливості роботи застосунку</h3>
+                            <h3>General features of the application</h3>
                             <ol>
-                                <li>Юзер має мати можливість комфортно
-                                    працювати з мобільного телефона з цим застосунком<br>—
-                                    Мається на увазі що має бути передбачена мобільна версія
-                                    сайту<br></li>
-                                <li>Юзер має мати можливість перейти на
-                                    реальну сторінку застосунку в інтернеті<br>— Мається на
-                                    увазі що застосунок розміщується на Github pages<br></li>
-                                <li>Інтерфейс має бути англійською або
-                                    українською<br>— Мається на увазі що застосунок має бути
-                                    перекладений ОДНІЄЮ з вказаних мов<br></li>
+                                <li>The user should be able to comfortably work with this application from a mobile phone.</li>
+                                <li>The user must be able to go to the real page of the application on the Internet (Github pages).</li>
+                                <li>The interface should be in English or Ukrainian.</li>
                             </ol>
                         </div>
                     </div>
@@ -500,7 +464,7 @@
                                 </clipPath>
                             </defs>
                         </svg>
-                        Contacts
+                        <span data-lang="modal_contact">Contacts</span>                        
                     </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -582,7 +546,7 @@
                             </svg>
                         </div>
                         <div class="col-8">
-                            <div rel="author">Khomych Liubov</div>
+                            <div rel="author" data-lang="author">Khomych Liubov</div>
                             <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                                 href="mailto:kroka.luba@gmail.com" rel="author">
                                 kroka.luba@gmail.com
@@ -591,7 +555,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-lang="button_close">Close</button>
                 </div>
             </div>
         </div>

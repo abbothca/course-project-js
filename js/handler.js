@@ -1,11 +1,12 @@
 import { datepicker } from "./index.js";
 import { Datepicker } from "./datepicker.js";
+import { translate } from "./translator.js";
 import {
     getDurationTime,
     setHoursStartDate,
     setHoursEndDate
 } from "./date.js";
-import { setLastCalculationStorage } from "./localstorage.js";
+import { setLastCalculationStorage } from "./storage.js";
 import {
     checkIsDisabledButton,
     addNewLi,
@@ -90,4 +91,13 @@ export const sortButtonHandler = () => {
     allHolidays.sort((a, b) => sortItemHolidays(a, b, currentState));
     listHolidays.dataset.timestamp = switchListHolidaysState(currentState);
     rearrangeHolidays(allHolidays);
+}
+
+export const langHandler = async (event) => {
+	try {
+		await translate(event);
+	}
+	catch (error) {
+		showErrorHeaderMessage(error)
+	};
 }

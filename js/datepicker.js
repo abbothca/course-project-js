@@ -31,7 +31,7 @@ export class Datepicker {
 	}
 
 	#handleKeyup(event) {
-		if (event.key === "Enter") {
+		if (event.key === "Enter" || event.keyCode === 61) {
 			const element = event.target;
 			const value = element.value;
 			try {
@@ -53,7 +53,7 @@ export class Datepicker {
 
 				createErrorValidation(element, value, error);
 			}
-				finally {
+			finally {
 				this.validButtonFunction(Datepicker.getDate(this.startLink), Datepicker.getDate(this.endLink));
 				this.validPresetsFunction(Datepicker.getDate(this.startLink));
 			}
@@ -85,8 +85,8 @@ export class Datepicker {
 			}
 		});
 
-		this.#startLink[0].addEventListener("keyup", this.#handleKeyup.bind(this))
-		this.#endLink[0].addEventListener("keyup", this.#handleKeyup.bind(this))
+		this.#startLink[0].addEventListener("keyup", this.#handleKeyup.bind(this));
+		this.#endLink[0].addEventListener("keyup", this.#handleKeyup.bind(this));
 	}
 
 	get startLink() {

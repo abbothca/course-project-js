@@ -1,0 +1,146 @@
+{
+    "content": {
+        "nav_item_about": {
+            "eng": "About project",
+            "ua": "Про проєкт"
+        },
+        "nav_item_contacts": {
+            "eng": "Contacts",
+            "ua": "Контакти"
+        },
+        "tab_name_duration": {
+            "eng": "Get the time",
+            "ua": "Розрахувати тривалість"
+        },
+        "tab_name_holidays": {
+            "eng": "get holidays",
+            "ua": "Отримати список свят"
+        },
+        "tab_block_enter": {
+            "eng": "1. Enter dates and other options",
+            "ua": "1. Введіть дати і виберіть інші опції"
+        },
+        "tab_task_time": {
+            "eng": "Select of the period of time",
+            "ua": "Виберіть проміжок часу"
+        },
+        "tab_label_presets" : {
+            "eng": "Сalculate from the start date:",
+            "ua": "Відрахувати від початкової дати:"
+        },
+        "tab_presets_week": {
+            "eng": "Week",
+            "ua": "Тиждень"
+        },
+        "tab_presets_month": {
+            "eng": "Month",
+            "ua": "Місяць"
+        },
+        "tab_task_days": {
+            "eng": "Choose what days will count",
+            "ua": "Дні до підрахунку"
+        },
+        "tab_task_days_days": {
+            "eng": "All days",
+            "ua": "Всі дні"
+        },
+        "tab_task_days_weekdays": {
+            "eng": "Weekdays",
+            "ua": "Будні"
+        },
+        "tab_task_days_weekends": {
+            "eng": "Weekends",
+            "ua": "Вихідні"
+        },
+        "tab_task_days_measure": {
+            "eng": "The measure of time",
+            "ua": "Одиниці виміру часу"
+        },
+        "tab_task_measure_days" : {
+            "eng": "Days",
+            "ua": " Дні"
+        },
+        "tab_task_measure_hours" : {
+            "eng": "Hours",
+            "ua": " Години"
+        },
+        "tab_task_measure_minutes" : {
+            "eng": "Minutes",
+            "ua": "Хвилини"
+        },
+        "tab_task_measure_seconds" : {
+            "eng": "Seconds",
+            "ua": "Секунди"
+        },
+        "tab_button_duration": {
+            "eng": "Calculate duration",
+            "ua": "Розрахувати тривалість" 
+        },
+        "tab_header_result_duration" :{
+            "eng": "2. The results of previous calculations",
+            "ua": "2. Результати останніх обчислень" 
+        },
+        "tab_table_start" : {
+            "eng": "Start date",
+            "ua": "Початкова дата"
+        },
+        "tab_table_end" : {
+            "eng": "End date",
+            "ua": "Кінцева дата"
+        },
+        "tab_table_countable" : {
+            "eng": "Countable",
+            "ua": "Рахували"
+        },
+        "tab_table_measure" : {
+            "eng": "Measure",
+            "ua": "Одиниці"
+        },
+        "tab_table_result" : {
+            "eng": "Result",
+            "ua": "Результат"
+        },
+        "tab_task_holiday_options" : {
+            "eng": "1. Choose options",
+            "ua": "1. Виберіть опції"
+        },
+        "tab_task_country" : {
+            "eng": "Choose a country",
+            "ua": "Виберіть країну"
+        },
+        "tab_task_year" : {
+            "eng": "Choose a year",
+            "ua": "Виберіть рік"
+        },
+        "tab_button_holidays" : {
+            "eng": "Get holidays",
+            "ua": "Отримати список свят"
+        },
+        "button_close" : {
+            "eng": "Close",
+            "ua": "Закрити"
+        },
+        "author" : {
+            "eng": "Khomych Liubov",
+            "ua": "Хомич Любов"
+        },
+        "modal_contact" : {
+            "eng": "Contacts",
+            "ua": "Контакти"
+        },
+        "header" : {
+            "eng": "Holidays",
+            "ua": "Святкові і вихідні дні"
+        }
+    },
+    "placeholder": {
+        "placeholder_start": {
+            "eng": "Start date",
+            "ua": "Початкова дата"
+        },
+        "placeholder_end" : {
+            "eng": "End date",
+            "ua": "Кінцева дата"
+        }
+    }
+}

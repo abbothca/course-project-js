@@ -16,7 +16,8 @@ import {
 	buttonPresetMonthHandler,
 	buttonPresetWeekHandler,
 	handleRequestHolidays,
-	sortButtonHandler
+	sortButtonHandler,
+	langHandler
 } from "./handler.js"
 import { Datepicker } from "./datepicker.js";
 import { showErrorHeaderMessage } from "./errors.js";
@@ -50,5 +51,6 @@ countriesSelect.addEventListener("change", checkIsCanGetHolidays);
 yearSelect.addEventListener("change", checkIsCanGetHolidays);
 requestButton.addEventListener("click", handleRequestHolidays);
 sortButton.addEventListener("click", sortButtonHandler);
+document.getElementById("langpicker").addEventListener("click", langHandler)
 
 export { datepicker };
