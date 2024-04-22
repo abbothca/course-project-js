@@ -52,12 +52,12 @@ The web page should contain 2 tabs:
   - [x] #3.2 The user can choose time interval presets: 'week' (7 days) / 'month' (30 days)
   - [x] #3.3 The user can choose options
   - [x] #3.4 Calculate the time interval between given dates
-  - [ ] #3.5 The user can enter the application and see, if there are any, the last 10 results that he calculated in the form of a table (start date, end date, and what the measurement result is). To do this, use localStorage.
-- [ ] The issues/tickets of work tab #2:
-  - [ ] #4.1 Make request to [the endpoint](https://calendarific.com/api/v2/countries) to receive a list of all countries. This list will be used for the options in the first **'Select Country'** input.
-  - [ ] #4.2 The second input **'Select a year'** should contain a list of years from 2001 to 2049. This input should be blocked until the user selects a country. The default value in the 'Select year' input should be the current year.
-  - [ ] #4.3 When both options are selected, you need to make a request to [the endpoint](https://calendarific.com/api/v2/holidays). The obtained result should be presented in the form of a table with columns **'Date'** and **'Name of the holiday'**
-  - [ ] #4.4 For the **'Date'** column, there should be a clickable button on which the user can sort the holidays in chronological or reverse chronological order
-- [ ] #5 If either of these two requests to endpoints fails, an error block should be displayed on the screen.
+  - [x] #3.5 The user can enter the application and see, if there are any, the last 10 results that he calculated in the form of a table (start date, end date, and what the measurement result is). To do this, use localStorage.
+- [x] The issues/tickets of work tab #2:
+  - [x] #4.1 Make request to [the endpoint](https://calendarific.com/api/v2/countries) to receive a list of all countries. This list will be used for the options in the first **'Select Country'** input.
+  - [x] #4.2 The second input **'Select a year'** should contain a list of years from 2001 to 2049. This input should be blocked until the user selects a country. The default value in the 'Select year' input should be the current year.
+  - [x] #4.3 When both options are selected, you need to make a request to [the endpoint](https://calendarific.com/api/v2/holidays). The obtained result should be presented in the form of a table with columns **'Date'** and **'Name of the holiday'**
+  - [x] #4.4 For the **'Date'** column, there should be a clickable button on which the user can sort the holidays in chronological or reverse chronological order
+- [x] #5 If either of these two requests to endpoints fails, an error block should be displayed on the screen.
 
 <img src="./img/jpg/4865096.jpg" alt="image" width="300" height="auto">
