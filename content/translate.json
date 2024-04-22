@@ -131,6 +131,34 @@
         "header" : {
             "eng": "Holidays",
             "ua": "Святкові і вихідні дні"
+        },
+        "tab_header2-1" :{
+            "eng": "2. Holidays in",
+            "ua": "2. Вихідні ісвяткові дні у"
+        },
+        "in" : {
+            "eng": "in",
+            "ua": "у"
+        },
+        "year" : {
+            "eng": "year",
+            "ua": "році"
+        },
+        "date": {
+            "eng": "Date",
+            "ua": "Дата"
+        },
+        "holiday_name" : {
+            "eng": "The name of the holiday",
+            "ua": "Назва свята"
+        },
+        "holiday_state" : {
+            "eng": "States",
+            "ua": "Регіон"
+        }, 
+        "holiday_type" : {
+            "eng": "Type",
+            "ua": "Тип"
         }
     },
     "placeholder": {
