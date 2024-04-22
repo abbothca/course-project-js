@@ -25,6 +25,7 @@ import { showErrorHeaderMessage } from "./errors.js";
 const blockResultsHolidays = document.querySelector("#holidays-results");
 const selectedCountryBlock = document.querySelector("#selectedCountry");
 const selectedYearBlock = document.querySelector("#selectedYear");
+export const requestButton = document.querySelector("button#get-holidays");
 
 export const buttonPresetWeekHandler = (event) => {
     datepicker.setEndDateByPreset("week");
@@ -48,6 +49,13 @@ export const calculateButtonHandler = () => {
     addNewLi({ ...arg, value });
     datepicker.setDate();
     checkIsDisabledButton()
+}
+
+export const countrySelectHandler = ({target : { value }}) => {
+    if(value !== "") {
+        yearSelect.disabled = false;
+        requestButton.disabled = false;
+    }
 }
 
 export const handleRequestHolidays = async () => {

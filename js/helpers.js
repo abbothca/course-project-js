@@ -21,8 +21,6 @@ const buttonPresetWeek = document.getElementById("setWeek");
 const buttonPresetMonth = document.getElementById("setMonth");
 export const countriesSelect = document.getElementById("country");
 export const yearSelect = document.getElementById("year");
-export const requestButton = document.querySelector("button#get-holidays");
-
 export const checkIsDisabledButton = (valueStart, valueEnd) => {
     calculateButton.disabled = !(valueStart && valueEnd);;
 }
@@ -31,13 +29,6 @@ export const checkIsDisabledPresets = (value) => {
     let isDateSelected = !!value;
     buttonPresetMonth.disabled = !isDateSelected;
     buttonPresetWeek.disabled = !isDateSelected;
-}
-
-export const checkIsCanGetHolidays = () => {
-    if (countriesSelect.value !== "" && yearSelect.value !== "") {
-        requestButton.disabled = false;
-        return;
-    }
 }
 
 const getStringStates = (obj) => {
@@ -123,7 +114,7 @@ const createOptionsCountries = (countries) => {
     countries.forEach((country) => {
         addOption(countriesSelect, country["iso-3166"], country["country_name"]);
     });
-    countriesSelect.value = "UA";
+    // countriesSelect.value = "UA";
 }
 
 const createOptionsYears = (start, end) => {
@@ -131,6 +122,7 @@ const createOptionsYears = (start, end) => {
         addOption(yearSelect, i, i);
     };
     yearSelect.value = (new Date()).getFullYear();
+    yearSelect.disabled = true;
 }
 
 const updateListCountries = async () => {
@@ -157,7 +149,6 @@ export const initSelects = async () => {
     const countries = await getListCountries();
     createOptionsCountries(countries);
     createOptionsYears(2001, 2049);
-    checkIsCanGetHolidays();
 }
 
 export const sortItemHolidays = (a, b, direction) => {
