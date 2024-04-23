@@ -4,19 +4,19 @@ import {
 	checkIsDisabledButton,
 	buttonPresetMonth,
 	buttonPresetWeek,
-	checkIsCanGetHolidays,
 	countriesSelect,
 	yearSelect,
-	requestButton,
 	initSelects,
-	initTabActive
+	initTabActive	
 } from "./helpers.js";
 import {
+	requestButton,
 	calculateButtonHandler,
 	buttonPresetMonthHandler,
 	buttonPresetWeekHandler,
 	handleRequestHolidays,
 	sortButtonHandler,
+	countrySelectHandler,
 	langHandler
 } from "./handler.js"
 import { Datepicker } from "./datepicker.js";
@@ -25,6 +25,7 @@ import { showErrorHeaderMessage } from "./errors.js";
 // Get the DOM elements
 const calculateButton = document.getElementById("calculateButton");
 const sortButton = document.getElementById("holiday-sort");
+const langPicker = document.getElementById("langpicker");
 
 let datepicker;
 // Initialization 
@@ -47,10 +48,9 @@ initTabActive();
 buttonPresetWeek.addEventListener("click", buttonPresetWeekHandler);
 buttonPresetMonth.addEventListener("click", buttonPresetMonthHandler);
 calculateButton.addEventListener("click", calculateButtonHandler);
-countriesSelect.addEventListener("change", checkIsCanGetHolidays);
-yearSelect.addEventListener("change", checkIsCanGetHolidays);
+countriesSelect.addEventListener("change", countrySelectHandler);
 requestButton.addEventListener("click", handleRequestHolidays);
 sortButton.addEventListener("click", sortButtonHandler);
-document.getElementById("langpicker").addEventListener("click", langHandler)
+langPicker.addEventListener("click", langHandler);
 
 export { datepicker };

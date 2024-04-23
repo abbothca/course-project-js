@@ -11,7 +11,8 @@ export class Datepicker {
 		const startDateValue = Datepicker.getDate(this.#startLink);
 		if (startDateValue) {
 			let minEnabledDay = new Date(startDateValue);
-			minEnabledDay.setDate(minEnabledDay.getDate() + 1);
+			minEnabledDay.setDate(minEnabledDay.getDate());
+			// minEnabledDay.setDate(minEnabledDay.getDate() + 1);
 			this.#endLink.datepicker("option", "minDate", minEnabledDay);
 			return;
 		}
@@ -23,7 +24,8 @@ export class Datepicker {
 		const endDateValue = Datepicker.getDate(this.#endLink);
 		if (endDateValue) {
 			let maxEnabledDay = new Date(endDateValue);
-			maxEnabledDay.setDate(maxEnabledDay.getDate() - 1);
+			maxEnabledDay.setDate(maxEnabledDay.getDate());
+			// maxEnabledDay.setDate(maxEnabledDay.getDate() - 1);
 			this.#startLink.datepicker("option", "maxDate", maxEnabledDay);
 			return;
 		}
